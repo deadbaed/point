@@ -1,0 +1,20 @@
+set from = 'loctauxphilippe@gmail.com'
+set realname = 'Philippe Loctaux'
+
+set imap_user = 'loctauxphilippe@gmail.com'
+set imap_pass = 'password'
+
+set folder = 'imaps://imap.gmail.com'
+mailboxes = '+INBOX' '+[Gmail]/All Mail' '+[Gmail]/Sent Mail' '+[Gmail]/Trash' '+OVH' '+Notes' '+[Gmail]/Drafts' '+[Gmail]/Spam' '+Free Mobile' '+Eudyptula Challenge'
+set spoolfile = '+INBOX'
+set postponed ='+[Gmail]/Drafts'
+set record='+[Gmail]/Sent Mail'
+
+set header_cache ='~/.mutt/cache/headers'
+set message_cachedir ='~/.mutt/cache/bodies'
+set certificate_file ='~/.mutt/certificates'
+
+set sendmail="/usr/bin/msmtp -a gmail"
+
+set move = 'no'
+set imap_keepalive = 900

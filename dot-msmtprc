@@ -1,0 +1,25 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.msmtp.log
+
+# Gmail
+account        gmail
+host           smtp.gmail.com
+port           587
+from           loctauxphilippe@gmail.com
+user           loctauxphilippe
+password       # password
+
+# phil
+account        phil
+host           ssl0.ovh.net
+port           587
+from           phil@philippeloctaux.com
+user           phil@philippeloctaux.com
+password       # password
+
+# Set a default account
+account default : phil

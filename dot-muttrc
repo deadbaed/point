@@ -1,0 +1,17 @@
+# Config Shit
+set send_charset="utf-8"
+set editor="vim"
+
+# Folder hooks
+folder-hook 'phil' 'source ~/.mutt/account.phil'
+folder-hook 'gmail' 'source ~/.mutt/account.gmail'
+
+# Default account
+source ~/.mutt/account.phil
+
+# Macros for switching accounts
+macro index <F2> '<sync-mailbox><enter-command>source ~/.mutt/account.phil<enter><change-folder>!<enter>'
+macro index <F3> '<sync-mailbox><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter>'
+
+# Fetch email
+bind index G imap-fetch-mail
