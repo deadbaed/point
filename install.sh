@@ -2,7 +2,7 @@
 #
 
 echo "Installing mutt and msmtprc for Ubuntu"
-sudo apt-get install mutt msmtprc
+sudo apt-get install mutt msmtp
 
 echo "Copying the configuration file for msmtprc"
 cp ./dot-msmtprc ~/.msmtprc
