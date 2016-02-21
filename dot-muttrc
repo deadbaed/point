@@ -1,5 +1,6 @@
 # Config Shit
 set send_charset="utf-8"
+set charset="UTF-8"
 set editor="vim"
 
 # Folder hooks
