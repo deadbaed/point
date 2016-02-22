@@ -16,3 +16,8 @@ macro index <F3> '<sync-mailbox><enter-command>source ~/.mutt/account.gmail<ente
 
 # Fetch email
 bind index G imap-fetch-mail
+
+# Sort by date
+set sort=threads
+set sort_browser=date
+set sort_aux=reverse-last-date-received
