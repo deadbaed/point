@@ -7,4 +7,5 @@ set background=dark
 colorscheme solarized
 
 "Macros
-let @1 = 'aSigned-off-by: Philippe Loctaux <phil@philippeloctaux.com>'
+let @1 = 'aPhilippe Loctaux <phil@philippeloctaux.com>'
+let @2 = 'aSigned-off-by: Philippe Loctaux <phil@philippeloctaux.com>'
