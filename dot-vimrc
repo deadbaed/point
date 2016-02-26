@@ -1,6 +1,9 @@
 "Get a colored column at 80 chars
 set colorcolumn=80
 
+"syntax plz
+syntax on
+
 "Enable the solarized scheme
 syntax enable
 set background=dark
