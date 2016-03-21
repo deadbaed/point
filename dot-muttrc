@@ -1,7 +1,9 @@
 # Config Shit
 set send_charset="utf-8"
-set charset="UTF-8"
 set editor="vim"
+
+# Mailcap
+set mailcap_path= ~/.mutt/mailcap
 
 # Folder hooks
 folder-hook 'phil' 'source ~/.mutt/account.phil'
