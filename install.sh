@@ -1,7 +1,7 @@
 # install.sh
 #
 
-echo "Install packages 'mutt' and 'msmtp'"
+echo "Install packages 'mutt', 'msmtp', 'w3m' and 'eog'"
 echo
 
 echo "Copying the configuration file for msmtprc"
