@@ -1,6 +1,7 @@
 [user]
 	name = Philippe Loctaux
 	email = phil@philippeloctaux.com
+	signingkey = 5CF7D5B1
 [core]
 	editor = vim
 [push]
