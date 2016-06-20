@@ -6,8 +6,6 @@
 	editor = vim
 [push]
 	default = simple
-[credential]
-	helper = /usr/lib/git-core/git-credential-gnome-keyring
 [sendemail]
 	smtpserver = /usr/bin/msmtp
 	confirm = auto
