@@ -3,6 +3,7 @@
 
 echo "copying gitconfig file"
 cp ./gitconfig ~/.gitconfig
+cp ./gitignore_global ~/.gitignore_global
 
 echo "to get git credential helper"
 echo ""
