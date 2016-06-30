@@ -2,5 +2,7 @@
 #
 
 echo "creating gpg foler & copying gpg config file"
-cp ./gpg.conf ~/.gnupg/gpg.conf
+mkdir ~/.gnupg
+cp ./gpg.conf ~/.gnupg/gpg.conf -v
+cp ./gpg-agent.conf ~/.gnupg/gpg-agent.conf -v
 echo "done"
