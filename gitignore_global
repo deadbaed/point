@@ -1,5 +1,9 @@
 # gitignore
 
+### Git files ###
+!.gitignore
+!.mailmap
+
 ### Linux ###
 *~
 
