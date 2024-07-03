@@ -722,7 +722,6 @@ vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Find string" })
 vim.keymap.set("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Find LSP symbols in workspace" })
 vim.keymap.set("n", "<leader>fn", require("telescope").extensions.notify.notify, { desc = "Find past notifications" })
 
-local lualine_refresh = 80
 
 -- status line
 require("lualine").setup {
@@ -738,11 +737,6 @@ require("lualine").setup {
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
-    refresh = {
-      statusline = lualine_refresh,
-      tabline = lualine_refresh,
-      winbar = lualine_refresh,
-    }
   },
   sections = {
     lualine_a = { "mode" },
