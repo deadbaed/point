@@ -427,7 +427,15 @@ require("lazy").setup({
   },
   { -- tabline
     "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      { -- handle vim tabs with buffers
+        "tiagovla/scope.nvim",
+        config = function()
+          require("scope").setup()
+        end
+      },
+    },
     config = function()
       local bufferline = require("bufferline")
       bufferline.setup {
@@ -606,6 +614,14 @@ require("lazy").setup({
       require("tiny-inline-diagnostic").setup()
       vim.diagnostic.config({ virtual_text = false })
     end
+  },
+  { -- see neovim tabs in telescope
+    "LukasPietzschmann/telescope-tabs",
+    config = function()
+      require("telescope").load_extension "telescope-tabs"
+      require("telescope-tabs").setup {}
+    end,
+    dependencies = { "nvim-telescope/telescope.nvim" },
   }
 })
 
@@ -640,12 +656,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
--- tab navigation
-vim.api.nvim_set_keymap("n", "<c-Tab>", ":bnext<CR>", { noremap = true, silent = true })
-
--- windows navigation
-vim.api.nvim_set_keymap("n", "<Tab>", "<c-W>w", { noremap = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", "<c-W>W", { noremap = true })
+-- split, buffer, tab navigation
+vim.api.nvim_set_keymap("n", "<Tab>", "<c-W>w", { noremap = true, desc = "Next split" })
+vim.api.nvim_set_keymap("n", "<c-Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Next tab" })
 
 -- TODO: map go back and forth using leader
 
@@ -711,17 +725,22 @@ require("telescope").setup {
 -- telescope extensions
 require("telescope").load_extension "ui-select"
 require("telescope").load_extension "notify"
+require("telescope").load_extension "scope"
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find Grep" })
-vim.keymap.set("n", "<leader>fo", builtin.buffers, { desc = "Find opened buffers" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find opened buffers" })
+vim.keymap.set("n", "<leader>ft", require("telescope-tabs").list_tabs, { desc = "Find tabs" })
+vim.keymap.set("n", "<leader>fo", require("telescope").extensions.scope.buffers, { desc = "Find buffers in tab" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
 vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Find references" })
 vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Find string" })
 vim.keymap.set("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Find LSP symbols in workspace" })
 vim.keymap.set("n", "<leader>fn", require("telescope").extensions.notify.notify, { desc = "Find past notifications" })
 
+-- TODO: keep telescope for diagnostics, but disable search
+vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
 
 -- status line
 require("lualine").setup {
