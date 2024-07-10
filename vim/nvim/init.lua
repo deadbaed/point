@@ -742,7 +742,16 @@ require("lualine").setup {
     lualine_a = { "mode" },
     lualine_b = { { "filename", path = 3, shorting_target = 80, } },
     lualine_c = { "branch", "diff" },
-    lualine_x = { "diagnostics" },
+    lualine_x = {
+      {
+        "diagnostics",
+        sources = {
+          "nvim_lsp",
+          "nvim_diagnostic",
+          "nvim_workspace_diagnostic",
+        },
+      }
+    },
     lualine_y = { "filetype", "encoding", "fileformat" },
     lualine_z = { "progress", "location" },
   },
