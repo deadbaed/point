@@ -89,7 +89,13 @@ require("lazy").setup({
   { -- fuzzy finder
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" }
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        version = "^1.0.0",
+      },
+    }
   },
   { -- comment lines
     "numToStr/Comment.nvim",
@@ -726,10 +732,11 @@ require("telescope").setup {
 require("telescope").load_extension "ui-select"
 require("telescope").load_extension "notify"
 require("telescope").load_extension "scope"
+require("telescope").load_extension "live_grep_args"
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find Grep" })
+vim.keymap.set("n", "<leader>fg", require("telescope").extensions.live_grep_args.live_grep_args, { desc = "Find Grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find opened buffers" })
 vim.keymap.set("n", "<leader>ft", require("telescope-tabs").list_tabs, { desc = "Find tabs" })
 vim.keymap.set("n", "<leader>fo", require("telescope").extensions.scope.buffers, { desc = "Find buffers in tab" })
