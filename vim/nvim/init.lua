@@ -625,6 +625,13 @@ require("lazy").setup({
       require("telescope-tabs").setup {}
     end,
     dependencies = { "nvim-telescope/telescope.nvim" },
+  },
+  { -- rust crates helper
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require("crates").setup()
+    end,
   }
 })
 
