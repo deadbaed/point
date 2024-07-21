@@ -457,7 +457,14 @@ require("lazy").setup({
             if vim.bo[buf_number].filetype ~= "qf" then
               return true
             end
-          end
+          end,
+          diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(count, level)
+            local codicons = require("codicons")
+
+            local icon = level:match("error") and codicons.get("error") or codicons.get("warning")
+            return " " .. count .. icon
+          end,
         }
       }
     end
