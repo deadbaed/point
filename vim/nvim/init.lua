@@ -685,8 +685,8 @@ vim.api.nvim_create_user_command("Files", ":NvimTreeFindFileToggle", {})
 
 -- git tool
 -- TODO: config for layout view
-vim.keymap.set("n", "<leader>gdo", ":DiffviewOpen<CR>", { desc = "Git diff open" })
-vim.keymap.set("n", "<leader>gdc", ":DiffviewClose<CR>", { desc = "Git diff close" })
+vim.keymap.set("n", "<leader>gdo", function() require("tiny-inline-diagnostic").disable(); vim.cmd("DiffviewOpen"); end, { desc = "Git diff open" })
+vim.keymap.set("n", "<leader>gdc", function() require("tiny-inline-diagnostic").enable(); vim.cmd("DiffviewClose"); end, { desc = "Git diff close" })
 vim.keymap.set("n", "<leader>glb", ":DiffviewFileHistory<CR>", { desc = "Show branch history" })
 vim.keymap.set("n", "<leader>glf", ":DiffviewFileHistory %<CR>", { desc = "Show file history" })
 
