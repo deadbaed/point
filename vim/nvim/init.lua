@@ -474,6 +474,18 @@ require("lazy").setup({
   },
   { -- git diff view / conflict
     "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("diffview").setup {
+        view = {
+          merge_tool = {
+            layout = "diff4_mixed",
+          },
+        },
+      }
+    end
   },
   { -- telescope ui selector
     "nvim-telescope/telescope-ui-select.nvim"
@@ -685,8 +697,12 @@ vim.api.nvim_create_user_command("Files", ":NvimTreeFindFileToggle", {})
 
 -- git tool
 -- TODO: config for layout view
-vim.keymap.set("n", "<leader>gdo", function() require("tiny-inline-diagnostic").disable(); vim.cmd("DiffviewOpen"); end, { desc = "Git diff open" })
-vim.keymap.set("n", "<leader>gdc", function() require("tiny-inline-diagnostic").enable(); vim.cmd("DiffviewClose"); end, { desc = "Git diff close" })
+vim.keymap.set("n", "<leader>gdo", function()
+  require("tiny-inline-diagnostic").disable(); vim.cmd("DiffviewOpen");
+end, { desc = "Git diff open" })
+vim.keymap.set("n", "<leader>gdc", function()
+  require("tiny-inline-diagnostic").enable(); vim.cmd("DiffviewClose");
+end, { desc = "Git diff close" })
 vim.keymap.set("n", "<leader>glb", ":DiffviewFileHistory<CR>", { desc = "Show branch history" })
 vim.keymap.set("n", "<leader>glf", ":DiffviewFileHistory %<CR>", { desc = "Show file history" })
 
@@ -760,6 +776,37 @@ vim.keymap.set("n", "<leader>fn", require("telescope").extensions.notify.notify,
 -- TODO: keep telescope for diagnostics, but disable search
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
 
+-- taken from https://github.com/sindrets/diffview.nvim/issues/433#issuecomment-1898322005
+local winbar_git_merge = function()
+  local view = require("diffview.lib").get_current_view()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local rev_label = ""
+  for _, file in ipairs(view.cur_entry and view.cur_entry.layout:files() or {}) do
+    if file:is_valid() and file.bufnr == bufnr then
+      local rev = file.rev
+      if rev.type == 1 then
+        rev_label = "LOCAL"
+      elseif rev.type == 2 then
+        local head = vim.trim(vim.fn.system(
+          { "git", "rev-parse", "--revs-only", "HEAD" }))
+        if head == rev.commit then
+          rev_label = "HEAD"
+        else
+          rev_label = string.format("%s", rev.commit:sub(1, 7))
+        end
+      elseif rev.type == 3 then
+        rev_label = ({
+          [0] = "INDEX",
+          [1] = "BASE (COMMON ANCESTOR)",
+          [2] = "LOCAL (OURS)",
+          [3] = "REMOTE (THEIRS)",
+        })[rev.stage] or ""
+      end
+    end
+  end
+  return rev_label
+end
+
 -- status line
 require("lualine").setup {
   options = {
@@ -794,14 +841,21 @@ require("lualine").setup {
   },
   tabline = {},
   winbar = {
-    lualine_a = {},
+    lualine_a = { winbar_git_merge },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },
-  inactive_winbar = {},
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { winbar_git_merge },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
   extensions = { "trouble", "symbols-outline", "nvim-tree", "fzf", "fugitive", "mason", "lazy", "quickfix" }
 }
 vim.o.laststatus = 3 -- removes the nvim statusbar since we are using lualine
