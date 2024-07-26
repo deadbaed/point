@@ -484,6 +484,13 @@ require("lazy").setup({
             layout = "diff4_mixed",
           },
         },
+        file_panel = {
+          win_config = {
+            type = "split",
+            position = "right",
+            win_opts = {},
+          },
+        },
       }
     end
   },
