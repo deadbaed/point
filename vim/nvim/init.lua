@@ -492,7 +492,31 @@ require("lazy").setup({
           },
         },
       }
-    end
+    end,
+    keys = {
+      {
+        "<leader>gdo",
+        function()
+          require("tiny-inline-diagnostic").disable();
+          vim.cmd("DiffviewOpen");
+        end,
+        desc = "Git diff open"
+      },
+      {
+        "<leader>gdc",
+        function()
+          require("tiny-inline-diagnostic").enable();
+          vim.cmd("DiffviewClose");
+        end,
+        desc = "Git diff close"
+      },
+      {
+        "<leader>glb", ":DiffviewFileHistory<CR>", desc = "Show branch history"
+      },
+      {
+        "<leader>glf", ":DiffviewFileHistory %<CR>", desc = "Show file history"
+      },
+    },
   },
   { -- telescope ui selector
     "nvim-telescope/telescope-ui-select.nvim"
@@ -701,17 +725,6 @@ vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabnext<CR>", { noremap = true, silent
 
 -- file browser
 vim.api.nvim_create_user_command("Files", ":NvimTreeFindFileToggle", {})
-
--- git tool
--- TODO: config for layout view
-vim.keymap.set("n", "<leader>gdo", function()
-  require("tiny-inline-diagnostic").disable(); vim.cmd("DiffviewOpen");
-end, { desc = "Git diff open" })
-vim.keymap.set("n", "<leader>gdc", function()
-  require("tiny-inline-diagnostic").enable(); vim.cmd("DiffviewClose");
-end, { desc = "Git diff close" })
-vim.keymap.set("n", "<leader>glb", ":DiffviewFileHistory<CR>", { desc = "Show branch history" })
-vim.keymap.set("n", "<leader>glf", ":DiffviewFileHistory %<CR>", { desc = "Show file history" })
 
 -- project tree
 -- set termguicolors to enable highlight groups
