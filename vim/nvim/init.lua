@@ -603,6 +603,9 @@ require("lazy").setup({
       presets = {
         lsp_doc_border = true, -- nice border when hovering
       },
+      messages = {
+        view_search = false,
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -682,7 +685,13 @@ require("lazy").setup({
     config = function()
       require("crates").setup()
     end,
-  }
+  },
+  { -- highlight search
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("scrollbar.handlers.search").setup {}
+    end,
+  },
 })
 
 -- update time for git status in files
