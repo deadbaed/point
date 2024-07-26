@@ -689,8 +689,39 @@ require("lazy").setup({
   { -- highlight search
     "kevinhwang91/nvim-hlslens",
     config = function()
+      -- integration with scrollbar
       require("scrollbar.handlers.search").setup {}
     end,
+    keys = {
+      {
+        "n", -- resume word highlight, next occurrence
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        desc = "Highlight next word",
+        noremap = true,
+        silent = true
+      },
+      {
+        "N", -- resume word highlight, previous occurrence
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        desc = "Highlight previous word",
+        noremap = true,
+        silent = true
+      },
+      {
+        "*", -- for next occurrence of word
+        [[*<Cmd>lua require('hlslens').start()<CR>]],
+        desc = "Highlight next word",
+        noremap = true,
+        silent = true
+      },
+      {
+        "#", -- for previous occurrence of word
+        [[#<Cmd>lua require('hlslens').start()<CR>]],
+        desc = "Highlight previous word",
+        noremap = true,
+        silent = true
+      },
+    },
   },
 })
 
