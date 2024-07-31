@@ -757,7 +757,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- split, buffer, tab navigation
-vim.api.nvim_set_keymap("n", "<Tab>", "<c-W>w", { noremap = true, desc = "Next split" })
 vim.api.nvim_set_keymap("n", "<c-Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
 vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Next tab" })
 
