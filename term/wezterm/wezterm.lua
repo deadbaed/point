@@ -71,6 +71,8 @@ config.keys = {
   { key = "Tab",        mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
 }
 
+config.color_scheme = "catppuccin-mocha"
+
 -- Integration with neovim plugin https://github.com/folke/zen-mode.nvim
 wezterm.on("user-var-changed", function(window, pane, name, value)
   local overrides = window:get_config_overrides() or {}
