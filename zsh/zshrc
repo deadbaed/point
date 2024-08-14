@@ -55,3 +55,13 @@ alias l='lsa'
 if type nvim &>/dev/null; then
   alias vim='nvim'
 fi
+
+# generate a random string
+function gen_rand_str() {
+	if [ -z "$1" ]; then
+		LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c 32; echo
+		return 0;
+	fi
+	LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c $1; echo
+}
+

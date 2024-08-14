@@ -1,12 +1,3 @@
-# generate a random string
-function gen() {
-	if [ -z "$1" ]; then
-		< /dev/urandom tr -dc A-Za-z0-9 | head -c 32; echo
-		return 0;
-	fi
-	< /dev/urandom tr -dc A-Za-z0-9 | head -c $1; echo
-}
-
 # systemd user services
 if type systemctl &>/dev/null; then
   alias s-u="systemctl --user"
