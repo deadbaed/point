@@ -163,6 +163,7 @@ require("lazy").setup({
   },
   { -- automatically open/close braces
     "Raimondi/delimitMate"
+    -- TODO: change to another one
   },
   { -- lsp installer
     "williamboman/mason.nvim",
@@ -181,6 +182,10 @@ require("lazy").setup({
       { "hrsh7th/cmp-emoji" },                              -- emoji
       { "onsails/lspkind.nvim" },                           -- pictograms
       { "hrsh7th/cmp-calc" },                               -- calc
+      {                                                     -- relative dates
+        "Gelio/cmp-natdat",
+        config = true
+      },
     },
     config = function()
       local cmp = require("cmp")
@@ -219,6 +224,7 @@ require("lazy").setup({
           { name = "async_path" },
           { name = "emoji" },
           { name = "calc" },
+          { name = "natdat" },
         }),
         snippet = {
           expand = function(args)
