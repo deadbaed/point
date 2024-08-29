@@ -534,8 +534,8 @@ require("lazy").setup({
       ccc.setup {
         highlighter = {
           auto_enable = true,
-          lsp = true
-        }
+          max_byte = 500 * 1024, -- 500 KB
+        },
       }
     end
   },
