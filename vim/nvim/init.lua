@@ -661,6 +661,11 @@ require("lazy").setup({
       vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
   },
+  { -- markdown preview
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  },
   { -- search and replace tool,
     -- :Spectre
     "nvim-pack/nvim-spectre",
