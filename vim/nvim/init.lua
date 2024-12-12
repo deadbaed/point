@@ -329,6 +329,8 @@ require("lazy").setup({
       end
 
       local lspconfig = require("lspconfig")
+
+      -- configure lsp installed with mason
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "rust_analyzer", "taplo", "jsonls" },
@@ -662,9 +664,9 @@ require("lazy").setup({
     end,
   },
   { -- markdown preview
-    'MeanderingProgrammer/render-markdown.nvim',
+    "MeanderingProgrammer/render-markdown.nvim",
     opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
   { -- search and replace tool,
     -- :Spectre
