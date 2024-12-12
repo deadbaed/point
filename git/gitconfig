@@ -48,4 +48,4 @@ path = ~/.gitconfig.userinfo
 [merge]
 	conflictstyle = diff3
 [diff]
-	colorMoved = default
+	colorMoved = dimmed-zebra

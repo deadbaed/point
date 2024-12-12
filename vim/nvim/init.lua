@@ -161,6 +161,15 @@ require("lazy").setup({
       require("scrollbar.handlers.gitsigns").setup()
     end
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
   { -- automatically open/close braces
     "Raimondi/delimitMate"
     -- TODO: change to another one
@@ -558,6 +567,12 @@ require("lazy").setup({
     -- Visual mode :'<,'>%SubstituteCase/aaa/bbb/g
     -- Normal mode :%SubstituteCase/aaa/bbb/g
     "vim-scripts/keepcase.vim"
+  },
+  {
+    --- keep casing in substitutions
+    -- Visual mode :'<,'>%Subvert/aaa/bbb/g
+    -- Normal mode :%Subvert/aaa/bbb/g
+    "tpope/vim-abolish"
   },
   { -- scrollbar
     "petertriho/nvim-scrollbar",
