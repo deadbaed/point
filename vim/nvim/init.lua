@@ -557,6 +557,12 @@ require("lazy").setup({
     -- Normal mode :%SubstituteCase/aaa/bbb/g
     "vim-scripts/keepcase.vim"
   },
+  {
+    --- keep casing in substitutions
+    -- Visual mode :'<,'>%Subvert/aaa/bbb/g
+    -- Normal mode :%Subvert/aaa/bbb/g
+    "tpope/vim-abolish"
+  },
   { -- scrollbar
     "petertriho/nvim-scrollbar",
     config = function()
