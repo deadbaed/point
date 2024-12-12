@@ -161,6 +161,15 @@ require("lazy").setup({
       require("scrollbar.handlers.gitsigns").setup()
     end
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
   { -- automatically open/close braces
     "Raimondi/delimitMate"
     -- TODO: change to another one
