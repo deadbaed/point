@@ -833,9 +833,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- telescope
 require("telescope").setup {
-  defaults = {
-    layout_strategy = "center",
-  },
+  defaults = require("telescope.themes").get_ivy(),
   pickers = {
     find_files = {
       hidden = true
