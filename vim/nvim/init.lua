@@ -820,9 +820,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- telescope
 require("telescope").setup {
-  defaults = {
-    layout_strategy = "center",
-  },
+  -- thanks to https://github.com/nvim-telescope/telescope.nvim/issues/848#issuecomment-1584291014
+  defaults = vim.tbl_extend(
+    "force",
+    require("telescope.themes").get_ivy(),
+    {
+      --- your own `default` options go here, e.g.:
+      sorting_strategy = "descending",
+    }
+  ),
+
   pickers = {
     find_files = {
       hidden = true
