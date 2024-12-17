@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- leader keys
-vim.g.mapleader = ";"
+vim.g.mapleader = " " -- "space"
 vim.g.maplocalleader = ","
 
 -- disable netrw
