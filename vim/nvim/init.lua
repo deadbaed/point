@@ -157,8 +157,6 @@ require("lazy").setup({
           map("n", "<leader>h[", gitsigns.prev_hunk, { desc = "Hunk Previous" })
         end
       })
-
-      require("scrollbar.handlers.gitsigns").setup()
     end
   },
   {
@@ -585,28 +583,6 @@ require("lazy").setup({
     -- Normal mode :%Subvert/aaa/bbb/g
     "tpope/vim-abolish"
   },
-  { -- scrollbar
-    "petertriho/nvim-scrollbar",
-    config = function()
-      local colors = require("catppuccin.palettes").get_palette "mocha"
-
-      require("scrollbar").setup({
-        hide_if_all_visible = true,
-        handle = {
-          color = colors.surface2,
-        },
-        marks = {
-          Cursor = { text = " ", color = colors.surface2 },
-          Search = { color = colors.orange },
-          Error = { color = colors.error },
-          Warn = { color = colors.warning },
-          Info = { color = colors.info },
-          Hint = { color = colors.hint },
-          Misc = { color = colors.purple },
-        }
-      })
-    end
-  },
   { -- system clipboard with ssh support, highlights copied text
     "ibhagwan/smartyank.nvim",
     config = function()
@@ -727,9 +703,9 @@ require("lazy").setup({
   },
   { -- highlight search
     "kevinhwang91/nvim-hlslens",
+    lazy = false,
     config = function()
-      -- integration with scrollbar
-      require("scrollbar.handlers.search").setup {}
+      require("hlslens").setup()
     end,
     keys = {
       {
@@ -844,7 +820,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- telescope
 require("telescope").setup {
-  defaults = require("telescope.themes").get_ivy(),
+  defaults = {
+    layout_strategy = "center",
+  },
   pickers = {
     find_files = {
       hidden = true
