@@ -53,10 +53,7 @@ config.native_macos_fullscreen_mode = true
 
 if GetOS() == "GNU/Linux" then
   config.enable_wayland = false
-
-  if config.enable_wayland == true then
-    config.window_decorations = "NONE"
-  end
+  config.window_decorations = "NONE"
 end
 
 
