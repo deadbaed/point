@@ -52,6 +52,11 @@ vim.opt.fillchars = {
   verthoriz = "╋",
 }
 
+-- Auto resize splits when the terminal's window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+    command = "wincmd =",
+})
+
 -- load plugins
 require("lazy").setup({
   { -- theme
