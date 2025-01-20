@@ -12,7 +12,7 @@ local time="%{$fg_bold[cyan]%}%D{%H:%M:%S}${cc}"
 
 local host_name="$HOST"
 local user_name="%n"
-local separation_name="%{$fg_bold[cyan]%};${cc}"
+local separation_name="%{$fg_bold[cyan]%}@${cc}"
 local full_name="${user_name}${separation_name}${host_name}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[red]%}"
@@ -22,8 +22,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[magenta]%}*"
 local git_branch='$(git_prompt_info)${cc}'
 
 # additional info for virtualenv if present
-local venv_info='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}%'
+local venv_info='%{$fg[green]%}$(virtualenv_info)${cc}'
 
-PROMPT="╭─ ${current_dir} ${full_name}
-╰─ ${return_command} ${ret_status}"
-RPROMPT="${venv_info} ${git_branch} ${time}"
+PROMPT="| ${time} ${venv_info} ${git_branch}
+| ${full_name} ${current_dir}
+| ${return_command} ${ret_status}"
