@@ -675,9 +675,9 @@ require("lazy").setup({
     end,
   },
   { -- markdown preview
-    "MeanderingProgrammer/render-markdown.nvim",
-    opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   { -- search and replace tool,
     -- :Spectre
