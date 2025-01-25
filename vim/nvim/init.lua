@@ -750,6 +750,14 @@ require("lazy").setup({
       },
     },
   },
+  { -- json tools
+    "VPavliashvili/json-nvim",
+    ft = "json",
+    keys = {
+      { "<leader>jff", "<cmd>JsonFormatFile<CR>", desc = "Json Format File" },
+      { "<leader>jmf", "<cmd>JsonMinifyFile<CR>", desc = "Json Minify File" },
+    },
+  },
 })
 
 -- update time for git status in files
