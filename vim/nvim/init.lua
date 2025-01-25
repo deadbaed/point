@@ -54,7 +54,7 @@ vim.opt.fillchars = {
 
 -- Auto resize splits when the terminal's window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-    command = "wincmd =",
+  command = "wincmd =",
 })
 
 -- load plugins
@@ -134,8 +134,6 @@ require("lazy").setup({
   },
   {
     "stevearc/oil.nvim",
-    ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -678,6 +676,11 @@ require("lazy").setup({
     "OXY2DEV/markview.nvim",
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      preview = {
+        icon_provider = "devicons",
+      },
+    },
   },
   { -- search and replace tool,
     -- :Spectre
