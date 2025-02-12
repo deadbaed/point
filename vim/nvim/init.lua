@@ -452,6 +452,16 @@ require("lazy").setup({
       })
     end
   },
+  { -- code action preview
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("tiny-code-action").setup()
+    end
+  },
   { -- show which key is what
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -787,7 +797,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.keymap.set("n", "==", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
-    vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    vim.keymap.set({ "n", "v" }, "<leader>ca", require("tiny-code-action").code_action,
+      { noremap = true, silent = true, buffer = event.buf })
   end
 })
 
