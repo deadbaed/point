@@ -481,6 +481,19 @@ require("lazy").setup({
             }
           end,
 
+          -- nix
+          nil_ls = function()
+            lspconfig.nil_ls.setup {
+              settings = {
+                ["nil"] = {
+                  formatting = {
+                    command = { "alejandra" }
+                  }
+                }
+              }
+            }
+          end
+
         }
       })
     end
