@@ -14,7 +14,7 @@
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "codicons.nvim": { "branch": "master", "commit": "92b2cefc87056cdede50eb8b15ce6b307a896a83" },
   "committia.vim": { "branch": "master", "commit": "c8c0f255e8090ed90dd9d5dd2e8672994f8e3671" },
-  "crates.nvim": { "branch": "main", "commit": "1d92a7f449a2a76d8f4c3459bd98f450e76d2ea3" },
+  "crates.nvim": { "branch": "main", "commit": "403a0abef0e2aec12749a534dc468d6fd50c6741" },
   "data-viewer.nvim": { "branch": "main", "commit": "40ddf37bb7ab6c04ff9e820812d1539afe691668" },
   "delimitMate": { "branch": "master", "commit": "becbd2d353a2366171852387288ebb4b33a02487" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
