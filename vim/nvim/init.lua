@@ -492,7 +492,7 @@ require("lazy").setup({
                 }
               }
             }
-          end
+          end,
 
         }
       })
@@ -813,6 +813,13 @@ require("lazy").setup({
       { "<leader>jff", "<cmd>JsonFormatFile<CR>", desc = "Json Format File" },
       { "<leader>jmf", "<cmd>JsonMinifyFile<CR>", desc = "Json Minify File" },
     },
+  },
+  { -- dim highlights of unused stuff
+    "zbirenbaum/neodim",
+    event = "LspAttach",
+    config = function()
+      require("neodim").setup()
+    end,
   },
 })
 
