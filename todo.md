@@ -23,12 +23,18 @@
 - tokei
 - ripgrep
 - sqlite
-- mosh
 - deno
 - qrencode
 - yt-dl
 - bootterm
 - mosh
+- jq
+- gource
+- scrcpy
+- smartmontools
+- wget
+- curl
+- wireguard-tools
 
 ### useful tools
 - mailpit
@@ -39,10 +45,20 @@
 - bitwarden
 - neovide
 - vscodium
+- audacity
+- discord
+- spotify
+- telegram
+- signal
+- transmission
+- vlc
 
 ### macos
 - homebrew https://github.com/zhaofengli/nix-homebrew
 - nix-darwin https://github.com/LnL7/nix-darwin
 - mac app store
 - wireguard
-
+- lulu
+- raycast
+- rectangle
+- utm
