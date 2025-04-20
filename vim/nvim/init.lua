@@ -586,7 +586,6 @@ require("lazy").setup({
       {
         "<leader>gdo",
         function()
-          require("tiny-inline-diagnostic").disable();
           vim.cmd("DiffviewOpen");
         end,
         desc = "Git diff open"
@@ -594,7 +593,6 @@ require("lazy").setup({
       {
         "<leader>gdc",
         function()
-          require("tiny-inline-diagnostic").enable();
           vim.cmd("DiffviewClose");
         end,
         desc = "Git diff close"
@@ -745,14 +743,13 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim"
     },
   },
-  { -- diagnostics inline
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    config = function()
-      vim.opt.updatetime = 100
-      require("tiny-inline-diagnostic").setup()
-      vim.diagnostic.config({ virtual_text = false })
-    end
+  { -- diagnostics
+    "dgagn/diagflow.nvim",
+    event = "LspAttach",
+    opts = {
+      scope = "line",
+      show_borders = true,
+    },
   },
   { -- see neovim tabs in telescope
     "LukasPietzschmann/telescope-tabs",
