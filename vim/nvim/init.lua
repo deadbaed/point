@@ -158,7 +158,6 @@ require("lazy").setup({
         { "<leader>n", function() require"snacks".picker.notifications() end, desc = "Notification History" },
         { "<leader>u", function() require"snacks".picker.undo() end, desc = "Undo History" },
         { "<leader>:", function() require"snacks".picker.command_history() end, desc = "Command History" },
-        -- TODO: todo { "<leader>ft", function() require"snacks".picker.todo_comments() end, desc = "Find Todo" },
         { "<leader>gll", function() require"snacks".picker.git_log() end, desc = "Git Log" },
         { "<leader>gs", function() require"snacks".picker.git_status() end, desc = "Git Status" },
         { "<leader>gdd", function() require"snacks".picker.git_diff() end, desc = "Git Diff" },
@@ -280,14 +279,16 @@ require("lazy").setup({
     },
     { -- list of todos
       "folke/todo-comments.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      config = function()
-        local todo = require("todo-comments")
-        todo.setup()
-
-        vim.keymap.set("n", "]t", todo.jump_next, { desc = "Next TODO" })
-        vim.keymap.set("n", "[t", todo.jump_prev, { desc = "Previous TODO" })
-      end,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "folke/snacks.nvim",
+      },
+      config = true,
+      keys = {
+        { "<leader>ft", function() require"snacks".picker.todo_comments() end, desc = "Find TODOs" },
+        { "]t", function() require"todo-comments".jump_next() end, desc = "Next TODO" },
+        { "[t", function() require"todo-comments".jump_prev() end, desc = "Previous TODO" },
+      },
     },
     { -- lsp installer
       "williamboman/mason.nvim",
