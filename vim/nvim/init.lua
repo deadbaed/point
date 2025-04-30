@@ -278,6 +278,7 @@ require("lazy").setup({
     },
     { -- list of todos
       "folke/todo-comments.nvim",
+      lazy = false,
       dependencies = {
         "nvim-lua/plenary.nvim",
         "folke/snacks.nvim",
