@@ -213,7 +213,6 @@ require("lazy").setup({
           lualine_x = {
             { function() return require("lsp-progress").progress() end },
           },
-          -- TODO: check messsages (no conflict with noice)
           lualine_y = {
             "filetype",
             { "encoding", show_bomb = true },
@@ -511,157 +510,164 @@ require("lazy").setup({
               min_keyword_length = 2,
               opts = { insert = true }, -- Insert emoji (default) or complete its name
               -- should_show_items = function()
-                --   return vim.tbl_contains(
-                  --     -- Enable emoji completion only for git commits and markdown.
-                  --     -- By default, enabled for all file-types.
-                  --     { "gitcommit", "markdown" },
-                  --     vim.o.filetype
-                  --   )
-                  -- end,
-                }
-              },
-            },
-            fuzzy = { implementation = "prefer_rust_with_warning",
-            sorts = {
-              'exact', -- exacts matches will always be first
-              -- defaults
-              'score',
-              'sort_text',
-            },
-          }
+              --   return vim.tbl_contains(
+              --     -- Enable emoji completion only for git commits and markdown.
+              --     -- By default, enabled for all file-types.
+              --     { "gitcommit", "markdown" },
+              --     vim.o.filetype
+              --   )
+              -- end,
+            }
+          },
         },
-        opts_extend = { "sources.default" }
+        fuzzy = { implementation = "prefer_rust_with_warning",
+          sorts = {
+            'exact', -- exacts matches will always be first
+            -- defaults
+            'score',
+            'sort_text',
+          },
+        }
       },
-      -- TODO: dap + dap ui
-      -- TODO: neotest (see rubycat's)
-      -- TODO: overseerr.nvim
-      { -- git commit
-        "rhysd/committia.vim"
-      },
-      { -- git status in files
-        "lewis6991/gitsigns.nvim",
-        opts = {
-          current_line_blame_formatter = "<author> • <author_time:%Y-%m-%d> • <summary>",
-          on_attach = function(bufnr)
-            local gitsigns = require("gitsigns")
+      opts_extend = { "sources.default" }
+    },
+    -- TODO: dap + dap ui
+    -- TODO: neotest (see rubycat's)
+    -- TODO: overseerr.nvim
+    { -- git commit
+      "rhysd/committia.vim"
+    },
+    { -- git status in files
+      "lewis6991/gitsigns.nvim",
+      opts = {
+        current_line_blame_formatter = "<author> • <author_time:%Y-%m-%d> • <summary>",
+        on_attach = function(bufnr)
+          local gitsigns = require("gitsigns")
 
-            local function map(mode, l, r, opts)
-              opts = opts or {}
-              opts.buffer = bufnr
-              vim.keymap.set(mode, l, r, opts)
-            end
-
-            map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Hunk Stage" })
-            map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Hunk Reset" })
-            map("v", "<leader>hs", function() gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
-            { desc = "Visual Hunk Stage" })
-            map("v", "<leader>hr", function() gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end,
-            { desc = "Visual Hunk Reset" })
-            map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Hunk Undo Stage" })
-            map("n", "<leader>hpp", gitsigns.preview_hunk, { desc = "Hunk Preview" })
-            map("n", "<leader>hpi", gitsigns.preview_hunk_inline, { desc = "Hunk Preview Inline" })
-            map("n", "<leader>hb", function() gitsigns.blame_line { full = true } end, { desc = "Hunk Blame" })
-            map("n", "]h", function() gitsigns.nav_hunk("next") end, { desc = "Next Hunk" })
-            map("n", "[h", function() gitsigns.nav_hunk("prev") end, { desc = "Previous Hunk" })
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
           end
-        },
+
+          map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Hunk Stage" })
+          map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Hunk Reset" })
+          map("v", "<leader>hs", function() gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+            { desc = "Visual Hunk Stage" })
+          map("v", "<leader>hr", function() gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+            { desc = "Visual Hunk Reset" })
+          map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Hunk Undo Stage" })
+          map("n", "<leader>hpp", gitsigns.preview_hunk, { desc = "Hunk Preview" })
+          map("n", "<leader>hpi", gitsigns.preview_hunk_inline, { desc = "Hunk Preview Inline" })
+          map("n", "<leader>hb", function() gitsigns.blame_line { full = true } end, { desc = "Hunk Blame" })
+          map("n", "]h", function() gitsigns.nav_hunk("next") end, { desc = "Next Hunk" })
+          map("n", "[h", function() gitsigns.nav_hunk("prev") end, { desc = "Previous Hunk" })
+        end
       },
-      { -- git diff view / conflict / merge tool
-        "sindrets/diffview.nvim",
-        opts = {
-          view = {
-            merge_tool = {
-              layout = "diff4_mixed",
-            },
-          },
-          file_panel = {
-            win_config = {
-              type = "split",
-              position = "right",
-              win_opts = {},
-            },
+    },
+    { -- git diff view / conflict / merge tool
+      "sindrets/diffview.nvim",
+      opts = {
+        view = {
+          merge_tool = {
+            layout = "diff4_mixed",
           },
         },
-        keys = {
-          { "<leader>gdo", ":DiffviewOpen<CR>", desc = "Git Diff Open" },
-          { "<leader>gdc", ":DiffviewClose<CR>", desc = "Git Diff Close" },
-          { "<leader>glb", ":DiffviewFileHistory<CR>", desc = "Git Log Branch" },
-          { "<leader>glf", ":DiffviewFileHistory %<CR>", desc = "Git Log File" },
-        },
-      },
-      { -- virtual indentation helper
-        "shellRaining/hlchunk.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = {
-          chunk = {
-            enable = true,
-            chars = {
-              right_arrow = "─",
-            },
-            delay = 10,
+        file_panel = {
+          win_config = {
+            type = "split",
+            position = "right",
+            win_opts = {},
           },
         },
       },
-      { -- highlight selected words
-        "rrethy/vim-illuminate"
+      keys = {
+        { "<leader>gdo", ":DiffviewOpen<CR>", desc = "Git Diff Open" },
+        { "<leader>gdc", ":DiffviewClose<CR>", desc = "Git Diff Close" },
+        { "<leader>glb", ":DiffviewFileHistory<CR>", desc = "Git Log Branch" },
+        { "<leader>glf", ":DiffviewFileHistory %<CR>", desc = "Git Log File" },
       },
-      { -- color picker
-        "uga-rosa/ccc.nvim",
-        opts = {
-          highlighter = {
-            auto_enable = true,
-            lsp = true,
-          }
-        },
-        init = function()
-          vim.opt.termguicolors = true
-        end,
-      },
-      {
-        -- keep casing in substitutions
-        --
-        -- :%s/facility/building/g
-        -- :%s/Facility/Building/g
-        -- :%s/FACILITY/BUILDING/g
-        -- :%s/facilities/buildings/g
-        -- :%s/Facilities/Buildings/g
-        -- :%s/FACILITIES/BUILDINGS/g
-        --
-        -- :%Subvert/facilit{y,ies}/building{,s}/g
-        --
-        --
-        -- Normal mode :%Subvert/aaa/bbb/g
-        -- Visual mode :'<,'>%Subvert/aaa/bbb/g
-        "tpope/vim-abolish"
-      },
-      { -- search and replace tool
-        -- :Spectre
-        "nvim-pack/nvim-spectre",
-        dependencies = { "nvim-lua/plenary.nvim" },
-      },
-      -- TODO: vim-surround ?
-      { -- todo.txt support
-        "freitass/todo.txt-vim"
-      },
-      { -- markdown preview
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-      },
-      { -- rust crates helper
-        "saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        opts = {
-          lsp = {
-            enabled = true,
-            actions = true,
-            completion = true,
-            hover = true,
+    },
+    { -- virtual indentation helper
+      "shellRaining/hlchunk.nvim",
+      event = { "BufReadPre", "BufNewFile" },
+      opts = {
+        chunk = {
+          enable = true,
+          chars = {
+            right_arrow = "─",
           },
+          delay = 10,
         },
       },
+    },
+    { -- highlight selected words
+      "rrethy/vim-illuminate"
+    },
+    { -- color picker
+      "uga-rosa/ccc.nvim",
+      opts = {
+        highlighter = {
+          auto_enable = true,
+          lsp = true,
+        }
+      },
+      init = function()
+        vim.opt.termguicolors = true
+      end,
+    },
+    {
+      -- keep casing in substitutions
+      --
+      -- :%s/facility/building/g
+      -- :%s/Facility/Building/g
+      -- :%s/FACILITY/BUILDING/g
+      -- :%s/facilities/buildings/g
+      -- :%s/Facilities/Buildings/g
+      -- :%s/FACILITIES/BUILDINGS/g
+      --
+      -- :%Subvert/facilit{y,ies}/building{,s}/g
+      --
+      --
+      -- Normal mode :%Subvert/aaa/bbb/g
+      -- Visual mode :'<,'>%Subvert/aaa/bbb/g
+      "tpope/vim-abolish"
+    },
+    { -- search and replace tool
+      -- :Spectre
+      "nvim-pack/nvim-spectre",
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    { -- automatically open/close braces
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      opts = {
+        check_ts = true,
+      },
+    },
+    -- TODO: vim-surround ?
+    { -- todo.txt support
+      "freitass/todo.txt-vim"
+    },
+    { -- markdown preview
+      "OXY2DEV/markview.nvim",
+      lazy = false,
+    },
+    { -- rust crates helper
+      "saecki/crates.nvim",
+      event = { "BufRead Cargo.toml" },
+      opts = {
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+      },
+    },
   },
   install = { colorscheme = { current_colorscheme } },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
 })
 
 -- key mappings
