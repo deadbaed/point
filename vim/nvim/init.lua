@@ -391,10 +391,68 @@ require("lazy").setup({
             vim.lsp.enable("lua_ls")
           end,
 
-          -- TODO: tailwind
+          -- tailwind
+          ["tailwindcss"] = function ()
+            vim.lsp.config("tailwindcss", {
+              settings = {
+                includeLanguages = {
+                  rust = "html",
+                },
+              },
+              filetypes = {
+                "rust",
+              },
+            })
+            vim.lsp.enable("tailwindcss")
+          end,
+
           -- typescript
+          -- for .ts and .js files, use ts_ls
+          -- for .vue files, use volar
+          ["ts_ls"] = function()
+            local mason_registry = require("mason-registry")
+            local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() ..
+            "/node_modules/@vue/language-server"
+
+            vim.lsp.config("ts_ls", {
+              init_options = {
+                plugins = {
+                  {
+                    name = "@vue/typescript-plugin",
+                    location = vue_language_server_path,
+                    languages = { "vue" },
+                  },
+                },
+              },
+            })
+            vim.lsp.enable("ts_ls")
+          end,
+
           -- vuejs
+          ["volar"] = function()
+            vim.lsp.config("volar", {
+              init_options = {
+                vue = {
+                  hybridMode = false,
+                },
+              },
+            })
+            vim.lsp.enable("volar")
+          end,
+
           -- nix
+          ["nil_ls"] = function()
+            vim.lsp.config("nil_ls", {
+              settings = {
+                ["nil"] = {
+                  formatting = {
+                    command = { "alejandra" }
+                  }
+                }
+              }
+            })
+            vim.lsp.enable("nil_ls")
+          end,
         },
       },
     },
@@ -702,7 +760,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(true, {bufnr = args.buf})
     end
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+    -- key mappings
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition", buffer = args.buf })
+    vim.keymap.set("n", "==", function() vim.lsp.buf.format({async = true}) end, { desc = "Format file", buffer = args.buf })
+
 
   end,
 })
