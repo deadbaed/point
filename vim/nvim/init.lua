@@ -517,7 +517,11 @@ require("lazy").setup({
           -- Pretty menu with lspkind
           menu = {
             draw = {
-              columns = { { "kind_icon", "kind" }, { "label", "label_description", gap = 1 }, { "source_name" } },
+              columns = {
+                { "kind_icon", "kind", gap = 1 },
+                { "label", "label_description", gap = 1 },
+                { "source_name" },
+              },
               components = {
                 kind_icon = {
                   text = function(ctx)
@@ -530,8 +534,7 @@ require("lazy").setup({
                     else
                       icon = require("lspkind").symbolic(ctx.kind, {
                         mode = "symbol",
-                        -- mode = "symbol_text",
-                        preset = "codicons", -- TODO: useful?
+                        preset = "codicons",
                       })
                     end
 
@@ -568,14 +571,6 @@ require("lazy").setup({
               score_offset = 15, -- Tune by preference
               min_keyword_length = 2,
               opts = { insert = true }, -- Insert emoji (default) or complete its name
-              -- should_show_items = function()
-              --   return vim.tbl_contains(
-              --     -- Enable emoji completion only for git commits and markdown.
-              --     -- By default, enabled for all file-types.
-              --     { "gitcommit", "markdown" },
-              --     vim.o.filetype
-              --   )
-              -- end,
             }
           },
         },
