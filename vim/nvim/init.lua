@@ -18,6 +18,9 @@ vim.opt.cursorline = true
 local current_colorscheme = "catppuccin"
 vim.o.background = "light" -- :h background
 
+-- border for floating windows
+vim.o.winborder = "single"
+
 -- always have signcolumn
 vim.opt.signcolumn = "yes"
 
@@ -153,8 +156,7 @@ require("lazy").setup({
         { "<leader>fh", function() require"snacks".picker.help() end, desc = "Find Help" },
         { "<leader>fb", function() require"snacks".picker.buffers({ layout = { preset = "vscode" } }) end, desc = "Find Opened buffers" },
         { "<leader>fd", function() require"snacks".picker.diagnostics() end, desc = "Diagnostics in file" }, -- TODO: test with other layout
-        { "<leader>l", function() require"snacks".picker.lsp_symbols() end, desc = "LSP symbols in file" }, -- TODO: test with other layout
-        { "<leader>fw", function() require"snacks".picker.lsp_workspace_symbols() end, desc = "Find LSP symbols in workspace" }, -- TODO: test with other layout
+        { "<leader>fu", function() require"snacks".picker.undo() end, desc = "Find Undo" },
         { "<leader>n", function() require"snacks".picker.notifications() end, desc = "Notification History" },
         { "<leader>u", function() require"snacks".picker.undo() end, desc = "Undo History" },
         { "<leader>:", function() require"snacks".picker.command_history() end, desc = "Command History" },
@@ -699,7 +701,6 @@ require("lazy").setup({
         check_ts = true,
       },
     },
-    -- TODO: vim-surround ?
     { -- todo.txt support
       "freitass/todo.txt-vim"
     },
@@ -756,10 +757,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- key mappings
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition", buffer = args.buf })
-    vim.keymap.set("n", "==", function() vim.lsp.buf.format({async = true}) end, { desc = "Format file", buffer = args.buf })
-
-
+    -- TODO: test with other layouts: figure out a way to remove search or to be in normal mode by default
+    vim.keymap.set("n", "gd", function () require"snacks".picker.lsp_definitions() end, { desc = "Goto Definition", buffer = args.buf })
+    vim.keymap.set("n", "grr", function () require"snacks".picker.lsp_references() end, { desc = "Goto References", buffer = args.buf })
+    vim.keymap.set("n", "gri", function () require"snacks".picker.lsp_implementations() end, { desc = "Goto Implementations", buffer = args.buf })
+    vim.keymap.set("n", "<leader>l", function() require"snacks".picker.lsp_symbols() end, { desc = "LSP symbols in file", buffer = args.buf })
+    vim.keymap.set("n", "<leader>fw", function() require"snacks".picker.lsp_workspace_symbols() end, { desc = "Find LSP symbols in workspace", buffer = args.buf })
+    vim.keymap.set("n", "==", function() vim.lsp.buf.format({ async = true }) end, { desc = "Format file", buffer = args.buf })
   end,
 })
 
