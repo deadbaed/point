@@ -180,7 +180,7 @@ require("lazy").setup({
         { "<leader>fg", function() require"snacks".picker.grep({ cmd = "rg" }) end, desc = "Grep" },
         { "<leader>fs", function() require"snacks".picker.grep_word({ cmd = "rg" }) end, desc = "Grep selected word" },
         { "<leader>fh", function() require"snacks".picker.help() end, desc = "Find Help" },
-        { "<leader>fd", function() require"snacks".picker.diagnostics() end, desc = "Diagnostics in file" }, -- TODO: test with other layout
+        { "<leader>fd", function() require"snacks".picker.diagnostics({ focus = "list" }) end, desc = "Diagnostics in file" },
         { "<leader>fu", function() require"snacks".picker.undo() end, desc = "Find Undo" },
         { "<leader>bd", function() require"snacks".bufdelete() end, desc = "Buffer Delete" },
         { "<leader>n", function() require"snacks".picker.notifications() end, desc = "Notification History" },
@@ -793,10 +793,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- key mappings
-    -- TODO: test with other layouts: figure out a way to remove search or to be in normal mode by default
-    vim.keymap.set("n", "gd", function () require"snacks".picker.lsp_definitions() end, { desc = "Goto Definition", buffer = args.buf })
-    vim.keymap.set("n", "grr", function () require"snacks".picker.lsp_references() end, { desc = "Goto References", buffer = args.buf })
-    vim.keymap.set("n", "gri", function () require"snacks".picker.lsp_implementations() end, { desc = "Goto Implementations", buffer = args.buf })
+    vim.keymap.set("n", "gd", function () require"snacks".picker.lsp_definitions({ focus = "list" }) end, { desc = "Goto Definition", buffer = args.buf })
+    vim.keymap.set("n", "grr", function () require"snacks".picker.lsp_references({ focus = "list" }) end, { desc = "Goto References", buffer = args.buf })
+    vim.keymap.set("n", "gri", function () require"snacks".picker.lsp_implementations({ focus = "list" }) end, { desc = "Goto Implementations", buffer = args.buf })
     vim.keymap.set("n", "grn", ":IncRename ", { desc = "Go ReName", buffer = args.buf })
     vim.keymap.set("n", "<leader>l", function() require"snacks".picker.lsp_symbols() end, { desc = "LSP symbols in file", buffer = args.buf })
     vim.keymap.set("n", "<leader>fw", function() require"snacks".picker.lsp_workspace_symbols() end, { desc = "Find LSP symbols in workspace", buffer = args.buf })
