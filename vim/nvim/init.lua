@@ -261,8 +261,8 @@ require("lazy").setup({
           lualine_z = { "progress", "location", "selectioncount" },
         },
         tabline = {
-          lualine_a = { { "filename", path = 2 } },
-          lualine_b = {},
+          lualine_a = {},
+          lualine_b = { { "filename", path = 2 } },
           lualine_c = {},
           lualine_x = {},
           lualine_y = { "buffers" },
