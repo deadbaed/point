@@ -134,9 +134,34 @@ require("lazy").setup({
         vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { underline = true, sp = "Grey" })
       end,
     },
-    -- TODO: noice bust just for the centered cmdline
+    { -- centered cmdline
+      "folke/noice.nvim",
+      enabled = false,
+      dependencies = { "MunifTanjim/nui.nvim" },
+      event = "VeryLazy",
+      opts = {
+        lsp = {
+          progress = { enabled = false },
+          hover = { enabled = false },
+          signature = { enabled = false },
+          message = { enabled = false },
+        },
+        presets = {
+          inc_rename = true, -- input dialog for inc-rename.nvim
+        },
+      },
+    },
+    { -- visual feedback when renaming with lsp
+      "smjonas/inc-rename.nvim",
+      opts = {},
+      init = function ()
+        vim.o.inccommand = "split" -- show the effects of substitutions in preview window
+      end
+    },
     { -- some QOL plugins
       "folke/snacks.nvim",
+      lazy = false,
+      priority = 1000,
       opts = {
         explorer = {
           replace_netrw = true,
@@ -698,7 +723,7 @@ require("lazy").setup({
       "windwp/nvim-autopairs",
       event = "InsertEnter",
       opts = {
-        check_ts = true,
+        check_ts = true, -- use treesitter
       },
     },
     { -- todo.txt support
@@ -761,6 +786,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", function () require"snacks".picker.lsp_definitions() end, { desc = "Goto Definition", buffer = args.buf })
     vim.keymap.set("n", "grr", function () require"snacks".picker.lsp_references() end, { desc = "Goto References", buffer = args.buf })
     vim.keymap.set("n", "gri", function () require"snacks".picker.lsp_implementations() end, { desc = "Goto Implementations", buffer = args.buf })
+    vim.keymap.set("n", "grn", ":IncRename ", { desc = "Go ReName", buffer = args.buf })
     vim.keymap.set("n", "<leader>l", function() require"snacks".picker.lsp_symbols() end, { desc = "LSP symbols in file", buffer = args.buf })
     vim.keymap.set("n", "<leader>fw", function() require"snacks".picker.lsp_workspace_symbols() end, { desc = "Find LSP symbols in workspace", buffer = args.buf })
     vim.keymap.set("n", "==", function() vim.lsp.buf.format({ async = true }) end, { desc = "Format file", buffer = args.buf })
