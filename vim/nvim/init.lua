@@ -98,7 +98,9 @@ require("lazy").setup({
     { -- which key does what
       "folke/which-key.nvim",
       event = "VeryLazy",
-      config = true,
+      opts = {
+        preset = "helix",
+      },
       keys = {
         {
           "<leader>?",
@@ -136,7 +138,6 @@ require("lazy").setup({
     },
     { -- centered cmdline
       "folke/noice.nvim",
-      enabled = false,
       dependencies = { "MunifTanjim/nui.nvim" },
       event = "VeryLazy",
       opts = {
@@ -533,7 +534,9 @@ require("lazy").setup({
           nerd_font_variant = "mono"
         },
 
-        signature = { enabled = true },
+        signature = {
+          enabled = true,
+        },
 
         completion = {
           -- (Default) Only show the documentation popup when manually triggered
