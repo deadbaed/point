@@ -180,19 +180,23 @@ require("lazy").setup({
         { "<leader>fg", function() require"snacks".picker.grep({ cmd = "rg" }) end, desc = "Grep" },
         { "<leader>fs", function() require"snacks".picker.grep_word({ cmd = "rg" }) end, desc = "Grep selected word" },
         { "<leader>fh", function() require"snacks".picker.help() end, desc = "Find Help" },
-        { "<leader>fb", function() require"snacks".picker.buffers({ layout = { preset = "vscode" } }) end, desc = "Find Opened buffers" },
         { "<leader>fd", function() require"snacks".picker.diagnostics() end, desc = "Diagnostics in file" }, -- TODO: test with other layout
         { "<leader>fu", function() require"snacks".picker.undo() end, desc = "Find Undo" },
+        { "<leader>bd", function() require"snacks".bufdelete() end, desc = "Buffer Delete" },
         { "<leader>n", function() require"snacks".picker.notifications() end, desc = "Notification History" },
         { "<leader>u", function() require"snacks".picker.undo() end, desc = "Undo History" },
         { "<leader>:", function() require"snacks".picker.command_history() end, desc = "Command History" },
+        { "<leader>,", function() require"snacks".picker.buffers({ layout = { preset = "vscode" } }) end, desc = "Find Opened buffers" },
         { "<leader>gll", function() require"snacks".picker.git_log() end, desc = "Git Log" },
         { "<leader>gs", function() require"snacks".picker.git_status() end, desc = "Git Status" },
         { "<leader>gdd", function() require"snacks".picker.git_diff() end, desc = "Git Diff" },
       },
     },
+    { -- scoped buffers
+      "tiagovla/scope.nvim",
+      config = true,
+    },
     { -- statusline, bufferline, tabline
-      -- TODO: how to open files in multiples buffers/tabs
       "nvim-lualine/lualine.nvim",
       init = function()
         vim.o.laststatus = 3 -- have one single status bar
@@ -218,6 +222,7 @@ require("lazy").setup({
             },
           },
         },
+        "tiagovla/scope.nvim",
       },
       opts = {
         options = {
@@ -237,7 +242,7 @@ require("lazy").setup({
               "nvim_workspace_diagnostic",
             },
           }},
-          lualine_c = { { "filename", path = 1, newfile_status = false, } },
+          lualine_c = { { "filename", path = 0, newfile_status = false, } },
           lualine_x = {
             { function() return require("lsp-progress").progress() end },
           },
@@ -256,14 +261,12 @@ require("lazy").setup({
           lualine_z = { "progress", "location", "selectioncount" },
         },
         tabline = {
-          lualine_a = { "buffers" },
+          lualine_a = { { "filename", path = 2 } },
           lualine_b = {},
           lualine_c = {},
           lualine_x = {},
-          lualine_y = {},
-          lualine_z = {
-            { "tabs", use_mode_colors = true },
-          },
+          lualine_y = { "buffers" },
+          lualine_z = { "tabs" },
         },
         winbar = {
           lualine_a = { winbar_git_merge },
@@ -274,9 +277,9 @@ require("lazy").setup({
           lualine_z = {},
         },
         inactive_winbar = {
-          lualine_a = {},
+          lualine_a = { winbar_git_merge },
           lualine_b = {},
-          lualine_c = { winbar_git_merge },
+          lualine_c = {},
           lualine_x = {},
           lualine_y = {},
           lualine_z = {},
@@ -758,6 +761,11 @@ vim.keymap.set("n", "<leader>jm", ":%!jq -c<CR>", { desc = "Json Minify buffer" 
 vim.keymap.set("n", "<leader>ju", ":%!jq<CR>", { desc = "Json Uglify buffer" })
 vim.keymap.set("v", "<leader>jm", ":'<,'>!jq -c<CR>", { desc = "Json Minify selection" })
 vim.keymap.set("v", "<leader>ju", ":'<,'>!jq<CR>", { desc = "Json Uglify selection" })
+vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "Buffer new" })
+vim.keymap.set("n", "<leader><tab><tab>", ":tabnew<cr>", { desc = "New Tab" })
+vim.keymap.set("n", "<leader><tab>d", ":tabclose<cr>", { desc = "Close Tab" })
+vim.keymap.set("n", "]<tab>", ":tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "[<tab>", ":tabprevious<cr>", { desc = "Previous Tab" })
 
 -- diagnostics
 vim.diagnostic.config({
