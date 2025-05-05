@@ -495,7 +495,12 @@ require("lazy").setup({
       },
       event = "LspAttach",
       opts = {
-        picker = "snacks",
+        picker = {
+          "snacks",
+          opts = {
+            focus = "list",
+          },
+        }
       },
       keys = {
         { "gra", function () require("tiny-code-action").code_action() end, desc = "Go, Run (Code) Action", noremap = true, silent = true },
