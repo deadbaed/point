@@ -117,7 +117,7 @@ require("lazy").setup({
     { -- syntax highlight
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
-      config = function ()
+      config = function()
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
@@ -155,7 +155,7 @@ require("lazy").setup({
     { -- visual feedback when renaming with lsp
       "smjonas/inc-rename.nvim",
       opts = {},
-      init = function ()
+      init = function()
         vim.o.inccommand = "split" -- show the effects of substitutions in preview window
       end
     },
@@ -174,22 +174,22 @@ require("lazy").setup({
         terminal = {},
       },
       keys = {
-        { "<leader><space>", function() require"snacks".picker.smart() end, desc = "Smart Find" },
-        { "<leader>e", function() require"snacks".explorer() end, desc = "File Explorer" },
-        { "<leader>ff", function() require"snacks".picker.files({ cmd = "fd", hidden = true, ignored = true }) end, desc = "Find Files" },
-        { "<leader>fg", function() require"snacks".picker.grep({ cmd = "rg" }) end, desc = "Grep" },
-        { "<leader>fs", function() require"snacks".picker.grep_word({ cmd = "rg" }) end, desc = "Grep selected word" },
-        { "<leader>fh", function() require"snacks".picker.help() end, desc = "Find Help" },
-        { "<leader>fd", function() require"snacks".picker.diagnostics({ focus = "list" }) end, desc = "Diagnostics in file" },
-        { "<leader>fu", function() require"snacks".picker.undo() end, desc = "Find Undo" },
-        { "<leader>bd", function() require"snacks".bufdelete() end, desc = "Buffer Delete" },
-        { "<leader>n", function() require"snacks".picker.notifications() end, desc = "Notification History" },
-        { "<leader>u", function() require"snacks".picker.undo() end, desc = "Undo History" },
-        { "<leader>:", function() require"snacks".picker.command_history() end, desc = "Command History" },
-        { "<leader>,", function() require"snacks".picker.buffers({ layout = { preset = "vscode" } }) end, desc = "Find Opened buffers" },
-        { "<leader>gll", function() require"snacks".picker.git_log() end, desc = "Git Log" },
-        { "<leader>gs", function() require"snacks".picker.git_status() end, desc = "Git Status" },
-        { "<leader>gdd", function() require"snacks".picker.git_diff() end, desc = "Git Diff" },
+        { "<leader><space>", function() require "snacks".picker.smart() end,                                              desc = "Smart Find" },
+        { "<leader>e",       function() require "snacks".explorer() end,                                                  desc = "File Explorer" },
+        { "<leader>ff",      function() require "snacks".picker.files({ cmd = "fd", hidden = true, ignored = true }) end, desc = "Find Files" },
+        { "<leader>fg",      function() require "snacks".picker.grep({ cmd = "rg" }) end,                                 desc = "Grep" },
+        { "<leader>fs",      function() require "snacks".picker.grep_word({ cmd = "rg" }) end,                            desc = "Grep selected word" },
+        { "<leader>fh",      function() require "snacks".picker.help() end,                                               desc = "Find Help" },
+        { "<leader>fd",      function() require "snacks".picker.diagnostics({ focus = "list" }) end,                      desc = "Diagnostics in file" },
+        { "<leader>fu",      function() require "snacks".picker.undo() end,                                               desc = "Find Undo" },
+        { "<leader>bd",      function() require "snacks".bufdelete() end,                                                 desc = "Buffer Delete" },
+        { "<leader>n",       function() require "snacks".picker.notifications() end,                                      desc = "Notification History" },
+        { "<leader>u",       function() require "snacks".picker.undo() end,                                               desc = "Undo History" },
+        { "<leader>:",       function() require "snacks".picker.command_history() end,                                    desc = "Command History" },
+        { "<leader>,",       function() require "snacks".picker.buffers({ layout = { preset = "vscode" } }) end,          desc = "Find Opened buffers" },
+        { "<leader>gll",     function() require "snacks".picker.git_log() end,                                            desc = "Git Log" },
+        { "<leader>gs",      function() require "snacks".picker.git_status() end,                                         desc = "Git Status" },
+        { "<leader>gdd",     function() require "snacks".picker.git_diff() end,                                           desc = "Git Diff" },
       },
     },
     { -- scoped buffers
@@ -202,7 +202,7 @@ require("lazy").setup({
         vim.o.laststatus = 3 -- have one single status bar
       end,
       dependencies = {
-        {  -- get status of lsp
+        { -- get status of lsp
           "linrongbin16/lsp-progress.nvim",
           opts = {
             decay = 1500,
@@ -241,7 +241,7 @@ require("lazy").setup({
               "nvim_diagnostic",
               "nvim_workspace_diagnostic",
             },
-          }},
+          } },
           lualine_c = { { "filename", path = 0, newfile_status = false, } },
           lualine_x = {
             { function() return require("lsp-progress").progress() end },
@@ -284,7 +284,7 @@ require("lazy").setup({
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "oil", "man",  "fugitive", "mason", "lazy", "quickfix" }
+        extensions = { "oil", "man", "fugitive", "mason", "lazy", "quickfix" }
       },
     },
     { -- netrw replacement
@@ -316,9 +316,9 @@ require("lazy").setup({
       },
       config = true,
       keys = {
-        { "<leader>ft", function() require"snacks".picker.todo_comments() end, desc = "Find TODOs" },
-        { "]t", function() require"todo-comments".jump_next() end, desc = "Next TODO" },
-        { "[t", function() require"todo-comments".jump_prev() end, desc = "Previous TODO" },
+        { "<leader>ft", function() require "snacks".picker.todo_comments() end, desc = "Find TODOs" },
+        { "]t",         function() require "todo-comments".jump_next() end,     desc = "Next TODO" },
+        { "[t",         function() require "todo-comments".jump_prev() end,     desc = "Previous TODO" },
       },
     },
     { -- lsp installer
@@ -423,7 +423,7 @@ require("lazy").setup({
           end,
 
           -- tailwind
-          ["tailwindcss"] = function ()
+          ["tailwindcss"] = function()
             vim.lsp.config("tailwindcss", {
               settings = {
                 includeLanguages = {
@@ -490,8 +490,8 @@ require("lazy").setup({
     { -- preview for code actions
       "rachartier/tiny-code-action.nvim",
       dependencies = {
-        {"nvim-lua/plenary.nvim"},
-        {"folke/snacks.nvim"},
+        { "nvim-lua/plenary.nvim" },
+        { "folke/snacks.nvim" },
       },
       event = "LspAttach",
       opts = {
@@ -503,18 +503,18 @@ require("lazy").setup({
         }
       },
       keys = {
-        { "gra", function () require("tiny-code-action").code_action() end, desc = "Go, Run (Code) Action", noremap = true, silent = true },
+        { "gra", function() require("tiny-code-action").code_action() end, desc = "Go, Run (Code) Action", noremap = true, silent = true },
       },
     },
     { -- autocomplete
       "saghen/blink.cmp",
       dependencies = {
-        "onsails/lspkind.nvim", -- pictograms
-        "nvim-tree/nvim-web-devicons", -- icons
+        "onsails/lspkind.nvim",         -- pictograms
+        "nvim-tree/nvim-web-devicons",  -- icons
         "rafamadriz/friendly-snippets", -- snippets
-        "moyiz/blink-emoji.nvim", -- emoji
+        "moyiz/blink-emoji.nvim",       -- emoji
       },
-      version = "1.*", -- use a release tag to download pre-built binaries
+      version = "1.*",                  -- use a release tag to download pre-built binaries
       -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
       -- build = 'cargo build --release',
       -- If you use nix, you can build from source using latest nightly rust with:
@@ -556,8 +556,8 @@ require("lazy").setup({
           menu = {
             draw = {
               columns = {
-                { "kind_icon", "kind", gap = 1 },
-                { "label", "label_description", gap = 1 },
+                { "kind_icon",  "kind",              gap = 1 },
+                { "label",      "label_description", gap = 1 },
                 { "source_name" },
               },
               components = {
@@ -606,18 +606,19 @@ require("lazy").setup({
             emoji = {
               module = "blink-emoji",
               name = "Emoji",
-              score_offset = 15, -- Tune by preference
+              score_offset = -1,        -- Tune by preference
               min_keyword_length = 2,
               opts = { insert = true }, -- Insert emoji (default) or complete its name
             }
           },
         },
-        fuzzy = { implementation = "prefer_rust_with_warning",
+        fuzzy = {
+          implementation = "prefer_rust_with_warning",
           sorts = {
-            'exact', -- exacts matches will always be first
+            "exact", -- exacts matches will always be first
             -- defaults
-            'score',
-            'sort_text',
+            "score",
+            "sort_text",
           },
         }
       },
@@ -674,9 +675,9 @@ require("lazy").setup({
         },
       },
       keys = {
-        { "<leader>gdo", ":DiffviewOpen<CR>", desc = "Git Diff Open" },
-        { "<leader>gdc", ":DiffviewClose<CR>", desc = "Git Diff Close" },
-        { "<leader>glb", ":DiffviewFileHistory<CR>", desc = "Git Log Branch" },
+        { "<leader>gdo", ":DiffviewOpen<CR>",          desc = "Git Diff Open" },
+        { "<leader>gdc", ":DiffviewClose<CR>",         desc = "Git Diff Close" },
+        { "<leader>glb", ":DiffviewFileHistory<CR>",   desc = "Git Log Branch" },
         { "<leader>glf", ":DiffviewFileHistory %<CR>", desc = "Git Log File" },
       },
     },
@@ -794,18 +795,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- inlay hint
     if client ~= nil and client:supports_method("textDocument/inlayHint") then
-      vim.lsp.inlay_hint.enable(true, {bufnr = args.buf})
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
 
     -- key mappings
-    vim.keymap.set("n", "gd", function () require"snacks".picker.lsp_definitions({ focus = "list" }) end, { desc = "Goto Definition", buffer = args.buf })
-    vim.keymap.set("n", "grr", function () require"snacks".picker.lsp_references({ focus = "list" }) end, { desc = "Goto References", buffer = args.buf })
-    vim.keymap.set("n", "gri", function () require"snacks".picker.lsp_implementations({ focus = "list" }) end, { desc = "Goto Implementations", buffer = args.buf })
+    vim.keymap.set("n", "gd", function() require "snacks".picker.lsp_definitions({ focus = "list" }) end,
+      { desc = "Goto Definition", buffer = args.buf })
+    vim.keymap.set("n", "grr", function() require "snacks".picker.lsp_references({ focus = "list" }) end,
+      { desc = "Goto References", buffer = args.buf })
+    vim.keymap.set("n", "gri", function() require "snacks".picker.lsp_implementations({ focus = "list" }) end,
+      { desc = "Goto Implementations", buffer = args.buf })
     vim.keymap.set("n", "grn", ":IncRename ", { desc = "Go ReName", buffer = args.buf })
-    vim.keymap.set("n", "gl", function () vim.diagnostic.open_float() end, { desc = "Diagnostics in Floating window" })
-    vim.keymap.set("n", "<leader>l", function() require"snacks".picker.lsp_symbols() end, { desc = "LSP symbols in file", buffer = args.buf })
-    vim.keymap.set("n", "<leader>fw", function() require"snacks".picker.lsp_workspace_symbols() end, { desc = "Find LSP symbols in workspace", buffer = args.buf })
-    vim.keymap.set("n", "==", function() vim.lsp.buf.format({ async = true }) end, { desc = "Format file", buffer = args.buf })
+    vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, { desc = "Diagnostics in Floating window" })
+    vim.keymap.set("n", "<leader>l", function() require "snacks".picker.lsp_symbols() end,
+      { desc = "LSP symbols in file", buffer = args.buf })
+    vim.keymap.set("n", "<leader>fw", function() require "snacks".picker.lsp_workspace_symbols() end,
+      { desc = "Find LSP symbols in workspace", buffer = args.buf })
+    vim.keymap.set("n", "==", function() vim.lsp.buf.format({ async = true }) end,
+      { desc = "Format file", buffer = args.buf })
   end,
 })
 
@@ -838,7 +845,9 @@ if vim.g.neovide then
     ["Windows"] = 10,
   }
   local font_size = font_sizes[GetOS()]
-  vim.o.guifont = "JetBrains Mono:h" .. font_size
+  vim.o.guifont = "JetBrains Mono:h" .. font_size -- TODO: either patch font or disable icons
+
+  -- TODO: make sure fdfind is in PATH, or set path for neovide
 
   -- set default directory
   if GetOS() == "Windows" then
