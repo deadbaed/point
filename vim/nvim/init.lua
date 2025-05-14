@@ -547,9 +547,8 @@ require("lazy").setup({
         },
 
         completion = {
-          -- (Default) Only show the documentation popup when manually triggered
           documentation = {
-            auto_show = false,
+            auto_show = true,
           },
 
           -- Pretty menu with lspkind
