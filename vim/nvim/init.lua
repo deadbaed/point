@@ -605,9 +605,9 @@ require("lazy").setup({
             emoji = {
               module = "blink-emoji",
               name = "Emoji",
-              score_offset = -1,        -- Tune by preference
+              score_offset = -10,        -- Tune by preference
               min_keyword_length = 2,
-              opts = { insert = true }, -- Insert emoji (default) or complete its name
+              opts = { insert = false }, -- Insert emoji (default) or complete its name
             }
           },
         },
