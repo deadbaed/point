@@ -191,6 +191,10 @@ in {
     gcovr # coverage
     gource # history of a repository
 
+    # rust utils
+    cargo-audit
+    cargo-vet
+
     # misc
     jetbrains-mono
 
@@ -207,4 +211,8 @@ in {
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  # TODO: package https://github.com/dnlmlr/cargo-clean-all
+  # TODO: package https://github.com/openscopeproject/TrguiNG
+  # TODO: package https://github.com/halfmexican/mingle
 }
