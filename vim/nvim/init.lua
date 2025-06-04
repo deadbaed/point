@@ -39,14 +39,6 @@ vim.opt.fillchars = {
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- the icons i like
-local my_icons = {
-  error = "",
-  warning = "",
-  hint = "",
-  info = "",
-}
-
 -- git merge tool: dipslay which file is which during a conflict
 -- taken from https://github.com/sindrets/diffview.nvim/issues/433#issuecomment-1898322005
 local winbar_git_merge = function()
@@ -775,14 +767,7 @@ vim.keymap.set("n", "[<tab>", ":tabprevious<cr>", { desc = "Previous Tab" })
 vim.diagnostic.config({
   virtual_lines = {
     current_line = true,
-  },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = my_icons.error,
-      [vim.diagnostic.severity.WARN] = my_icons.warning,
-      [vim.diagnostic.severity.INFO] = my_icons.info,
-      [vim.diagnostic.severity.HINT] = my_icons.lightbulb,
-    },
+    severity = { min = vim.diagnostic.severity.WARN }
   },
 })
 
