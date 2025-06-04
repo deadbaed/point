@@ -39,14 +39,6 @@ vim.opt.fillchars = {
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- the icons i like
-local my_icons = {
-  error = "",
-  warning = "",
-  hint = "",
-  info = "",
-}
-
 -- git merge tool: dipslay which file is which during a conflict
 -- taken from https://github.com/sindrets/diffview.nvim/issues/433#issuecomment-1898322005
 local winbar_git_merge = function()
@@ -181,15 +173,14 @@ require("lazy").setup({
         { "<leader>fs",      function() require "snacks".picker.grep_word({ cmd = "rg" }) end,                            desc = "Grep selected word" },
         { "<leader>fh",      function() require "snacks".picker.help() end,                                               desc = "Find Help" },
         { "<leader>fd",      function() require "snacks".picker.diagnostics({ focus = "list" }) end,                      desc = "Diagnostics in file" },
-        { "<leader>fu",      function() require "snacks".picker.undo() end,                                               desc = "Find Undo" },
         { "<leader>bd",      function() require "snacks".bufdelete() end,                                                 desc = "Buffer Delete" },
         { "<leader>n",       function() require "snacks".picker.notifications() end,                                      desc = "Notification History" },
-        { "<leader>u",       function() require "snacks".picker.undo() end,                                               desc = "Undo History" },
+        { "<leader>u",       function() require "snacks".picker.undo({ focus = "list" }) end,                             desc = "Undo History" },
         { "<leader>:",       function() require "snacks".picker.command_history() end,                                    desc = "Command History" },
         { "<leader>,",       function() require "snacks".picker.buffers({ layout = { preset = "vscode" } }) end,          desc = "Find Opened buffers" },
-        { "<leader>gll",     function() require "snacks".picker.git_log() end,                                            desc = "Git Log" },
-        { "<leader>gs",      function() require "snacks".picker.git_status() end,                                         desc = "Git Status" },
-        { "<leader>gdd",     function() require "snacks".picker.git_diff() end,                                           desc = "Git Diff" },
+        { "<leader>gll",     function() require "snacks".picker.git_log({ focus = "list" }) end,                          desc = "Git Log" },
+        { "<leader>gs",      function() require "snacks".picker.git_status({ focus = "list" }) end,                       desc = "Git Status" },
+        { "<leader>gdd",     function() require "snacks".picker.git_diff({ focus = "list" }) end,                         desc = "Git Diff" },
       },
     },
     { -- scoped buffers
@@ -443,7 +434,7 @@ require("lazy").setup({
           ["ts_ls"] = function()
             local mason_registry = require("mason-registry")
             local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() ..
-            "/node_modules/@vue/language-server"
+                "/node_modules/@vue/language-server"
 
             vim.lsp.config("ts_ls", {
               init_options = {
@@ -776,14 +767,7 @@ vim.keymap.set("n", "[<tab>", ":tabprevious<cr>", { desc = "Previous Tab" })
 vim.diagnostic.config({
   virtual_lines = {
     current_line = true,
-  },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = my_icons.error,
-      [vim.diagnostic.severity.WARN] = my_icons.warning,
-      [vim.diagnostic.severity.INFO] = my_icons.info,
-      [vim.diagnostic.severity.HINT] = my_icons.lightbulb,
-    },
+    severity = { min = vim.diagnostic.severity.WARN }
   },
 })
 
