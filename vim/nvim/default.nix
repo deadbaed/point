@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -10,9 +10,12 @@
     plugins = with pkgs; [ vimPlugins.lazy-nvim ];
   };
 
-  # symlinks to config
-  xdg.configFile."nvim/init.lua".source = ./init.lua;
-  xdg.configFile."nvim/lazy-lock.json".source = ./lazy-lock.json;
+  # symlink to config
+  # make sure it is writtable for lazy-lock.json
+  xdg.configFile.nvim = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/vim/nvim/";
+    recursive = true;
+  };
 
   # utils
   programs.ripgrep.enable = true;
