@@ -110,7 +110,7 @@ require("lazy").setup({
       "tris203/precognition.nvim",
       opts = {
         startVisible = true,
-        showBlankVirtLine = true,
+        showBlankVirtLine = false,
         highlightColor = { link = "Comment" },
         hints = {
           Caret = { text = "^", prio = 2 },
