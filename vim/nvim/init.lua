@@ -488,6 +488,15 @@ require("lazy").setup({
             vim.lsp.enable("volar")
           end,
 
+          -- deno
+          ["denols"] = function()
+            vim.lsp.config("denols", {
+              root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+              single_file_support = false,
+              settings = {},
+            })
+          end,
+
           -- nix
           ["nil_ls"] = function()
             vim.lsp.config("nil_ls", {
