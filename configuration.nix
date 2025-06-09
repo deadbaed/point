@@ -38,6 +38,7 @@ in
   ];
   homebrew.casks = [ # graphical apps
     "background-music" # control sound of individual apps
+    "calibre" # epub
     "cog" # audio player
     "eloston-chromium" # ungoogled-chromium
     "firefox"
@@ -113,6 +114,7 @@ in
     discord # unfree license
     dbeaver-bin
     # gimp3 # FIXME: broken
+    grandperspective
     josm
     # keepassxc # FIXME: broken
     keka # unfree license
