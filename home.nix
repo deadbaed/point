@@ -127,6 +127,20 @@ in {
     };
   };
 
+  # ssh
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    matchBlocks = {
+      "*" = {
+        identitiesOnly = true;
+        extraOptions = {
+          VisualHostKey = "yes";
+        };
+      };
+    };
+  };
+
   # gpg
   programs.gpg.enable = true;
   services.gpg-agent = {
