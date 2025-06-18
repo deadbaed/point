@@ -40,6 +40,7 @@ in
     "background-music" # control sound of individual apps
     "calibre" # epub
     "cog" # audio player
+    "discord"
     "eloston-chromium" # ungoogled-chromium
     "firefox"
     "imageoptim" # compress images
@@ -111,7 +112,6 @@ in
     audacity
     bruno
     cyberduck
-    discord # unfree license
     dbeaver-bin
     # gimp3 # FIXME: broken
     grandperspective
@@ -141,7 +141,6 @@ in
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "appcleaner"
-      "discord"
       "numi"
       "keka"
     ];
