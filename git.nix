@@ -46,6 +46,10 @@
       # https://git-scm.com/docs/pretty-formats
     };
 
+    # sign commits/tags
+    signing.format = "ssh";
+    extraConfig.gpg.ssh.defaultKeyCommand = "ssh-add -L"; # use first key in agent
+
     aliases = {
       l = "log --graph --pretty=custom";
       ls = "l --stat";
