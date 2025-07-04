@@ -824,6 +824,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gri", function() require "snacks".picker.lsp_implementations({ focus = "list" }) end,
       { desc = "Goto Implementations", buffer = args.buf })
     vim.keymap.set("n", "grn", ":IncRename ", { desc = "Go ReName", buffer = args.buf })
+    vim.keymap.set("n", "grt", function() require "snacks".picker.lsp_type_definitions({ focus = "list" }) end,
+      { desc = "Goto Type definitions", buffer = args.buf })
     vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, { desc = "Diagnostics in Floating window" })
     vim.keymap.set("n", "<leader>l", function() require "snacks".picker.lsp_symbols() end,
       { desc = "LSP symbols in file", buffer = args.buf })
