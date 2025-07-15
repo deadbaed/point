@@ -784,7 +784,7 @@ require("lazy").setup({
     },
   },
   install = { colorscheme = { current_colorscheme } },
-  checker = { enabled = true, notify = false },
+  checker = { enabled = true },
 })
 
 -- key mappings
