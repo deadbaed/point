@@ -134,6 +134,8 @@ require("lazy").setup({
     },
     { -- syntax highlight
       "nvim-treesitter/nvim-treesitter",
+      dependencies = { "OXY2DEV/markview.nvim" },
+      lazy = false,
       build = ":TSUpdate",
       config = function()
         local configs = require("nvim-treesitter.configs")
@@ -768,7 +770,7 @@ require("lazy").setup({
     },
     { -- markdown preview
       "OXY2DEV/markview.nvim",
-      lazy = false,
+      event = "VeryLazy",
     },
     { -- rust crates helper
       "saecki/crates.nvim",
