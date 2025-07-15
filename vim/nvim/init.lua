@@ -341,13 +341,13 @@ require("lazy").setup({
       },
     },
     { -- lsp installer
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       opts = {},
     },
     { -- lsp config with lsp installer
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       dependencies = {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         "neovim/nvim-lspconfig",
         "b0o/schemastore.nvim", -- JSON schema helper
       },
@@ -359,159 +359,6 @@ require("lazy").setup({
           "bashls",
           "jsonls",
           "html",
-        },
-        automatic_installation = true,
-        handlers = {
-          -- Default setup for all LSP servers
-          function(server_name)
-            vim.lsp.enable(server_name)
-          end,
-
-          -- rust
-          ["rust_analyzer"] = function()
-            vim.lsp.config("rust_analyzer", {
-              settings = {
-                ["rust-analyzer"] = {
-                  check = {
-                    command = "clippy"
-                  },
-                  cargo = {
-                    buildScripts = {
-                      enable = true,
-                    },
-                    -- features = "all",
-                  },
-                  procMacro = {
-                    enable = true
-                  },
-                }
-              }
-            })
-            vim.lsp.enable("rust_analyzer")
-          end,
-
-          -- json
-          ["jsonls"] = function()
-            vim.lsp.config("jsonls", {
-              settings = {
-                json = {
-                  schemas = require("schemastore").json.schemas(),
-                  validate = { enable = true },
-                },
-              },
-            })
-            vim.lsp.enable("jsonls")
-          end,
-
-          -- lua
-          ["lua_ls"] = function()
-            local runtime_path = vim.split(package.path, ";")
-            table.insert(runtime_path, "lua/?.lua")
-            table.insert(runtime_path, "lua/?/init.lua")
-
-            local config = {
-              settings = {
-                Lua = {
-                  -- Disable telemetry
-                  telemetry = { enable = false },
-                  runtime = {
-                    -- Tell the language server which version of Lua you're using
-                    -- (most likely LuaJIT in the case of Neovim)
-                    version = "LuaJIT",
-                    path = runtime_path,
-                  },
-                  diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = { "vim" }
-                  },
-                  workspace = {
-                    checkThirdParty = false,
-                    library = {
-                      -- Make the server aware of Neovim runtime files
-                      vim.fn.expand("$VIMRUNTIME/lua"),
-                      vim.fn.stdpath("config") .. "/lua"
-                    }
-                  }
-                }
-              }
-            }
-
-            local lua_opts = vim.tbl_deep_extend("force", config, {})
-            vim.lsp.config("lua_ls", lua_opts)
-            vim.lsp.enable("lua_ls")
-          end,
-
-          -- tailwind
-          ["tailwindcss"] = function()
-            vim.lsp.config("tailwindcss", {
-              settings = {
-                includeLanguages = {
-                  rust = "html",
-                },
-              },
-              filetypes = {
-                "rust",
-              },
-            })
-            vim.lsp.enable("tailwindcss")
-          end,
-
-          -- typescript
-          -- for .ts and .js files, use ts_ls
-          -- for .vue files, use volar
-          ["ts_ls"] = function()
-            local mason_registry = require("mason-registry")
-            local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() ..
-                "/node_modules/@vue/language-server"
-
-            vim.lsp.config("ts_ls", {
-              init_options = {
-                plugins = {
-                  {
-                    name = "@vue/typescript-plugin",
-                    location = vue_language_server_path,
-                    languages = { "vue" },
-                  },
-                },
-              },
-            })
-            vim.lsp.enable("ts_ls")
-          end,
-
-          -- vuejs
-          ["volar"] = function()
-            vim.lsp.config("volar", {
-              init_options = {
-                vue = {
-                  hybridMode = false,
-                },
-              },
-            })
-            vim.lsp.enable("volar")
-          end,
-
-          -- deno
-          ["denols"] = function()
-            vim.lsp.config("denols", {
-              root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
-              single_file_support = false,
-              settings = {},
-            })
-          end,
-
-          -- nix
-          ["nil_ls"] = function()
-            vim.lsp.config("nil_ls", {
-              settings = {
-                ["nil"] = {
-                  formatting = {
-                    command = { "alejandra" }
-                  }
-                }
-              }
-            })
-            vim.lsp.enable("nil_ls")
-          end,
         },
       },
     },
@@ -844,6 +691,142 @@ vim.api.nvim_create_autocmd("User", {
   group = "lualine_augroup",
   pattern = "LspProgressStatusUpdated",
   callback = require("lualine").refresh,
+})
+
+-- lsp: rust
+vim.lsp.config("rust_analyzer", {
+  settings = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy"
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+        -- features = "all",
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+})
+
+-- lsp: json
+vim.lsp.config("jsonls", {
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
+-- lsp: lua
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+local config = {
+  settings = {
+    Lua = {
+      -- Disable telemetry
+      telemetry = { enable = false },
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" }
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          -- Make the server aware of Neovim runtime files
+          vim.fn.expand("$VIMRUNTIME/lua"),
+          vim.fn.stdpath("config") .. "/lua"
+        }
+      }
+    }
+  }
+}
+local lua_opts = vim.tbl_deep_extend("force", config, {})
+vim.lsp.config("lua_ls", lua_opts)
+
+-- lsp: tailwind
+vim.lsp.config("tailwindcss", {
+  settings = {
+    ["tailwindCSS"] = {
+      includeLanguages = {
+        rust = "html",
+      },
+    }
+  },
+})
+
+-- lsp: nix
+vim.lsp.config("nil_ls", {
+  settings = {
+    ["nil"] = {
+      formatting = {
+        command = { "alejandra" }
+      }
+    }
+  }
+})
+
+-- lsp: typescript
+local vue_language_server_path = vim.fn.stdpath("data") ..
+    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_plugin = {
+  name = "@vue/typescript-plugin",
+  location = vue_language_server_path,
+  languages = { "vue" },
+  configNamespace = "typescript",
+}
+vim.lsp.config("vtsls", {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
+        },
+      },
+    },
+  },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+})
+
+-- lsp: vue
+vim.lsp.config("vue_ls", {
+  on_init = function(client)
+    client.handlers["tsserver/request"] = function(_, result, context)
+      local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+      if #clients == 0 then
+        vim.notify("Could not find `vtsls` lsp client, `vue_ls` would not work without it.", vim.log.levels.ERROR)
+        return
+      end
+      local ts_client = clients[1]
+
+      local param = unpack(result)
+      local id, command, payload = unpack(param)
+      ts_client:exec_cmd({
+        title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+        command = "typescript.tsserverRequest",
+        arguments = {
+          command,
+          payload,
+        },
+      }, { bufnr = context.bufnr }, function(_, r)
+        local response_data = { { id, r.body } }
+        ---@diagnostic disable-next-line: param-type-mismatch
+        client:notify("tsserver/response", response_data)
+      end)
+    end
+  end,
 })
 
 if vim.g.neovide then
