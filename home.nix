@@ -207,6 +207,9 @@ in {
     certbot # acme client
     gcovr # coverage
     gource # history of a repository
+    tailwindcss_4
+    geckodriver # control web browsers remotely
+    util-linux
 
     # rust utils
     cargo-audit
