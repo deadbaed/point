@@ -41,7 +41,7 @@ in
     "calibre" # epub
     "cog" # audio player
     "discord"
-    "eloston-chromium" # ungoogled-chromium
+    "ungoogled-chromium"
     "firefox"
     "imageoptim" # compress images
     "jordanbaird-ice" # menubar
