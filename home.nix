@@ -158,6 +158,17 @@ in {
     };
   };
 
+  # git alternative
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Philippe Loctaux";
+        email = "p@philippeloctaux.com";
+      };
+    };
+  };
+
   # tools with optional configuration
   programs.yt-dlp.enable = true;
   programs.btop.enable = true;
