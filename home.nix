@@ -166,6 +166,9 @@ in {
         name = "Philippe Loctaux";
         email = "p@philippeloctaux.com";
       };
+      ui = {
+        default-command = "log";
+      };
     };
   };
 
