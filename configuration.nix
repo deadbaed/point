@@ -3,8 +3,22 @@ let
   username = "phil";
 in
 {
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  nix = {
+    optimise.automatic = true;
+    settings = {
+      trusted-users = [ username ];
+      # Necessary for using flakes on this system.
+      experimental-features = "nix-command flakes";
+
+      # Additional binary caches
+      substituters = [
+        "https://devenv.cachix.org"
+      ];
+      trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      ];
+    };
+  };
 
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
