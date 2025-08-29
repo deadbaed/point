@@ -172,6 +172,13 @@ in {
     };
   };
 
+  # direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # tools with optional configuration
   programs.yt-dlp.enable = true;
   programs.btop.enable = true;
