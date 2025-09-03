@@ -156,6 +156,11 @@ require("lazy").setup({
         vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { underline = true, sp = "Grey" })
       end,
     },
+    { -- autoclose tags with treesitter
+      "windwp/nvim-ts-autotag",
+      lazy = false,
+      opts = {},
+    },
     { -- centered cmdline
       "folke/noice.nvim",
       dependencies = { "MunifTanjim/nui.nvim" },
