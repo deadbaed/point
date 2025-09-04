@@ -58,6 +58,7 @@ in
     "ungoogled-chromium"
     "firefox"
     "imageoptim" # compress images
+    "inkscape"
     "jordanbaird-ice" # menubar
     "gauntlet" # raycast alternative
     "handbrake"
