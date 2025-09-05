@@ -636,6 +636,9 @@ require("lazy").setup({
         },
       },
     },
+    { -- open nested zip files
+      "lbrayner/vim-rzip"
+    }
   },
   install = { colorscheme = { current_colorscheme } },
   checker = { enabled = true },
@@ -801,8 +804,33 @@ vim.lsp.config("vtsls", {
         },
       },
     },
+    typescript = {}
   },
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  -- thank you so much to https://github.com/parksb/dotfiles/blob/2ae492bdd4827e065ab448fb4d8315736f418f1e/nvim/lua/plugins/langs/typescript.lua
+  before_init = function(_, config)
+    local yarnPnpFile = vim.fs.find({ ".pnp.cjs" }, { upward = true })[1]
+    if yarnPnpFile then
+      config.settings.typescript.tsdk = vim.fs.dirname(yarnPnpFile) .. "/.yarn/sdks/typescript/lib"
+      config.settings.vtsls.autoUseWorkspaceTsdk = true
+    end
+  end,
+  root_dir = function(_, callback)
+    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json" })
+    local deno_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
+    if root_dir and deno_dir == nil then
+      callback(root_dir)
+    end
+  end,
+  root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "vue"
+  },
 })
 
 -- lsp: vue
