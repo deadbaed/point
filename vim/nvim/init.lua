@@ -732,7 +732,7 @@ vim.lsp.config("jsonls", {
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local config = {
+local luals_config = {
   settings = {
     Lua = {
       -- Disable telemetry
@@ -758,7 +758,7 @@ local config = {
     }
   }
 }
-local lua_opts = vim.tbl_deep_extend("force", config, {})
+local lua_opts = vim.tbl_deep_extend("force", luals_config, {})
 vim.lsp.config("lua_ls", lua_opts)
 
 -- lsp: tailwind
