@@ -82,6 +82,8 @@ in
     "whatsapp"
   ];
   homebrew.masApps = { # mac app store apps
+    # To find the app name with its id: https://github.com/mas-cli/mas?tab=readme-ov-file#-app-ids
+
     # misc
     Speedtest = 1153157709;
     Bitwarden = 1352778147;
@@ -89,6 +91,8 @@ in
     WireGuard = 1451685025;
     "Home Assistant" = 1099568401;
     Gapplin = 768053424;
+    "Moe Memos" = 1643902185;
+    "Mona for Mastodon" = 1659154653;
 
     # apple
     Developer = 640199958;
