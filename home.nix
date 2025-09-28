@@ -153,7 +153,7 @@ in {
     enable = true;
     package = (if isDarwin then pkgs.ghostty-bin else pkgs.ghostty);
     settings = {
-      theme = "catppuccin-latte";
+      theme = "Catppuccin Latte";
       window-decoration = (if isLinux then "none" else "auto");
     };
   };
