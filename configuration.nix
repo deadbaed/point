@@ -43,6 +43,28 @@ in
   # TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  # No startup sound
+  system.startup.chime = false;
+
+  # macOS defaults
+  system.defaults = {
+    finder = {
+      ShowHardDrivesOnDesktop = true;
+      ShowPathbar = true;
+    };
+
+    dock = {
+      show-recents = false;
+      persistent-others = [ "/Applications/" "/Users/${username}/Downloads"];
+    };
+    menuExtraClock.ShowSeconds = true;
+
+    NSGlobalDomain = {
+      AppleShowAllFiles = true;
+      AppleShowAllExtensions = true;
+    };
+  };
+
   # homebrew
   homebrew.enable = true;
   environment.systemPath = [ config.homebrew.brewPrefix ]; # add homebew to PATH
@@ -53,7 +75,7 @@ in
   homebrew.casks = [ # graphical apps
     "background-music" # control sound of individual apps
     "calibre" # epub
-    "cog" # audio player
+    "cog-app" # audio player
     "discord"
     "ungoogled-chromium"
     "firefox"
@@ -61,7 +83,8 @@ in
     "inkscape"
     "jordanbaird-ice" # menubar
     "gauntlet" # raycast alternative
-    "handbrake"
+    "ghostty"
+    "handbrake-app"
     "keepassxc"
     "lulu" # firewall
     "nextcloud"
@@ -91,7 +114,7 @@ in
     WireGuard = 1451685025;
     "Home Assistant" = 1099568401;
     Gapplin = 768053424;
-    "Moe Memos" = 1643902185;
+    #"Moe Memos" = 1643902185; # iPad app
     "Mona for Mastodon" = 1659154653;
 
     # apple
@@ -118,7 +141,6 @@ in
     iMovie = 408981434;
 
     # safari extensions
-    JSONPeep = 1458969831;
     SingleFile = 6444322545;
     UnTrap = 1637438059; # youtube
   };
