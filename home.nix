@@ -130,7 +130,7 @@ in {
   # ssh
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    compression = true;
     matchBlocks = {
       "*" = {
         identitiesOnly = true;

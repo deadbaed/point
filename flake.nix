@@ -38,7 +38,7 @@
             home-manager.backupFileExtension = "home-manager.backup";
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.phil = {
-              imports = [ ./home.nix ];
+              imports = [ ./home.nix ./home-darwin.nix ];
               programs.git = {
                 userName = "Philippe Loctaux";
                 userEmail = "p@philippeloctaux.com";
