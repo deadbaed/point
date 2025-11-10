@@ -1,6 +1,7 @@
 { self, config, pkgs, lib, inputs, ... }:
 let
   username = "phil";
+  tilesize = 24;
 in
 {
   nix = {
@@ -54,6 +55,9 @@ in
     };
 
     dock = {
+      tilesize = tilesize;
+      magnification = true;
+      largesize = tilesize * 3;
       show-recents = false;
       persistent-others = [ "/Applications/" "/Users/${username}/Downloads"];
     };
