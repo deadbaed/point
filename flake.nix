@@ -39,9 +39,9 @@
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.phil = {
               imports = [ ./home.nix ./home-darwin.nix ];
-              programs.git = {
-                userName = "Philippe Loctaux";
-                userEmail = "p@philippeloctaux.com";
+              programs.git.settings.user = {
+                name = "Philippe Loctaux";
+                email = "p@philippeloctaux.com";
               };
             };
           }

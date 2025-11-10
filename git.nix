@@ -3,22 +3,7 @@
   programs.git = {
     enable = true;
 
-    includes = [
-      { # set git identity only for dotfiles repo
-        condition = "gitdir:~/point/";
-        contents = {
-          user = {
-            email = "p@philippeloctaux.com";
-            name = "Philippe Loctaux";
-          };
-        };
-      }
-      { # theme for delta
-        path ="${inputs.catppuccin-delta}/catppuccin.gitconfig";
-      }
-    ];
-
-    extraConfig = {
+    settings = {
       # config
       core.editor = "nvim";
       init.defaultBranch = "master";
@@ -44,30 +29,37 @@
       #                         └─ hash (abbreviated)
       #
       # https://git-scm.com/docs/pretty-formats
+
+      aliases = {
+        l = "log --graph --pretty=custom";
+        ls = "l --stat";
+        ds = "diff --shortstat";
+      };
     };
+
+    includes = [
+      { # theme for delta
+        path ="${inputs.catppuccin-delta}/catppuccin.gitconfig";
+      }
+    ];
 
     # sign commits/tags
     signing.format = "ssh";
-    extraConfig.gpg.ssh.defaultKeyCommand = "ssh-add -L"; # use first key in agent
-
-    aliases = {
-      l = "log --graph --pretty=custom";
-      ls = "l --stat";
-      ds = "diff --shortstat";
-    };
+    settings.gpg.ssh.defaultKeyCommand = "ssh-add -L"; # use first key in agent
 
     lfs.enable = true;
+  };
 
-    # better pager
-    delta = {
-      enable = true;
-      options = {
-        navigate = true; # use n and N to move between diff sections
-        light = false;
-        line-numbers = true;
-        side-by-side = true;
-        features = "catppuccin-latte"; # theme
-      };
+  # better pager
+  programs.delta = {
+    enable = true;
+    options = {
+      navigate = true; # use n and N to move between diff sections
+      light = false;
+      line-numbers = true;
+      side-by-side = true;
+      features = "catppuccin-latte"; # theme
+      enableGitIntegration = true;
     };
   };
 }

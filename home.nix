@@ -58,7 +58,7 @@ in {
   };
 
   home.shellAliases = {
-    webserver = "${pkgs.python3Full}/bin/python3 -m http.server --directory $1";
+    webserver = "${pkgs.python3Minimal}/bin/python3 -m http.server --directory $1";
     tokei = "${pkgs.tokei}/bin/tokei -C -s code";
     sl = "ls";
     lsa = "ls -la";
@@ -130,9 +130,9 @@ in {
   # ssh
   programs.ssh = {
     enable = true;
-    compression = true;
     matchBlocks = {
       "*" = {
+        compression = true;
         identitiesOnly = true;
         extraOptions = {
           VisualHostKey = "yes";
@@ -218,7 +218,7 @@ in {
     # runtimes
     deno
     nodejs
-    python3Full
+    python3Minimal
 
     # dev tools
     tokei # count lines of code
