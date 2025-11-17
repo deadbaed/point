@@ -1,7 +1,7 @@
 { self, config, pkgs, lib, inputs, ... }:
 let
   username = "phil";
-  tilesize = 24;
+  tilesize = 30;
 in
 {
   nix = {
