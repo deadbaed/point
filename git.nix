@@ -30,7 +30,7 @@
       #
       # https://git-scm.com/docs/pretty-formats
 
-      aliases = {
+      alias = {
         l = "log --graph --pretty=custom";
         ls = "l --stat";
         ds = "diff --shortstat";
