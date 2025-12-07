@@ -229,7 +229,6 @@ in {
     tailwindcss_4
     geckodriver # control web browsers remotely
     util-linux
-    devenv # https://devenv.sh
 
     # rust utils
     cargo-audit
