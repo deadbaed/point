@@ -814,14 +814,6 @@ vim.lsp.config("vtsls", {
       config.settings.vtsls.autoUseWorkspaceTsdk = true
     end
   end,
-  root_dir = function(_, callback)
-    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json" })
-    local deno_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
-    if root_dir and deno_dir == nil then
-      callback(root_dir)
-    end
-  end,
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -832,6 +824,9 @@ vim.lsp.config("vtsls", {
     "vue"
   },
 })
+
+-- enable lsps, some need to be enable explicitely
+vim.lsp.enable("vtsls")
 
 if vim.g.neovide then
   function GetOS()
