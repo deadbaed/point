@@ -162,7 +162,7 @@ in
     keycastr
     libreoffice-bin
     localsend
-    # mumble # TODO: wait for https://github.com/NixOS/nixpkgs/pull/384691
+    mumble
     net-news-wire
     # nheko # FIXME: broken
     numi # unfree license
