@@ -218,7 +218,6 @@ in {
     # runtimes
     deno
     nodejs
-    python3Minimal
 
     # dev tools
     tokei # count lines of code
