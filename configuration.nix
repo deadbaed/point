@@ -88,7 +88,6 @@ in
     "keepassxc"
     "lulu" # firewall
     "nextcloud"
-    "nheko"
     "obs"
     "openmtp" # android file transfer
     "orion" # test web browser
@@ -154,17 +153,16 @@ in
     bruno
     cyberduck
     dbeaver-bin
-    # gimp3 # FIXME: broken
+    # gimp # FIXME: broken
     grandperspective
     josm
-    # keepassxc # FIXME: broken
+    keepassxc
     keka # unfree license
     keycastr
     libreoffice-bin
     localsend
     mumble
     net-news-wire
-    # nheko # FIXME: broken
     numi # unfree license
     rectangle
     # rpi-imager # FIXME: broken
@@ -172,6 +170,7 @@ in
     sqlitebrowser # gui for sqlite
     stats # stats in menbar
     telegram-desktop
+    trgui-ng # transmission frontend
     unnaturalscrollwheels
     utm
     vlc-bin
@@ -188,6 +187,5 @@ in
 
   # TODO: package https://github.com/AuroraWright/TomatoBar/releases
   # TODO: package https://github.com/terhechte/postsack/releases
-  # TODO: package https://github.com/openscopeproject/TrguiNG
 
 }
