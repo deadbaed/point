@@ -780,7 +780,7 @@ vim.lsp.config("nil_ls", {
   settings = {
     ["nil"] = {
       formatting = {
-        command = { "alejandra" }
+        command = { "nixfmt" }
       }
     }
   }
@@ -827,6 +827,7 @@ vim.lsp.config("vtsls", {
 
 -- enable lsps, some need to be enable explicitely
 vim.lsp.enable("vtsls")
+vim.lsp.enable("nil_ls")
 
 if vim.g.neovide then
   function GetOS()
