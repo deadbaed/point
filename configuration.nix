@@ -55,7 +55,10 @@ in
       magnification = true;
       largesize = tilesize * 3;
       show-recents = false;
-      persistent-others = [ "/Applications/" "/Users/${username}/Downloads"];
+      persistent-others = [
+        { folder = { path = "/Applications/"; showas = "grid"; }; }
+        { folder = { path = "/Users/${username}/Downloads"; arrangement = "date-added"; showas = "fan"; }; }
+      ];
     };
     menuExtraClock.ShowSeconds = true;
 
