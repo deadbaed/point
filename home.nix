@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 let
-  catppuccin-bat = <catppuccin-bat>;
-  catppuccin-lsd = <catppuccin-lsd>;
+  sources = import ./npins;
+  catppuccin-bat = sources.catppuccin-bat;
+  catppuccin-lsd = sources.catppuccin-lsd;
 
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;

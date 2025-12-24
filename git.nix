@@ -1,6 +1,7 @@
 { ... }:
 let
-  catppuccin-delta = <catppuccin-delta>;
+  sources = import ./npins;
+  catppuccin-delta = sources.catppuccin-delta;
 in
 {
   programs.git = {
