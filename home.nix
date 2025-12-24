@@ -1,5 +1,7 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, ... }:
 let
+  catppuccin-bat = <catppuccin-bat>;
+
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 in {
@@ -76,7 +78,7 @@ in {
   programs.bat = {
     enable = true;
     themes = {
-      catppuccin = { src = inputs.catppuccin-bat; };
+      catppuccin = { src = catppuccin-bat; };
     };
     config = {
       theme = "Catppuccin Latte";

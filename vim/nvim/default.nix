@@ -21,5 +21,4 @@
   programs.ripgrep.enable = true;
   programs.fd.enable = true;
   programs.jq.enable = true;
-  programs.neovide.enable = true;
 }

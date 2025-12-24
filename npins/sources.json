@@ -1,0 +1,63 @@
+{
+  "pins": {
+    "catppuccin-bat": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "catppuccin",
+        "repo": "bat"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "6810349b28055dce54076712fc05fc68da4b8ec0",
+      "url": "https://github.com/catppuccin/bat/archive/6810349b28055dce54076712fc05fc68da4b8ec0.tar.gz",
+      "hash": "sha256-lJapSgRVENTrbmpVyn+UQabC9fpV1G1e+CdlJ090uvg="
+    },
+    "catppuccin-delta": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "catppuccin",
+        "repo": "delta"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "74b47a345638a2f19b3e5bdb9d7e4984066f9ac7",
+      "url": "https://github.com/catppuccin/delta/archive/74b47a345638a2f19b3e5bdb9d7e4984066f9ac7.tar.gz",
+      "hash": "sha256-NjqqB/BHqduiNWKeksiRZUMfjRUodJlsVu1yaEIZRsM="
+    },
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "7eca7f7081036a7b740090994c9ec543927f89a7",
+      "url": "https://github.com/nix-community/home-manager/archive/7eca7f7081036a7b740090994c9ec543927f89a7.tar.gz",
+      "hash": "sha256-hHKQhHkXxuPJwLkI8wdu826GLV5AcuW9/HVdc9eBnTU="
+    },
+    "nix-darwin": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "c2b36207f2c396c79dbed9d40536db221bd4e363",
+      "url": "https://github.com/nix-darwin/nix-darwin/archive/c2b36207f2c396c79dbed9d40536db221bd4e363.tar.gz",
+      "hash": "sha256-N/sxS27+t9nGvGWqwwAceSMW/Y5ddcypS/aiTnZ7ScA="
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre915678.cfc52a405c6e/nixexprs.tar.xz",
+      "hash": "sha256-7mq+kpw4eDnEzeg2WoxCXaLvcnG8oNs0e/+KoDZX+P4="
+    }
+  },
+  "version": 7
+}

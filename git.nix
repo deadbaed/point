@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ ... }:
+let
+  catppuccin-delta = <catppuccin-delta>;
+in
 {
   programs.git = {
     enable = true;
@@ -39,7 +42,7 @@
 
     includes = [
       { # theme for delta
-        path ="${inputs.catppuccin-delta}/catppuccin.gitconfig";
+        path ="${catppuccin-delta}/catppuccin.gitconfig";
       }
     ];
 

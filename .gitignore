@@ -1,3 +1,5 @@
 !.gitignore
 !.mailmap
 *.DS_Store
+.direnv
+.envrc

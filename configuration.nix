@@ -1,9 +1,40 @@
-{ self, config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 let
+  sources = import ./npins;
   username = "phil";
   tilesize = 30;
 in
 {
+  # This must be a full path, or this file should be in `/etc/nix-darwin/configuration.nix`
+  environment.darwinConfig = "/Users/phil/point/configuration.nix";
+
+  # I do not use flakes, and I do not want to use channels
+  system.checks.verifyNixPath = false;
+
+  # Attempt to kill channels
+  # Thank you to https://jade.fyi/blog/pinning-nixos-with-npins/
+  nixpkgs.flake.source = sources.nixpkgs;
+
+  imports = [
+    <home-manager/nix-darwin>
+  ];
+
+  # home-manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.${username} = { config, pkgs, ... }: {
+    imports = [ ./home.nix ./home-gui.nix ];
+
+    programs.git.settings.user = {
+      name = "Philippe Loctaux";
+      email = "p@philippeloctaux.com";
+    };
+
+    programs.zsh.sessionVariables = {
+      SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+    };
+  };
+
   nix = {
     optimise.automatic = true;
     settings = {
@@ -19,9 +50,6 @@ in
 
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
-
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
