@@ -26,6 +26,19 @@
       "url": "https://github.com/catppuccin/delta/archive/74b47a345638a2f19b3e5bdb9d7e4984066f9ac7.tar.gz",
       "hash": "sha256-NjqqB/BHqduiNWKeksiRZUMfjRUodJlsVu1yaEIZRsM="
     },
+    "catppuccin-lsd": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "catppuccin",
+        "repo": "lsd"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "7085155432c7fe53a7acd7b0c004955368aa0fba",
+      "url": "https://github.com/catppuccin/lsd/archive/7085155432c7fe53a7acd7b0c004955368aa0fba.tar.gz",
+      "hash": "sha256-lf6VawCgK9VlKO+PAzPD/WqPjxoqw2j000b5ZlEXj/Y="
+    },
     "home-manager": {
       "type": "Git",
       "repository": {

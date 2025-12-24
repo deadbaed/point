@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   catppuccin-bat = <catppuccin-bat>;
+  catppuccin-lsd = <catppuccin-lsd>;
 
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
@@ -101,6 +102,7 @@ in {
         when = "never"; # always, auto, never
       };
     };
+    colors = "${catppuccin-lsd}/themes/catppuccin-latte/colors.yaml";
   };
 
   # shell history & sync
