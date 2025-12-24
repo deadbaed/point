@@ -826,8 +826,13 @@ vim.lsp.config("vtsls", {
 })
 
 -- enable lsps, some need to be enable explicitely
-vim.lsp.enable("vtsls")
-vim.lsp.enable("nil_ls")
+for _, lspName in ipairs({
+  "vtsls",
+  "nil_ls",
+  "sqruff",
+}) do
+  vim.lsp.enable(lspName)
+end
 
 if vim.g.neovide then
   function GetOS()
