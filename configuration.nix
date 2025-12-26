@@ -145,7 +145,7 @@ in
     "Home Assistant" = 1099568401;
     Gapplin = 768053424;
     #"Moe Memos" = 1643902185; # iPad app
-    "Mona for Mastodon" = 1659154653;
+    "Ice Cubes for Mastodon" = 6444915884;
 
     # apple
     Developer = 640199958;
