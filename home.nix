@@ -220,10 +220,6 @@ in {
     mosh
     bootterm
 
-    # runtimes
-    deno
-    nodejs
-
     # dev tools
     tokei # count lines of code
     just # script runner
