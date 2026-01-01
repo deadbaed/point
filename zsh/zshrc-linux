@@ -1,5 +1,0 @@
-# systemd user services
-if type systemctl &>/dev/null; then
-  alias s-u="systemctl --user"
-  alias s-ur="systemctl --user daemon-reload"
-fi
