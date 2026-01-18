@@ -867,7 +867,6 @@ if vim.g.neovide then
   end
 
   -- cursor
-  vim.g.neovide_cursor_vfx_mode = "sonicboom"
   vim.g.neovide_cursor_animation_length = 0.05
 
   -- Paste from system clipboard
