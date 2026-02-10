@@ -160,7 +160,7 @@ in {
     settings = {
       theme = "Catppuccin Latte";
       window-decoration = (if isLinux then "none" else "auto");
-      font-size = (if isLinux then 11 else null);
+      font-size = (if isLinux then 11 else "");
     };
   };
 
