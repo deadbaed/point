@@ -359,8 +359,6 @@ require("lazy").setup({
       opts = {
         ensure_installed = {
           "lua_ls",
-          "rust_analyzer",
-          "taplo",
           "bashls",
           "jsonls",
           "html",
@@ -830,6 +828,8 @@ for _, lspName in ipairs({
   "vtsls",
   "nil_ls",
   "sqruff",
+  "rust_analyzer",
+  "taplo",
 }) do
   vim.lsp.enable(lspName)
 end
