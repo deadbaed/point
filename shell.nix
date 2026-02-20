@@ -4,8 +4,9 @@
 }:
 
 pkgs.mkShellNoCC {
-  packages = [
-    pkgs.npins
-    pkgs.nix-output-monitor
+  packages = with pkgs; [
+    npins
+    nix-output-monitor
+    git
   ];
 }
