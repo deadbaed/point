@@ -42,14 +42,16 @@
     ];
   };
 
+  # default shell
+  users.users.phil.shell = pkgs.zsh;
+  programs.zsh.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     wget
     lnav
     bottom
     nix-output-monitor
-    mumble
-    zellij
   ];
 
   programs.direnv.enable = true;
