@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./npins.nix
+      ./home-manager.nix
       ./steam.nix
       ./luks_unlock_ssh.nix
       ./luks_boot_options.nix
