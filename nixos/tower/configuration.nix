@@ -58,6 +58,8 @@
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  programs.niri.enable = true; # for gdm entry only, configured with home manager
+  services.gnome.evolution-data-server.enable = true;
 
   # Graphical boot
   boot = {

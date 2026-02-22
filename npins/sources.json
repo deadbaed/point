@@ -70,6 +70,22 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre946960.d1c15b7d5806/nixexprs.tar.xz",
       "hash": "sha256-7o+iRF++GO/gGrgrRMlnld2V/3QIzpdwMKViVkHtMEQ="
+    },
+    "noctalia-shell": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v4.5.0",
+      "revision": "dbfe3634df0c57faf9772cecae1f2e92bd04de66",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.5.0",
+      "hash": "sha256-Y5P0RYO9NKxa4UZBoGmmxtz3mEwJrBOfvdLJRGjV2Os="
     }
   },
   "version": 7

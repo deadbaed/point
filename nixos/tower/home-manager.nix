@@ -10,7 +10,11 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.phil = { config, pkgs, ... }: {
-    imports = [ ../../home.nix ../../home-gui.nix ];
+    imports = [
+      ../../home.nix
+      ../../home-gui.nix
+      (import ../../niri { inherit sources pkgs config; })
+    ];
 
     programs.git.settings.user = {
       name = "Philippe Loctaux";
