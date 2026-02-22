@@ -87,7 +87,7 @@
                     showPinnedApps = true;
                     showTitle = true;
                     smartWidth = true;
-                    titleWidth = 120;
+                    titleWidth = 50;
                 }
           ];
           center = [
@@ -327,7 +327,7 @@
         fillColor = "#000000";
         useSolidColor = false;
         solidColor = "#1a1a2e";
-        automationEnabled = false;
+        automationEnabled = true;
         wallpaperChangeMode = "random";
         randomIntervalSec = 3600;
         transitionDuration = 5000;
