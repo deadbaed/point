@@ -23,7 +23,7 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.${username} = { config, pkgs, ... }: {
-    imports = [ ./home.nix ./home-gui.nix ];
+    imports = [ ./home.nix ./home-gui.nix ./home-non-nixos.nix ];
 
     programs.git.settings.user = {
       name = "Philippe Loctaux";
@@ -98,7 +98,7 @@ in
 
   # homebrew
   homebrew.enable = true;
-  environment.systemPath = [ config.homebrew.brewPrefix ]; # add homebew to PATH
+  environment.systemPath = [ "${config.homebrew.prefix}/bin" ]; # add homebew to PATH
   homebrew.brews = [ # formulae
     "mas" # mac app store, https://github.com/mas-cli/mas
     "imagesnap" # catpure images from webcam
@@ -206,7 +206,6 @@ in
     utm
     vlc-bin
     vscodium
-    zed-editor
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

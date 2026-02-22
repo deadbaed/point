@@ -5,4 +5,4 @@ let
 in {
  home.username = "phil";
  home.homeDirectory = (if isDarwin then /Users else /home) + "/${config.home.username}";
-
+}
