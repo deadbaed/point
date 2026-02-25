@@ -112,7 +112,7 @@ in {
 
   # terminal multiplexer
   programs.zellij.enable = true;
-  xdg.configFile."zellij/config.kdl".source = ./zellij/config.kdl;
+  xdg.configFile."zellij/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/zellij/config.kdl";
 
   # autojump but in rust
   programs.zoxide = {
