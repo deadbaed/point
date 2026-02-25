@@ -16,7 +16,6 @@ vim.opt.cursorline = true
 
 -- colors
 local current_colorscheme = "catppuccin"
-vim.o.background = "light" -- :h background
 
 -- border for floating windows
 vim.o.winborder = "single"
