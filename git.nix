@@ -62,7 +62,7 @@ in
       light = false;
       line-numbers = true;
       side-by-side = true;
-      features = "catppuccin-latte"; # theme
+      features = "catppuccin"; # theme
       enableGitIntegration = true;
     };
   };
