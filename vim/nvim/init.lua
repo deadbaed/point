@@ -83,6 +83,12 @@ require("lazy").setup({
         vim.cmd.colorscheme(current_colorscheme)
       end
     },
+    { -- auto theme switcher
+      "f-person/auto-dark-mode.nvim",
+      opts = {
+        fallback = "light"
+      }
+    },
     { -- icons
       "nvim-tree/nvim-web-devicons"
     },
