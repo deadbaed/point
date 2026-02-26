@@ -79,7 +79,7 @@ input {
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "Iiyama North America PL2770Q 1239942701124" {
-    mode "2560x1440@180.080"
+    mode "2560x1440@144.000"
 }
 output "DP-1" {
     // Uncomment this line to disable this output.
