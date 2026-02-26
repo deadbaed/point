@@ -9,8 +9,4 @@ in {
     pkgs.bitwarden-desktop
   ] else [
   ]);
-  programs.firefox = {
-    enable = true;
-    languagePacks = [ "en-GB" "fr" "ru" ];
-  };
 }
