@@ -85,7 +85,7 @@
                     onlyActiveWorkspaces = true;
                     onlySameOutput = true;
                     showPinnedApps = true;
-                    showTitle = true;
+                    showTitle = false;
                     smartWidth = true;
                     titleWidth = 50;
                 }
@@ -109,7 +109,7 @@
                     hideMode = "idle";
                     hideWhenIdle = false;
                     id = "MediaMini";
-                    maxWidth = 400;
+                    maxWidth = 200;
                     panelShowAlbumArt = true;
                     panelShowVisualizer = true;
                     scrollingMode = "hover";
