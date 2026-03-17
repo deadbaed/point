@@ -807,7 +807,27 @@ vim.lsp.config("vtsls", {
         },
       },
     },
-    typescript = {}
+    typescript = {
+      inlayHints = {
+        enumMemberValues = {
+          enabled = true,
+        },
+        functionLikeReturnTypes = {
+          enabled = true,
+        },
+        parameterNames = { enabled = "all" },
+        parameterTypes = {
+          enabled = true,
+          suppressWhenArgumentMatchesName = true,
+        },
+        propertyDeclarationTypes = {
+          enabled = true,
+        },
+        variableTypes = {
+          enabled = true,
+        },
+      },
+    },
   },
   -- thank you so much to https://github.com/parksb/dotfiles/blob/2ae492bdd4827e065ab448fb4d8315736f418f1e/nvim/lua/plugins/langs/typescript.lua
   before_init = function(_, config)
