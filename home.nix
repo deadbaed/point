@@ -225,9 +225,9 @@ in {
     mailpit # email testing
     certbot # acme client
     gource # history of a repository
-    tailwindcss_4
     geckodriver # control web browsers remotely
     util-linux
+    attic-client # self hosted nixos cache
 
     # rust utils
     cargo-audit
@@ -252,6 +252,4 @@ in {
   ];
 
   # TODO: package https://github.com/dnlmlr/cargo-clean-all
-  # TODO: package https://github.com/openscopeproject/TrguiNG
-  # TODO: package https://github.com/halfmexican/mingle
 }
