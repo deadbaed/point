@@ -359,8 +359,8 @@
         autoPasteClipboard = false;
         enableClipPreview = true;
         clipboardWrapText = true;
-        # clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
-        # clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
+        clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
+        clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
         position = "center";
         pinnedApps = [ ];
         useApp2Unit = false;
