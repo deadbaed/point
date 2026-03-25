@@ -128,6 +128,9 @@
                     pinned = [];
                 }
                 {
+                    id = "plugin:network-manager-vpn";
+                }
+                {
                     compactMode = false;
                     diskPath = "/";
                     id = "SystemMonitor";
@@ -623,6 +626,10 @@
       ];
       states = {
         screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        network-manager-vpn = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
