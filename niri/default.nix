@@ -368,7 +368,7 @@
         terminalCommand = "ghostty -e";
         customLaunchPrefixEnabled = false;
         customLaunchPrefix = "";
-        viewMode = "grid";
+        viewMode = "list";
         showCategories = false;
         iconMode = "tabler";
         showIconBackground = false;
