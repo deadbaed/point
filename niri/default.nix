@@ -68,6 +68,15 @@
                     unfocusedIconsOpacity = 1;
                 }
                 {
+                    customFont = "";
+                    formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
+                    formatVertical = "HH mm - dd MM";
+                    id = "Clock";
+                    tooltipFormat = "HH:mm ddd, MMM dd";
+                    useCustomFont = false;
+                    usePrimaryColor = false;
+                }
+                {
                     colorizeIcons = true;
                     hideMode = "hidden";
                     id = "ActiveWindow";
@@ -90,17 +99,7 @@
                     titleWidth = 50;
                 }
           ];
-          center = [
-                {
-                    customFont = "";
-                    formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
-                    formatVertical = "HH mm - dd MM";
-                    id = "Clock";
-                    tooltipFormat = "HH:mm ddd, MMM dd";
-                    useCustomFont = false;
-                    usePrimaryColor = false;
-                }
-          ];
+          center = [];
           right = [
                 {
                     compactMode = false;
