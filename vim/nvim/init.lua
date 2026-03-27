@@ -139,6 +139,7 @@ require("lazy").setup({
     },
     { -- syntax highlight
       "nvim-treesitter/nvim-treesitter",
+      branch = "master", -- TODO: switch to `main` branch for neovim 0.12
       dependencies = { "OXY2DEV/markview.nvim" },
       lazy = false,
       build = ":TSUpdate",
