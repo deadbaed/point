@@ -112,9 +112,6 @@ in
     "firefox"
     "imageoptim" # compress images
     "inkscape"
-    "jordanbaird-ice" # menubar
-    "gauntlet" # raycast alternative
-    "ghostty"
     "handbrake-app"
     "keepassxc"
     "lulu" # firewall
@@ -125,7 +122,6 @@ in
     "paintbrush" # simple image editor
     "pinta"
     "pocket-casts"
-    "raycast"
     "spotify"
     "signal"
     "steam"
@@ -184,6 +180,7 @@ in
     bruno
     cyberduck
     dbeaver-bin
+    ghostty-bin
     # gimp # FIXME: broken
     grandperspective
     josm
