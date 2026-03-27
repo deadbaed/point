@@ -12,10 +12,10 @@
 
   # symlink to config
   # make sure it is writtable for lazy-lock.json
-  xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/vim/nvim/";
-    recursive = true;
-  };
+  xdg.configFile."nvim/init.lua".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/vim/nvim/init.lua";
+  xdg.configFile."nvim/lazy-lock.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/vim/nvim/lazy-lock.json";
 
   # utils
   programs.ripgrep.enable = true;
