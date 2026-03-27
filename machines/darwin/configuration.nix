@@ -1,12 +1,12 @@
 { config, pkgs, lib, ... }:
 let
-  sources = import ./npins;
+  sources = import ../../npins;
   username = "phil";
   tilesize = 30;
 in
 {
   # This must be a full path, or this file should be in `/etc/nix-darwin/configuration.nix`
-  environment.darwinConfig = "/Users/phil/point/configuration.nix";
+  environment.darwinConfig = "/Users/phil/point/machines/darwin/configuration.nix";
 
   # I do not use flakes, and I do not want to use channels
   system.checks.verifyNixPath = false;
@@ -23,7 +23,7 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.${username} = { config, pkgs, ... }: {
-    imports = [ ./home.nix ./home-gui.nix ./home-non-nixos.nix ];
+    imports = [ ../../home.nix ../../home-gui.nix ../../home-non-nixos.nix ];
 
     programs.git.settings.user = {
       name = "Philippe Loctaux";

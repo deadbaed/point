@@ -9,4 +9,7 @@ pkgs.mkShellNoCC {
     nix-output-monitor
     git
   ];
+  env = {
+    NPINS_DIRECTORY = "${builtins.getEnv "HOME"}/point/npins";
+  };
 }

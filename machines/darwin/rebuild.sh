@@ -1,3 +1,6 @@
+#!/bin/sh
+#
+
 sudo darwin-rebuild switch \
 	-I darwin-config=./configuration.nix \
 	-I nixpkgs=$(npins get-path nixpkgs) \
