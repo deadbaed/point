@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 # thank you https://piegames.de/dumps/pinning-nixos-with-npins-revisited/
 {

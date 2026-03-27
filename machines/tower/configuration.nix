@@ -2,18 +2,23 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./npins.nix
-      ./home-manager.nix
-      ./steam.nix
-      ./luks_unlock_ssh.nix
-      ./luks_boot_options.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./npins.nix
+    ./home-manager.nix
+    ./steam.nix
+    ./luks_unlock_ssh.nix
+    ./luks_boot_options.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -33,7 +38,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.phil = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -88,7 +96,10 @@
   programs.mosh.enable = true;
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 22 8080 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    8080
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # Copy the NixOS configuration file and link it from the resulting system
@@ -116,4 +127,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   sources = import ../../npins;
@@ -9,21 +14,23 @@ in
   # home-manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.phil = { config, pkgs, ... }: {
-    imports = [
-      ../../home.nix
-      ../../home-gui.nix
-      (import ../../niri { inherit sources pkgs config; })
-    ];
+  home-manager.users.phil =
+    { config, pkgs, ... }:
+    {
+      imports = [
+        ../../home.nix
+        ../../home-gui.nix
+        (import ../../niri { inherit sources pkgs config; })
+      ];
 
-    programs.git.settings.user = {
-      name = "Philippe Loctaux";
-      email = "p@philippeloctaux.com";
-    };
+      programs.git.settings.user = {
+        name = "Philippe Loctaux";
+        email = "p@philippeloctaux.com";
+      };
 
-    home.sessionVariables = {
-      # Make sure the ssh agent is enabled inside Bitwarden settings
-      SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+      home.sessionVariables = {
+        # Make sure the ssh agent is enabled inside Bitwarden settings
+        SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+      };
     };
-  };
 }

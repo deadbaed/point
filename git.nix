@@ -42,8 +42,9 @@ in
     };
 
     includes = [
-      { # theme for delta
-        path ="${catppuccin-delta}/catppuccin.gitconfig";
+      {
+        # theme for delta
+        path = "${catppuccin-delta}/catppuccin.gitconfig";
       }
     ];
 

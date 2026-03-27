@@ -1,6 +1,6 @@
 {
   sources ? import ../npins,
-  pkgs ? import sources.nixpkgs {},
+  pkgs ? import sources.nixpkgs { },
   config,
 }:
 {
@@ -19,7 +19,8 @@
   services.playerctld.enable = true;
 
   # niri config (symlink to wait less)
-  xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/niri/config.kdl";
+  xdg.configFile."niri/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/niri/config.kdl";
 
   # noctalia-shell
   programs.noctalia-shell = {
@@ -53,160 +54,160 @@
         showOnWorkspaceSwitch = true;
         widgets = {
           left = [
-                {
-                    characterCount = 2;
-                    colorizeIcons = false;
-                    enableScrollWheel = true;
-                    followFocusedScreen = false;
-                    groupedBorderOpacity = 1;
-                    hideUnoccupied = false;
-                    iconScale = 0.8;
-                    id = "Workspace";
-                    labelMode = "none";
-                    showApplications = false;
-                    showLabelsOnlyWhenOccupied = true;
-                    unfocusedIconsOpacity = 1;
-                }
-                {
-                    customFont = "";
-                    formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
-                    formatVertical = "HH mm - dd MM";
-                    id = "Clock";
-                    tooltipFormat = "HH:mm ddd, MMM dd";
-                    useCustomFont = false;
-                    usePrimaryColor = false;
-                }
-                {
-                    colorizeIcons = true;
-                    hideMode = "hidden";
-                    id = "ActiveWindow";
-                    maxWidth = 400;
-                    scrollingMode = "hover";
-                    showIcon = true;
-                    useFixedWidth = false;
-                }
-                {
-                    colorizeIcons = false;
-                    hideMode = "hidden";
-                    iconScale = 0.8;
-                    id = "Taskbar";
-                    maxTaskbarWidth = 40;
-                    onlyActiveWorkspaces = true;
-                    onlySameOutput = true;
-                    showPinnedApps = true;
-                    showTitle = false;
-                    smartWidth = true;
-                    titleWidth = 50;
-                }
+            {
+              characterCount = 2;
+              colorizeIcons = false;
+              enableScrollWheel = true;
+              followFocusedScreen = false;
+              groupedBorderOpacity = 1;
+              hideUnoccupied = false;
+              iconScale = 0.8;
+              id = "Workspace";
+              labelMode = "none";
+              showApplications = false;
+              showLabelsOnlyWhenOccupied = true;
+              unfocusedIconsOpacity = 1;
+            }
+            {
+              customFont = "";
+              formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
+              formatVertical = "HH mm - dd MM";
+              id = "Clock";
+              tooltipFormat = "HH:mm ddd, MMM dd";
+              useCustomFont = false;
+              usePrimaryColor = false;
+            }
+            {
+              colorizeIcons = true;
+              hideMode = "hidden";
+              id = "ActiveWindow";
+              maxWidth = 400;
+              scrollingMode = "hover";
+              showIcon = true;
+              useFixedWidth = false;
+            }
+            {
+              colorizeIcons = false;
+              hideMode = "hidden";
+              iconScale = 0.8;
+              id = "Taskbar";
+              maxTaskbarWidth = 40;
+              onlyActiveWorkspaces = true;
+              onlySameOutput = true;
+              showPinnedApps = true;
+              showTitle = false;
+              smartWidth = true;
+              titleWidth = 50;
+            }
           ];
-          center = [];
+          center = [ ];
           right = [
-                {
-                    compactMode = false;
-                    compactShowAlbumArt = true;
-                    compactShowVisualizer = false;
-                    hideMode = "idle";
-                    hideWhenIdle = false;
-                    id = "MediaMini";
-                    maxWidth = 200;
-                    panelShowAlbumArt = true;
-                    panelShowVisualizer = true;
-                    scrollingMode = "hover";
-                    showAlbumArt = true;
-                    showArtistFirst = false;
-                    showProgressRing = false;
-                    showVisualizer = false;
-                    useFixedWidth = false;
-                    visualizerType = "linear";
-                }
-                {
-                    blacklist = [];
-                    colorizeIcons = false;
-                    drawerEnabled = false;
-                    hidePassive = false;
-                    id = "Tray";
-                    pinned = [];
-                }
-                {
-                    id = "plugin:network-manager-vpn";
-                }
-                {
-                    compactMode = false;
-                    diskPath = "/";
-                    id = "SystemMonitor";
-                    showCpuTemp = true;
-                    showCpuUsage = true;
-                    showDiskUsage = true;
-                    showGpuTemp = false;
-                    showLoadAverage = true;
-                    showMemoryAsPercent = false;
-                    showMemoryUsage = true;
-                    showNetworkStats = true;
-                    useMonospaceFont = true;
-                    usePrimaryColor = false;
-                }
-                {
-                    hideWhenZero = false;
-                    hideWhenZeroUnread = false;
-                    id = "NotificationHistory";
-                    showUnreadBadge = true;
-                }
-                {
-                    deviceNativePath = "";
-                    displayMode = "onhover";
-                    hideIfNotDetected = true;
-                    id = "Battery";
-                    showNoctaliaPerformance = false;
-                    showPowerProfiles = false;
-                    warningThreshold = 30;
-                }
-                {
-                    displayMode = "alwaysShow";
-                    id = "Volume";
-                    middleClickCommand = "pwvucontrol || pavucontrol";
-                }
-                {
-                    displayMode = "onhover";
-                    id = "Brightness";
-                }
-                {
-                    # TODO: is it required?
-                    # defaultSettings = {
-                    #     audioCodec = "opus";
-                    #     audioSource = "default_output";
-                    #     colorRange = "limited";
-                    #     copyToClipboard = false;
-                    #     directory = "";
-                    #     filenamePattern = "recording_yyyyMMdd_HHmmss";
-                    #     frameRate = 60;
-                    #     hideInactive = false;
-                    #     iconColor = "none";
-                    #     quality = "very_high";
-                    #     resolution = "original";
-                    #     showCursor = true;
-                    #     videoCodec = "h264";
-                    #     videoSource = "portal";
-                    # };
-                    id = "plugin:screen-recorder";
-                }
-                {
-                    displayMode = "forceOpen";
-                    id = "KeyboardLayout";
-                    showIcon = true;
-                }
-                {
-                    colorizeDistroLogo = false;
-                    colorizeSystemIcon = "primary";
-                    customIconPath = "";
-                    enableColorization = false;
-                    icon = "noctalia";
-                    id = "ControlCenter";
-                    useDistroLogo = true;
-                }
-                {
-                    colorName = "error";
-                    id = "SessionMenu";
-                }
+            {
+              compactMode = false;
+              compactShowAlbumArt = true;
+              compactShowVisualizer = false;
+              hideMode = "idle";
+              hideWhenIdle = false;
+              id = "MediaMini";
+              maxWidth = 200;
+              panelShowAlbumArt = true;
+              panelShowVisualizer = true;
+              scrollingMode = "hover";
+              showAlbumArt = true;
+              showArtistFirst = false;
+              showProgressRing = false;
+              showVisualizer = false;
+              useFixedWidth = false;
+              visualizerType = "linear";
+            }
+            {
+              blacklist = [ ];
+              colorizeIcons = false;
+              drawerEnabled = false;
+              hidePassive = false;
+              id = "Tray";
+              pinned = [ ];
+            }
+            {
+              id = "plugin:network-manager-vpn";
+            }
+            {
+              compactMode = false;
+              diskPath = "/";
+              id = "SystemMonitor";
+              showCpuTemp = true;
+              showCpuUsage = true;
+              showDiskUsage = true;
+              showGpuTemp = false;
+              showLoadAverage = true;
+              showMemoryAsPercent = false;
+              showMemoryUsage = true;
+              showNetworkStats = true;
+              useMonospaceFont = true;
+              usePrimaryColor = false;
+            }
+            {
+              hideWhenZero = false;
+              hideWhenZeroUnread = false;
+              id = "NotificationHistory";
+              showUnreadBadge = true;
+            }
+            {
+              deviceNativePath = "";
+              displayMode = "onhover";
+              hideIfNotDetected = true;
+              id = "Battery";
+              showNoctaliaPerformance = false;
+              showPowerProfiles = false;
+              warningThreshold = 30;
+            }
+            {
+              displayMode = "alwaysShow";
+              id = "Volume";
+              middleClickCommand = "pwvucontrol || pavucontrol";
+            }
+            {
+              displayMode = "onhover";
+              id = "Brightness";
+            }
+            {
+              # TODO: is it required?
+              # defaultSettings = {
+              #     audioCodec = "opus";
+              #     audioSource = "default_output";
+              #     colorRange = "limited";
+              #     copyToClipboard = false;
+              #     directory = "";
+              #     filenamePattern = "recording_yyyyMMdd_HHmmss";
+              #     frameRate = 60;
+              #     hideInactive = false;
+              #     iconColor = "none";
+              #     quality = "very_high";
+              #     resolution = "original";
+              #     showCursor = true;
+              #     videoCodec = "h264";
+              #     videoSource = "portal";
+              # };
+              id = "plugin:screen-recorder";
+            }
+            {
+              displayMode = "forceOpen";
+              id = "KeyboardLayout";
+              showIcon = true;
+            }
+            {
+              colorizeDistroLogo = false;
+              colorizeSystemIcon = "primary";
+              customIconPath = "";
+              enableColorization = false;
+              icon = "noctalia";
+              id = "ControlCenter";
+              useDistroLogo = true;
+            }
+            {
+              colorName = "error";
+              id = "SessionMenu";
+            }
           ];
         };
         screenOverrides = [ ];
@@ -580,10 +581,10 @@
       };
       templates = {
         activeTemplates = [
-            {
-                enabled = true;
-                id = "niri";
-            }
+          {
+            enabled = true;
+            id = "niri";
+          }
         ];
         enableUserTheming = false;
       };

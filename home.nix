@@ -6,7 +6,8 @@ let
 
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
-in {
+in
+{
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -39,7 +40,7 @@ in {
 
   # NOTE: To set default shell, edit `/etc/shells` to add `/home/$USER/.nix-profile/bin/zsh`
   programs.zsh = {
-  enable = true;
+    enable = true;
     oh-my-zsh = {
       enable = true;
       plugins = [
@@ -65,12 +66,19 @@ in {
     sl = "ls";
     lsa = "ls -la";
     l = "ls -1";
-  } // (if isLinux then {
-      s-u = "systemctl --user";
-      s-ur = "systemctl --user daemon-reload";
-    } else {});
+  }
+  // (
+    if isLinux then
+      {
+        s-u = "systemctl --user";
+        s-ur = "systemctl --user daemon-reload";
+      }
+    else
+      { }
+  );
 
-  home.sessionPath = [ # add directories to PATH
+  home.sessionPath = [
+    # add directories to PATH
     "${config.home.homeDirectory}/.cargo/bin"
   ];
 
@@ -78,7 +86,9 @@ in {
   programs.bat = {
     enable = true;
     themes = {
-      catppuccin = { src = catppuccin-bat; };
+      catppuccin = {
+        src = catppuccin-bat;
+      };
     };
     config = {
       theme = "Catppuccin Latte";
@@ -113,7 +123,8 @@ in {
 
   # terminal multiplexer
   programs.zellij.enable = true;
-  xdg.configFile."zellij/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/zellij.kdl";
+  xdg.configFile."zellij/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/point/zellij.kdl";
 
   # autojump but in rust
   programs.zoxide = {
