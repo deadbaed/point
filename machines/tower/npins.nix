@@ -5,7 +5,7 @@
   nix.channel.enable = false;
   nix.nixPath = [
     "nixpkgs=/etc/nixos/nixpkgs"
-    "nixos-config=/home/phil/point/nixos/tower/configuration.nix"
+    "nixos-config=/home/phil/point/machines/tower/configuration.nix"
   ];
 
   environment.etc = {
