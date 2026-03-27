@@ -1,0 +1,14 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Get Nixpkgs path
+        run: |
+          nixpkgs_path=$(nix eval --raw -f npins/default.nix nixpkgs)
+          echo "NIX_PATH=nixpkgs=$nixpkgs_path" >> "$GITHUB_ENV"
+      - run: nix-shell --run "treefmt --ci"
