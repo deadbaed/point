@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   sources = import ../../npins;
   username = "phil";
@@ -22,18 +27,24 @@ in
   # home-manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.${username} = { config, pkgs, ... }: {
-    imports = [ ../../home.nix ../../home-gui.nix ../../home-non-nixos.nix ];
+  home-manager.users.${username} =
+    { config, pkgs, ... }:
+    {
+      imports = [
+        ../../home.nix
+        ../../home-gui.nix
+        ../../home-non-nixos.nix
+      ];
 
-    programs.git.settings.user = {
-      name = "Philippe Loctaux";
-      email = "p@philippeloctaux.com";
-    };
+      programs.git.settings.user = {
+        name = "Philippe Loctaux";
+        email = "p@philippeloctaux.com";
+      };
 
-    programs.zsh.sessionVariables = {
-      SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+      programs.zsh.sessionVariables = {
+        SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+      };
     };
-  };
 
   nix = {
     optimise.automatic = true;
@@ -43,13 +54,14 @@ in
       experimental-features = "nix-command flakes";
 
       # Additional binary caches
-      substituters = [];
-      trusted-public-keys = [];
+      substituters = [ ];
+      trusted-public-keys = [ ];
     };
   };
 
-  # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
+  environment.shellAliases = {
+    vim = "nvim";
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
@@ -73,9 +85,10 @@ in
 
   # macOS defaults
   system.defaults = {
-    finder = {
-      ShowHardDrivesOnDesktop = true;
-      ShowPathbar = true;
+    WindowManager.EnableStandardClickToShowDesktop = false; # Only on stage manager
+    screensaver = {
+      askForPassword = true;
+      askForPasswordDelay = 0;
     };
 
     dock = {
@@ -83,27 +96,162 @@ in
       magnification = true;
       largesize = tilesize * 3;
       show-recents = false;
-      persistent-others = [
-        { folder = { path = "/Applications/"; showas = "grid"; }; }
-        { folder = { path = "/Users/${username}/Downloads"; arrangement = "date-added"; showas = "fan"; }; }
+      persistent-apps = [
+        {
+          app = "/Applications/Safari.app";
+        }
+        {
+          app = "/Applications/Nix Apps/Ghostty.app";
+        }
+        {
+          app = "/Applications/Spotify.app";
+        }
+        {
+          app = "/System/Applications/Messages.app";
+        }
+        {
+          app = "/System/Applications/Mail.app";
+        }
+        {
+          app = "/System/Applications/Calendar.app";
+        }
+        {
+          app = "/System/Applications/System Settings.app";
+        }
       ];
+      persistent-others = [
+        {
+          folder = {
+            path = "/Applications/";
+            showas = "grid";
+          };
+        }
+        {
+          folder = {
+            path = "/Users/${username}/Downloads";
+            arrangement = "date-added";
+            showas = "fan";
+          };
+        }
+      ];
+
+      # No hot corners
+      wvous-br-corner = 1;
+      wvous-bl-corner = 1;
+      wvous-tl-corner = 1;
+      wvous-tr-corner = 1;
     };
+
+    finder = {
+      ShowHardDrivesOnDesktop = true;
+      ShowExternalHardDrivesOnDesktop = true;
+      ShowMountedServersOnDesktop = true;
+      ShowRemovableMediaOnDesktop = true;
+
+      # Disable warning when changing a file extension
+      FXEnableExtensionChangeWarning = false;
+
+      # Show path bar, and layout as multi-column
+      ShowPathbar = true;
+
+      _FXShowPosixPathInTitle = true; # show full path in finder title
+      _FXSortFoldersFirst = true;
+
+      # Change the default finder view
+      # “icnv” = Icon view, “Nlsv” = List view, “clmv” = Column View, “Flwv” = Gallery View. The default is icnv.
+      FXPreferredViewStyle = "Nlsv";
+      #
+      # # Search in current folder by default
+      # FXDefaultSearchScope = "SCcf";
+
+      NewWindowTarget = "Home";
+    };
+
+    # 18 = Display icon in menu bar
+    # 24 = Hide icon in menu bar
+    controlcenter = {
+      NowPlaying = true;
+      Sound = true;
+    };
+
     menuExtraClock.ShowSeconds = true;
 
     NSGlobalDomain = {
       AppleShowAllFiles = true;
       AppleShowAllExtensions = true;
+
+      AppleWindowTabbingMode = "always";
+
+      # Disable smart dash/period/quote substitutions
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+
+      # Disable automatic capitalization
+      NSAutomaticCapitalizationEnabled = false;
+
+      # Disable automatic spelling correction
+      NSAutomaticSpellingCorrectionEnabled = false;
+
+      # Local save by default
+      NSDocumentSaveNewDocumentsToCloud = false;
+
+      # Extended save panel
+      NSNavPanelExpandedStateForSaveMode = true;
+      NSNavPanelExpandedStateForSaveMode2 = true;
+
+      "com.apple.sound.beep.feedback" = 1;
+    };
+
+    CustomUserPreferences = {
+      "com.apple.Safari" = {
+        ShowFullURLInSmartSearchField = true;
+        AlwaysRestoreSessionAtLaunch = true;
+
+        # Disable auto open safe downloads
+        AutoOpenSafeDownloads = false;
+      };
+    };
+
+    # Stole a lot from https://github.com/hzspyy/dotfiles/blob/188c7e2d110405593e71d3ea03475cfac3c4c97a/configs/nix-darwin/configuration.nix#L155
+    # Thank you!
+    CustomSystemPreferences = {
+      "com.apple.desktopservices" = {
+        # Avoid creating .DS_Store files on USB or network volumes
+        DSDontWriteUSBStores = true;
+        DSDontWriteNetworkStores = true;
+      };
+
+      "com.apple.AdLib" = {
+        # Disable personalized advertising
+        forceLimitAdTracking = true;
+        allowApplePersonalizedAdvertising = false;
+        allowIdentifierForAdvertising = false;
+      };
+
+      "com.apple.Safari" = {
+        SendDoNotTrackHTTPHeader = true;
+
+        # Enable Develop Menu, Web Inspector
+        IncludeDevelopMenu = true;
+        IncludeInternalDebugMenu = true;
+        WebKitDeveloperExtras = true;
+        WebKitDeveloperExtrasEnabledPreferenceKey = true;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
+      };
     };
   };
 
   # homebrew
   homebrew.enable = true;
   environment.systemPath = [ "${config.homebrew.prefix}/bin" ]; # add homebew to PATH
-  homebrew.brews = [ # formulae
+  homebrew.brews = [
+    # formulae
     "mas" # mac app store, https://github.com/mas-cli/mas
     "imagesnap" # catpure images from webcam
   ];
-  homebrew.casks = [ # graphical apps
+  homebrew.casks = [
+    # graphical apps
     "background-music" # control sound of individual apps
     "calibre" # epub
     "cog-app" # audio player
@@ -130,7 +278,8 @@ in
     "veracrypt"
     "whatsapp"
   ];
-  homebrew.masApps = { # mac app store apps
+  homebrew.masApps = {
+    # mac app store apps
     # To find the app name with its id: https://github.com/mas-cli/mas?tab=readme-ov-file#-app-ids
 
     # misc
@@ -160,7 +309,7 @@ in
 
     # iWork
     Numbers = 409203825;
-    Pages   = 409201541;
+    Pages = 409201541;
     Keynote = 409183694;
 
     # iLife
@@ -172,8 +321,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    vim
-
     # gui apps
     appcleaner # unfree license
     audacity
@@ -205,7 +352,8 @@ in
     vscodium
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "appcleaner"
       "numi"
