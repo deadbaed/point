@@ -68,6 +68,15 @@
                     unfocusedIconsOpacity = 1;
                 }
                 {
+                    customFont = "";
+                    formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
+                    formatVertical = "HH mm - dd MM";
+                    id = "Clock";
+                    tooltipFormat = "HH:mm ddd, MMM dd";
+                    useCustomFont = false;
+                    usePrimaryColor = false;
+                }
+                {
                     colorizeIcons = true;
                     hideMode = "hidden";
                     id = "ActiveWindow";
@@ -90,17 +99,7 @@
                     titleWidth = 50;
                 }
           ];
-          center = [
-                {
-                    customFont = "";
-                    formatHorizontal = "dddd yyyy-MM-dd HH:mm:ss";
-                    formatVertical = "HH mm - dd MM";
-                    id = "Clock";
-                    tooltipFormat = "HH:mm ddd, MMM dd";
-                    useCustomFont = false;
-                    usePrimaryColor = false;
-                }
-          ];
+          center = [];
           right = [
                 {
                     compactMode = false;
@@ -127,6 +126,9 @@
                     hidePassive = false;
                     id = "Tray";
                     pinned = [];
+                }
+                {
+                    id = "plugin:network-manager-vpn";
                 }
                 {
                     compactMode = false;
@@ -357,8 +359,8 @@
         autoPasteClipboard = false;
         enableClipPreview = true;
         clipboardWrapText = true;
-        # clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
-        # clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
+        clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
+        clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
         position = "center";
         pinnedApps = [ ];
         useApp2Unit = false;
@@ -366,7 +368,7 @@
         terminalCommand = "ghostty -e";
         customLaunchPrefixEnabled = false;
         customLaunchPrefix = "";
-        viewMode = "grid";
+        viewMode = "list";
         showCategories = false;
         iconMode = "tabler";
         showIconBackground = false;
@@ -624,6 +626,10 @@
       ];
       states = {
         screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        network-manager-vpn = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };

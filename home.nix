@@ -22,6 +22,7 @@ in {
   imports = [
     ./git.nix
     ./vim/nvim
+    ./fonts.nix
   ];
 
   targets.genericLinux.enable = isLinux;
@@ -232,10 +233,6 @@ in {
     # rust utils
     cargo-audit
     cargo-vet
-
-    # misc
-    jetbrains-mono
-    nerd-fonts.jetbrains-mono
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
