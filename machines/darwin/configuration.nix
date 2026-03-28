@@ -346,6 +346,7 @@ in
     stats # stats in menbar
     telegram-desktop
     trgui-ng # transmission frontend
+    unnaturalscrollwheels
     utm
     vlc-bin
     vscodium
