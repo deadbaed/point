@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.opt.cursorline = true
 
 -- colors
-local current_colorscheme = "catppuccin"
+local current_colorscheme = "catppuccin-nvim"
 
 -- border for floating windows
 vim.o.winborder = "single"
@@ -257,7 +257,7 @@ require("lazy").setup({
       opts = {
         options = {
           icons_enabled = true,
-          theme = "catppuccin",
+          theme = "catppuccin-nvim",
           component_separators = "|",
           section_separators = "",
         },
