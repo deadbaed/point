@@ -338,6 +338,7 @@ in
     localsend
     mumble
     net-news-wire
+    neovide
     numi # unfree license
     rectangle
     # rpi-imager # FIXME: broken
