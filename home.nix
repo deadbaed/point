@@ -221,6 +221,7 @@ in
     b3sum # blake3 hashing
     paperkey # pgp keys
     scrcpy # android screen copy
+    zstd # compression
 
     # graphics / audio / video
     ffmpeg
