@@ -263,7 +263,7 @@ in
     "handbrake-app"
     "keepassxc"
     "lulu" # firewall
-    "nextcloud"
+    "opencloud"
     "obs"
     "openmtp" # android file transfer
     "orion" # test web browser
