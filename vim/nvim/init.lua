@@ -642,7 +642,11 @@ require("lazy").setup({
     },
     { -- open nested zip files
       "lbrayner/vim-rzip"
-    }
+    },
+    { -- track time in projects
+      "wakatime/vim-wakatime",
+      lazy = false,
+    },
   },
   install = { colorscheme = { current_colorscheme } },
   checker = { enabled = true },

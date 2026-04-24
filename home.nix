@@ -241,6 +241,7 @@ in
     geckodriver # control web browsers remotely
     util-linux
     attic-client # self hosted nixos cache
+    wakatime-cli # time tracker in projects
 
     # rust utils
     cargo-audit
