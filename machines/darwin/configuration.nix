@@ -273,6 +273,7 @@ in
     "spotify"
     "signal"
     "steam"
+    "thaw" # hide menubar items, "ice" fork
     "tor-browser"
     "transmission" # until nixpkgs has mac gui
     "veracrypt"
