@@ -5,6 +5,14 @@ let
 in
 {
   programs.neovide.enable = true;
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      wakatime.vscode-wakatime
+    ];
+  };
   home.packages =
     with pkgs;
     [
