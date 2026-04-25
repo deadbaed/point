@@ -235,7 +235,8 @@ simplified_ui true
 // Default: default
 //
 // theme "catppuccin-mocha"
-theme "catppuccin-latte"
+// theme "catppuccin-latte"
+theme "ansi" // seems to be good enough on light and dark themes
 
 // Choose the base input mode of zellij.
 // Default: normal
