@@ -6,6 +6,8 @@ let
 
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+
+  rbw = pkgs.rbw;
 in
 {
   # This value determines the Home Manager release that your configuration is
@@ -31,6 +33,7 @@ in
   # bitwarden cli
   programs.rbw = {
     enable = true;
+    package = rbw;
     settings = {
       pinentry = (if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3);
       email = "p@philippeloctaux.com";
@@ -192,6 +195,23 @@ in
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  # wakatime: time tracker in projects
+  home.file.".wakatime.cfg".text = pkgs.lib.generators.toINI { } {
+    settings = {
+      api_url = "https://wakapi.philt3r.eu/api";
+      api_key_vault_cmd = "${pkgs.lib.getExe rbw} get wakapi-api";
+      debug = false;
+      status_bar_enabled = true;
+      status_bar_coding_activity = true;
+      status_bar_hide_categories = true;
+      exclude = "COMMIT_EDITMSG$
+        PULLREQ_EDITMSG$
+        MERGE_MSG$
+        TAG_EDITMSG$
+      ";
+    };
   };
 
   # tools with optional configuration
