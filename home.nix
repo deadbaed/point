@@ -38,6 +38,7 @@ in
       pinentry = (if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3);
       email = "p@philippeloctaux.com";
       base_url = "https://vaultwarden.philt3r.eu";
+      lock_timeout = 3600 * 12; # in seconds
     };
   };
 
