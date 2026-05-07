@@ -6,8 +6,6 @@ let
 
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
-
-  rbw = pkgs.rbw;
 in
 {
   # This value determines the Home Manager release that your configuration is
@@ -23,6 +21,7 @@ in
   programs.home-manager.enable = true;
 
   imports = [
+    (import ./secrets { inherit sources pkgs config; })
     ./git.nix
     ./vim/nvim
     ./fonts.nix
@@ -33,7 +32,7 @@ in
   # bitwarden cli
   programs.rbw = {
     enable = true;
-    package = rbw;
+    package = pkgs.rbw;
     settings = {
       pinentry = (if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3);
       email = "p@philippeloctaux.com";
@@ -199,10 +198,12 @@ in
   };
 
   # wakatime: time tracker in projects
-  home.file.".wakatime.cfg".text = pkgs.lib.generators.toINI { } {
+  age.secrets.wakapi-api.file = ./secrets/wakapi-api.age;
+  home.sessionVariables.WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
+  xdg.configFile."wakatime/.wakatime.cfg".source = (pkgs.formats.ini { }).generate "wakatime-config" {
     settings = {
       api_url = "https://wakapi.philt3r.eu/api";
-      api_key_vault_cmd = "${pkgs.lib.getExe rbw} get wakapi-api";
+      api_key_vault_cmd = pkgs.writeShellScript "cat-wakapi-api-key" "cat ${config.age.secrets.wakapi-api.path}";
       debug = false;
       status_bar_enabled = true;
       status_bar_coding_activity = true;
