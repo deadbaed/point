@@ -793,6 +793,15 @@ vim.lsp.config("nil_ls", {
     }
   }
 })
+vim.lsp.config("nixd", {
+  settings = {
+    nixd = {
+      formatting = {
+        command = { "nixfmt" }
+      }
+    }
+  }
+})
 
 -- lsp: typescript
 local vue_language_server_path = vim.fn.stdpath("data") ..
@@ -857,6 +866,7 @@ vim.lsp.config("vtsls", {
 for _, lspName in ipairs({
   "vtsls",
   "nil_ls",
+  "nixd",
   "sqruff",
   "rust_analyzer",
   "taplo",
