@@ -32,5 +32,9 @@ in
         # Make sure the ssh agent is enabled inside Bitwarden settings
         SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
       };
+
+      home.packages = with pkgs; [
+        firefox
+      ];
     };
 }
