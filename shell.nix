@@ -10,6 +10,10 @@ pkgs.mkShellNoCC {
     git
     nixfmt
     nixfmt-tree
+
+    # lsps
+    luajitPackages.lua-lsp
+    vscode-langservers-extracted # html,css,json,eslint
     nixd
   ];
   env = {

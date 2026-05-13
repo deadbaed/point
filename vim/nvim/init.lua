@@ -314,7 +314,7 @@ require("lazy").setup({
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "oil", "man", "fugitive", "mason", "lazy", "quickfix" }
+        extensions = { "oil", "man", "fugitive", "lazy", "quickfix" }
       },
     },
     { -- netrw replacement
@@ -349,26 +349,6 @@ require("lazy").setup({
         { "<leader>ft", function() require "snacks".picker.todo_comments() end, desc = "Find TODOs" },
         { "]t",         function() require "todo-comments".jump_next() end,     desc = "Next TODO" },
         { "[t",         function() require "todo-comments".jump_prev() end,     desc = "Previous TODO" },
-      },
-    },
-    { -- lsp installer
-      "mason-org/mason.nvim",
-      opts = {},
-    },
-    { -- lsp config with lsp installer
-      "mason-org/mason-lspconfig.nvim",
-      dependencies = {
-        "mason-org/mason.nvim",
-        "neovim/nvim-lspconfig",
-        "b0o/schemastore.nvim", -- JSON schema helper
-      },
-      opts = {
-        ensure_installed = {
-          "lua_ls",
-          "bashls",
-          "jsonls",
-          "html",
-        },
       },
     },
     { -- preview for code actions
@@ -647,6 +627,9 @@ require("lazy").setup({
       "wakatime/vim-wakatime",
       lazy = false,
     },
+    { -- JSON schema helper
+      "b0o/schemastore.nvim"
+    },
   },
   install = { colorscheme = { current_colorscheme } },
   checker = { enabled = true },
@@ -804,6 +787,7 @@ vim.lsp.config("nixd", {
 })
 
 -- lsp: typescript
+-- TODO: find the equivalent way of doing that with nix
 local vue_language_server_path = vim.fn.stdpath("data") ..
     "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 local vue_plugin = {
@@ -870,6 +854,8 @@ for _, lspName in ipairs({
   "sqruff",
   "rust_analyzer",
   "taplo",
+  "jsonls",
+  "html",
 }) do
   vim.lsp.enable(lspName)
 end
