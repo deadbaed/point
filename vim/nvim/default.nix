@@ -22,4 +22,8 @@
   programs.fd.enable = true;
   programs.jq.enable = true;
   programs.gcc.enable = true;
+
+  home.packages = with pkgs; [
+    tree-sitter
+  ];
 }
