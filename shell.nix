@@ -12,6 +12,7 @@ pkgs.mkShellNoCC {
     nixfmt-tree
 
     # lsps
+    lua-language-server
     luajitPackages.lua-lsp
     vscode-langservers-extracted # html,css,json,eslint
     nixd

@@ -89,6 +89,9 @@ require("lazy").setup({
         fallback = "light"
       }
     },
+    { -- lspconfig
+      "neovim/nvim-lspconfig",
+    },
     { -- icons
       "nvim-tree/nvim-web-devicons"
     },
@@ -848,6 +851,7 @@ vim.lsp.config("vtsls", {
 
 -- enable lsps, some need to be enable explicitely
 for _, lspName in ipairs({
+  "lua_ls",
   "vtsls",
   "nil_ls",
   "nixd",
