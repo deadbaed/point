@@ -609,7 +609,8 @@ require("lazy").setup({
     },
     { -- markdown preview
       "OXY2DEV/markview.nvim",
-      event = "VeryLazy",
+      lazy = false,
+      dependencies = { "saghen/blink.cmp" },
     },
     { -- rust crates helper
       "saecki/crates.nvim",
