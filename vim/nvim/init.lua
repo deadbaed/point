@@ -790,24 +790,8 @@ vim.lsp.config("nixd", {
 })
 
 -- lsp: typescript
--- TODO: find the equivalent way of doing that with nix
-local vue_language_server_path = vim.fn.stdpath("data") ..
-    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
-local vue_plugin = {
-  name = "@vue/typescript-plugin",
-  location = vue_language_server_path,
-  languages = { "vue" },
-  configNamespace = "typescript",
-}
-vim.lsp.config("vtsls", {
+local lsp_typescript = {
   settings = {
-    vtsls = {
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
-        },
-      },
-    },
     typescript = {
       inlayHints = {
         enumMemberValues = {
@@ -845,9 +829,33 @@ vim.lsp.config("vtsls", {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue"
   },
-})
+}
+
+-- lsp: vue
+local nix_instantiate_vue_lsp = vim.fn.system({ "nix-instantiate", "--eval-only", "--expr",
+  "(import <nixpkgs> {}).vue-language-server.outPath" })
+local vue_lsp_derivation = nix_instantiate_vue_lsp:sub(2, -3) -- output of nix-instantiate is `"/nix/store/xxxxxxx"\n`
+local vue_lsp_path = vue_lsp_derivation .. "/lib/language-tools/packages/language-server"
+if vim.uv.fs_stat(vue_lsp_path) then
+  -- register vue lsp as a plugin to tsserver if lsp is present
+  local vue_plugin = {
+    name = "@vue/typescript-plugin",
+    location = vue_lsp_path,
+    languages = { "vue" },
+    configNamespace = "typescript",
+  }
+  lsp_typescript.settings.vtsls = {
+    tsserver = {
+      globalPlugins = {
+        vue_plugin,
+      },
+    },
+  }
+  table.insert(lsp_typescript.filetypes, "vue")
+end
+
+vim.lsp.config("vtsls", lsp_typescript)
 
 -- enable lsps, some need to be enable explicitely
 for _, lspName in ipairs({
