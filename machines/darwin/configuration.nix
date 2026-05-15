@@ -278,6 +278,7 @@ in
     "transmission" # until nixpkgs has mac gui
     "veracrypt"
     "whatsapp"
+    "zed"
   ];
   homebrew.masApps = {
     # mac app store apps
