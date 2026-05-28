@@ -9,6 +9,6 @@ jobs:
       - uses: cachix/install-nix-action@v31
       - name: Get Nixpkgs path
         run: |
-          nixpkgs_path=$(nix eval --raw -f npins/default.nix nixpkgs)
+          nixpkgs_path=$(nix eval --raw -f npins/default.nix nixpkgs-unstable)
           echo "NIX_PATH=nixpkgs=$nixpkgs_path" >> "$GITHUB_ENV"
       - run: nix-shell --run "treefmt --ci"
