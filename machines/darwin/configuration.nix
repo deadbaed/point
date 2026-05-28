@@ -18,11 +18,19 @@ in
 
   # Attempt to kill channels
   # Thank you to https://jade.fyi/blog/pinning-nixos-with-npins/
-  nixpkgs.flake.source = sources.nixpkgs;
+  nixpkgs.flake.source = sources."nixpkgs-26.05-darwin";
 
-  imports = [
-    <home-manager/nix-darwin>
-  ];
+  nix = {
+    channel.enable = false;
+    nixPath = [
+      "nixpkgs=${sources."nixpkgs-26.05-darwin"}"
+      "darwin=${sources.nix-darwin}"
+      "home-manager=${sources.home-manager}"
+      "darwin-config=/Users/phil/point/machines/darwin/configuration.nix"
+    ];
+  };
+
+  imports = [ (import "${sources.home-manager}/nix-darwin") ];
 
   # home-manager
   home-manager.useGlobalPkgs = true;
