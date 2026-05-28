@@ -113,10 +113,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v4.7.7",
-      "revision": "32259a8d9357b75c22cbb984e1224e2019830276",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.7",
-      "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0="
+      "version": "v4.7.6",
+      "revision": "2d8acc4aabf5003af1497323dc90d9cea636ed5b",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.6",
+      "hash": "sha256-oGMYWsP0qthxQisirZc/r/vpdGTZrInwkh75AC714AE="
     }
   },
   "version": 7
