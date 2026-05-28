@@ -20,7 +20,7 @@ in
       imports = [
         ../../home.nix
         ../../home-gui.nix
-        (import ../../niri { inherit sources pkgs config; })
+        (import ../../niri { inherit config pkgs; })
       ];
 
       programs.git.settings.user = {
