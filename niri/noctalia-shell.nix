@@ -8,6 +8,8 @@
   imports = [
     (import "${sources.noctalia-shell}/nix/home-module.nix")
   ];
+
+  home.file.".face".source = ../avatar.png;
   home.packages = with pkgs; [
     gpu-screen-recorder
   ];
