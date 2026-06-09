@@ -143,6 +143,10 @@ require("lazy").setup({
     },
     { -- syntax context
       "nvim-treesitter/nvim-treesitter-context",
+      opts = {
+        max_lines = 8,
+        multiline_threshold = 3,
+      },
       config = function()
         vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, sp = "Grey" })
         vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { underline = true, sp = "Grey" })
