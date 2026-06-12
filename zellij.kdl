@@ -232,11 +232,8 @@ load_plugins {
 simplified_ui true
 
 // Choose the theme that is specified in the themes section.
-// Default: default
-//
-// theme "catppuccin-mocha"
-// theme "catppuccin-latte"
-theme "ansi" // seems to be good enough on light and dark themes
+theme_dark "catppuccin-mocha"
+theme_light "catppuccin-latte"
 
 // Choose the base input mode of zellij.
 // Default: normal

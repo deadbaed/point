@@ -83,11 +83,8 @@ require("lazy").setup({
         vim.cmd.colorscheme(current_colorscheme)
       end
     },
-    { -- auto theme switcher
-      "f-person/auto-dark-mode.nvim",
-      opts = {
-        fallback = "light"
-      }
+    { -- lspconfig
+      "neovim/nvim-lspconfig",
     },
     { -- icons
       "nvim-tree/nvim-web-devicons"
@@ -137,26 +134,19 @@ require("lazy").setup({
         },
       },
     },
-    { -- syntax highlight
-      "nvim-treesitter/nvim-treesitter",
-      branch = "master", -- TODO: switch to `main` branch for neovim 0.12
-      dependencies = { "OXY2DEV/markview.nvim" },
-      lazy = false,
-      build = ":TSUpdate",
-      config = function()
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
-          auto_install = true,
-          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "editorconfig", "regex" },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },
-        })
-      end
+    { -- install treesitter queries parsers
+      -- :TSManager
+      "romus204/tree-sitter-manager.nvim",
+      opts = {
+        auto_install = true,
+      },
     },
     { -- syntax context
       "nvim-treesitter/nvim-treesitter-context",
+      opts = {
+        max_lines = 8,
+        multiline_threshold = 3,
+      },
       config = function()
         vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, sp = "Grey" })
         vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { underline = true, sp = "Grey" })
@@ -314,7 +304,7 @@ require("lazy").setup({
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "oil", "man", "fugitive", "mason", "lazy", "quickfix" }
+        extensions = { "oil", "man", "fugitive", "lazy", "quickfix" }
       },
     },
     { -- netrw replacement
@@ -349,26 +339,6 @@ require("lazy").setup({
         { "<leader>ft", function() require "snacks".picker.todo_comments() end, desc = "Find TODOs" },
         { "]t",         function() require "todo-comments".jump_next() end,     desc = "Next TODO" },
         { "[t",         function() require "todo-comments".jump_prev() end,     desc = "Previous TODO" },
-      },
-    },
-    { -- lsp installer
-      "mason-org/mason.nvim",
-      opts = {},
-    },
-    { -- lsp config with lsp installer
-      "mason-org/mason-lspconfig.nvim",
-      dependencies = {
-        "mason-org/mason.nvim",
-        "neovim/nvim-lspconfig",
-        "b0o/schemastore.nvim", -- JSON schema helper
-      },
-      opts = {
-        ensure_installed = {
-          "lua_ls",
-          "bashls",
-          "jsonls",
-          "html",
-        },
       },
     },
     { -- preview for code actions
@@ -626,7 +596,8 @@ require("lazy").setup({
     },
     { -- markdown preview
       "OXY2DEV/markview.nvim",
-      event = "VeryLazy",
+      lazy = false,
+      dependencies = { "saghen/blink.cmp" },
     },
     { -- rust crates helper
       "saecki/crates.nvim",
@@ -646,6 +617,9 @@ require("lazy").setup({
     { -- track time in projects
       "wakatime/vim-wakatime",
       lazy = false,
+    },
+    { -- JSON schema helper
+      "b0o/schemastore.nvim"
     },
   },
   install = { colorscheme = { current_colorscheme } },
@@ -804,23 +778,8 @@ vim.lsp.config("nixd", {
 })
 
 -- lsp: typescript
-local vue_language_server_path = vim.fn.stdpath("data") ..
-    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
-local vue_plugin = {
-  name = "@vue/typescript-plugin",
-  location = vue_language_server_path,
-  languages = { "vue" },
-  configNamespace = "typescript",
-}
-vim.lsp.config("vtsls", {
+local lsp_typescript = {
   settings = {
-    vtsls = {
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
-        },
-      },
-    },
     typescript = {
       inlayHints = {
         enumMemberValues = {
@@ -858,18 +817,45 @@ vim.lsp.config("vtsls", {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue"
   },
-})
+}
+
+-- lsp: vue
+local nix_instantiate_vue_lsp = vim.fn.system({ "nix-instantiate", "--eval-only", "--expr",
+  "(import <nixpkgs> {}).vue-language-server.outPath" })
+local vue_lsp_derivation = nix_instantiate_vue_lsp:sub(2, -3) -- output of nix-instantiate is `"/nix/store/xxxxxxx"\n`
+local vue_lsp_path = vue_lsp_derivation .. "/lib/language-tools/packages/language-server"
+if vim.uv.fs_stat(vue_lsp_path) then
+  -- register vue lsp as a plugin to tsserver if lsp is present
+  local vue_plugin = {
+    name = "@vue/typescript-plugin",
+    location = vue_lsp_path,
+    languages = { "vue" },
+    configNamespace = "typescript",
+  }
+  lsp_typescript.settings.vtsls = {
+    tsserver = {
+      globalPlugins = {
+        vue_plugin,
+      },
+    },
+  }
+  table.insert(lsp_typescript.filetypes, "vue")
+end
+
+vim.lsp.config("vtsls", lsp_typescript)
 
 -- enable lsps, some need to be enable explicitely
 for _, lspName in ipairs({
+  "lua_ls",
   "vtsls",
   "nil_ls",
   "nixd",
   "sqruff",
   "rust_analyzer",
   "taplo",
+  "jsonls",
+  "html",
 }) do
   vim.lsp.enable(lspName)
 end

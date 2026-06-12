@@ -21,4 +21,8 @@
   programs.ripgrep.enable = true;
   programs.fd.enable = true;
   programs.jq.enable = true;
+
+  home.packages = with pkgs; [
+    tree-sitter
+  ];
 }

@@ -1,6 +1,5 @@
 {
-  sources ? import ./npins,
-  pkgs ? import sources.nixpkgs { },
+  pkgs ? import <nixpkgs> { },
 }:
 
 pkgs.mkShellNoCC {
@@ -10,6 +9,11 @@ pkgs.mkShellNoCC {
     git
     nixfmt
     nixfmt-tree
+
+    # lsps
+    lua-language-server
+    luajitPackages.lua-lsp
+    vscode-langservers-extracted # html,css,json,eslint
     nixd
   ];
   env = {

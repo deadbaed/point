@@ -20,7 +20,7 @@ in
       imports = [
         ../../home.nix
         ../../home-gui.nix
-        (import ../../niri { inherit sources pkgs config; })
+        (import ../../niri { inherit config pkgs; })
       ];
 
       programs.git.settings.user = {
@@ -29,8 +29,11 @@ in
       };
 
       home.sessionVariables = {
-        # Make sure the ssh agent is enabled inside Bitwarden settings
-        SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+        SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket";
       };
+
+      home.packages = with pkgs; [
+        firefox
+      ];
     };
 }

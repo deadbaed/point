@@ -1,11 +1,10 @@
 {
-  sources ? import ../npins,
-  pkgs ? import sources.nixpkgs { },
   config,
+  pkgs ? import <nixpkgs> { },
 }:
 {
   imports = [
-    (import ./noctalia-shell.nix { inherit sources pkgs config; })
+    (import ./noctalia-shell.nix { inherit config pkgs; })
   ];
 
   home.packages = with pkgs; [
