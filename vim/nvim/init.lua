@@ -856,6 +856,8 @@ for _, lspName in ipairs({
   "taplo",
   "jsonls",
   "html",
+  "oxlint",
+  "oxfmt",
 }) do
   vim.lsp.enable(lspName)
 end
