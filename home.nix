@@ -263,6 +263,7 @@ in
     util-linux
     attic-client # self hosted nixos cache
     wakatime-cli # time tracker in projects
+    pi-coding-agent # ai agent harness
 
     # rust utils
     cargo-audit
