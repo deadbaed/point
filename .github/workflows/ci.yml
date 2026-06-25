@@ -12,3 +12,19 @@ jobs:
           nixpkgs_path=$(nix eval --raw -f npins/default.nix nixpkgs-unstable)
           echo "NIX_PATH=nixpkgs=$nixpkgs_path" >> "$GITHUB_ENV"
       - run: nix-shell --run "treefmt --ci"
+
+  headless-home-manager-linux-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Build home-manager
+        run: nix-build ./ci.nix -A headless-home-manager-linux-x86_64.activationPackage
+
+  gui-home-manager-linux-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Build home-manager
+        run: nix-build ./ci.nix -A gui-home-manager-linux-x86_64.activationPackage

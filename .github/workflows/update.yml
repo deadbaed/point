@@ -1,0 +1,26 @@
+name: Update
+on:
+  schedule:
+    - cron: '0 6 * * *' # 06:00 every day
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - name: Get Nixpkgs path
+        run: |
+          nixpkgs_path=$(nix eval --raw -f npins/default.nix nixpkgs-unstable)
+          echo "NIX_PATH=nixpkgs=$nixpkgs_path" >> "$GITHUB_ENV"
+      - name: Update sources
+        run: nix-shell -p npins --run "npins update"
+      - name: Create pull request
+        id: create-pull-request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "npins update"
+          title: "npins update"
+          branch: "npins-update"
+          reviewers: deadbaed
