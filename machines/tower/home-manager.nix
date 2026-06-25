@@ -21,12 +21,8 @@ in
         ../../home.nix
         ../../home-gui.nix
         (import ../../niri { inherit config pkgs; })
+        ../../personal-identities.nix
       ];
-
-      programs.git.settings.user = {
-        name = "Philippe Loctaux";
-        email = "p@philippeloctaux.com";
-      };
 
       home.sessionVariables = {
         SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket";
