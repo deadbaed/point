@@ -207,6 +207,14 @@ in
       ui = {
         default-command = "log";
       };
+      aliases.tug = [
+        "bookmark"
+        "move"
+        "--from"
+        "heads(::@- & bookmarks())"
+        "--to"
+        "@-"
+      ];
     };
   };
 
@@ -284,6 +292,7 @@ in
     util-linux
     attic-client # self hosted nixos cache
     wakatime-cli # time tracker in projects
+    jjui # jj user interface
 
     # rust utils
     cargo-audit
