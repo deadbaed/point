@@ -47,13 +47,7 @@ in
       enable = true;
       plugins = [
         "git"
-        "virtualenv"
-        "timer"
       ];
-    };
-    sessionVariables = {
-      TIMER_FORMAT = "took: %d";
-      TIMER_THRESHOLD = "10";
     };
     initContent = ''
       rand_str() { len=''${1:-32}; LC_ALL=C ${pkgs.coreutils}/bin/tr -dc A-Za-z0-9 < /dev/urandom | ${pkgs.coreutils}/bin/head -c "$len"; ${pkgs.coreutils}/bin/echo }
@@ -83,8 +77,16 @@ in
       }
       compdef _with with
     '';
+  };
 
-    # TODO: redo prompt: show plugins (figure out a way for virtualenv)
+  # Fancy prompt
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    presets = [ "nerd-font-symbols" ];
+    settings = {
+      direnv.disabled = false;
+    };
   };
 
   home.shellAliases = {
