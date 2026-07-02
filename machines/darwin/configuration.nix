@@ -42,12 +42,8 @@ in
         ../../home.nix
         ../../home-gui.nix
         ../../home-non-nixos.nix
+        ../../personal-identities.nix
       ];
-
-      programs.git.settings.user = {
-        name = "Philippe Loctaux";
-        email = "p@philippeloctaux.com";
-      };
 
       programs.zsh.sessionVariables = {
         SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";

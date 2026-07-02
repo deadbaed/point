@@ -47,19 +47,46 @@ in
       enable = true;
       plugins = [
         "git"
-        "virtualenv"
-        "timer"
       ];
-    };
-    sessionVariables = {
-      TIMER_FORMAT = "took: %d";
-      TIMER_THRESHOLD = "10";
     };
     initContent = ''
       rand_str() { len=''${1:-32}; LC_ALL=C ${pkgs.coreutils}/bin/tr -dc A-Za-z0-9 < /dev/urandom | ${pkgs.coreutils}/bin/head -c "$len"; ${pkgs.coreutils}/bin/echo }
-    '';
 
-    # TODO: redo prompt: show plugins (figure out a way for virtualenv)
+      # Enter inside nix-shells without losing current shell
+      with () {
+        local opt=()
+        if type nm-online >/dev/null && ! nm-online --quiet --timeout=0; then
+          opt=(--option substitute false)
+        fi;
+        if [[ $# -ge 1 ]] ; then
+          nix-shell $opt -p "$@" --run "exec zsh" ;
+        else
+          if [[ -e shell.nix ]]; then
+            nix-shell $opt --run "exec zsh" ;
+          else
+            if [[ -e flake.nix ]]; then
+              nix --extra-experimental-features nix-command --extra-experimental-features flakes develop $opt -c zsh
+            fi
+          fi
+        fi;
+      }
+      _with () {
+        words[1,1]=(nix-shell -p)
+        CURRENT+=1
+        _nix-shell
+      }
+      compdef _with with
+    '';
+  };
+
+  # Fancy prompt
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    presets = [ "nerd-font-symbols" ];
+    settings = {
+      direnv.disabled = false;
+    };
   };
 
   home.shellAliases = {
@@ -179,13 +206,17 @@ in
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        name = "Philippe Loctaux";
-        email = "p@philippeloctaux.com";
-      };
       ui = {
         default-command = "log";
       };
+      aliases.tug = [
+        "bookmark"
+        "move"
+        "--from"
+        "heads(::@- & bookmarks())"
+        "--to"
+        "@-"
+      ];
     };
   };
 
@@ -264,6 +295,7 @@ in
     attic-client # self hosted nixos cache
     wakatime-cli # time tracker in projects
     pi-coding-agent # ai agent harness
+    jjui # jj user interface
 
     # rust utils
     cargo-audit
