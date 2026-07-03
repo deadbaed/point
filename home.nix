@@ -83,7 +83,10 @@ in
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    presets = [ "nerd-font-symbols" ];
+    presets = [
+      "nerd-font-symbols"
+      "no-runtime-versions"
+    ];
     settings = {
       direnv.disabled = false;
     };
