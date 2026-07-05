@@ -25,6 +25,7 @@ in
     ./git.nix
     ./vim/nvim
     ./fonts.nix
+    ./helix.nix
   ];
 
   targets.genericLinux.enable = isLinux;
