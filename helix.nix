@@ -10,6 +10,8 @@
           display-progress-messages = true;
           display-inlay-hints = true;
         };
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics.cursor-line = "warning";
       };
     };
   };
