@@ -20,6 +20,14 @@ in
   # Thank you to https://jade.fyi/blog/pinning-nixos-with-npins/
   nixpkgs.flake.source = sources."nixpkgs-26.05-darwin";
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      mactrix =
+        final.callPackage (import "${sources.pr-mactrix}/pkgs/by-name/ma/mactrix/package.nix")
+          { };
+    })
+  ];
+
   nix = {
     channel.enable = false;
     nixPath = [
@@ -342,6 +350,7 @@ in
     keycastr
     libreoffice-bin
     localsend
+    mactrix
     mumble
     net-news-wire
     neovide

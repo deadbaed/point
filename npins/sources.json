@@ -96,6 +96,19 @@
       "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1004717.dad03392cd65/nixexprs.tar.xz",
       "hash": "sha256-Xkl06RiR7GVS0LWGESGcrCUhXV+omh337pxTBcQyWos="
     },
+    "pr-mactrix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "deadbaed",
+        "repo": "nixpkgs"
+      },
+      "branch": "mactrix",
+      "submodules": false,
+      "revision": "2eab2ae02f322d863eff0895911b028602d3d6ea",
+      "url": "https://github.com/deadbaed/nixpkgs/archive/2eab2ae02f322d863eff0895911b028602d3d6ea.tar.gz",
+      "hash": "sha256-d7JGscqttSsjqjo90dYIhRSq9FYzrBB3VtV0YiB9cDc="
+    },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
