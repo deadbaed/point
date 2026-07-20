@@ -212,6 +212,7 @@ in
     settings = {
       ui = {
         default-command = "log";
+        pager = "less";
       };
       aliases.tug = [
         "bookmark"
