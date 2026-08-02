@@ -213,6 +213,7 @@ in
       ui = {
         default-command = "log";
         pager = "less";
+        diff-editor = ":builtin";
       };
       aliases.tug = [
         "bookmark"
