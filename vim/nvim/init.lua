@@ -599,6 +599,13 @@ require("lazy").setup({
     { -- JSON schema helper
       "b0o/schemastore.nvim"
     },
+    { -- center buffer
+      "shortcuts/no-neck-pain.nvim",
+      version = "*",
+      opts = {
+        width = 150,
+      },
+    },
   },
   install = { colorscheme = { current_colorscheme } },
   checker = { enabled = true },
