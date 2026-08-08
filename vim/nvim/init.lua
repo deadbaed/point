@@ -110,7 +110,9 @@ require("lazy").setup({
     },
     { -- discover vim motions
       "tris203/precognition.nvim",
-      opts = {},
+      opts = {
+        showBlankVirtLine = false,
+      },
     },
     { -- install treesitter queries parsers
       -- :TSManager
