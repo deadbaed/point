@@ -608,10 +608,21 @@ require("lazy").setup({
         width = 150,
       },
     },
+    { -- put correct nix hashes
+      "symphorien/vim-nixhash"
+    },
   },
   install = { colorscheme = { current_colorscheme } },
   checker = { enabled = true },
 })
+
+-- nixhash configuration
+vim.g.nixhash_disable_bindings = true
+vim.keymap.set("n",
+  "<leader>nh",
+  "<Plug>nixhash_random_sri_hash",
+  { desc = "Insert random SRI hash" }
+)
 
 -- key mappings
 vim.keymap.set("n", "<leader>jm", ":%!jq -c<CR>", { desc = "Json Minify buffer" })
