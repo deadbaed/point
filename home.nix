@@ -302,6 +302,7 @@ in
     wakatime-cli # time tracker in projects
     pi-coding-agent # ai agent harness
     jjui # jj user interface
+    nix-output-monitor # pretty nix builds
 
     # rust utils
     cargo-audit
