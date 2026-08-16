@@ -183,7 +183,7 @@ require("lazy").setup({
         { "<leader>fh",      function() require "snacks".picker.help() end,                                               desc = "Find Help" },
         { "<leader>fd",      function() require "snacks".picker.diagnostics({ focus = "list" }) end,                      desc = "Diagnostics in file" },
         { "<leader>bd",      function() require "snacks".bufdelete() end,                                                 desc = "Buffer Delete" },
-        { "<leader>n",       function() require "snacks".picker.notifications() end,                                      desc = "Notification History" },
+        { "<leader>no",      function() require "snacks".picker.notifications() end,                                      desc = "Notification History" },
         { "<leader>u",       function() require "snacks".picker.undo({ focus = "list" }) end,                             desc = "Undo History" },
         { "<leader>:",       function() require "snacks".picker.command_history() end,                                    desc = "Command History" },
         { "<leader>,",       function() require "snacks".picker.buffers({ layout = { preset = "vscode" } }) end,          desc = "Find Opened buffers" },
