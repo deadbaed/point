@@ -35,9 +35,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "74b47a345638a2f19b3e5bdb9d7e4984066f9ac7",
-      "url": "https://github.com/catppuccin/delta/archive/74b47a345638a2f19b3e5bdb9d7e4984066f9ac7.tar.gz",
-      "hash": "sha256-NjqqB/BHqduiNWKeksiRZUMfjRUodJlsVu1yaEIZRsM="
+      "revision": "011516f5d14f66b771b3e716f29c77231e008c74",
+      "url": "https://github.com/catppuccin/delta/archive/011516f5d14f66b771b3e716f29c77231e008c74.tar.gz",
+      "hash": "sha256-lztkxX9O41YossvRzpR7tqxMhDNT1Efy2JvkCwtsiXQ="
     },
     "catppuccin-lsd": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "release-26.05",
       "submodules": false,
-      "revision": "b179bde238977f7d4454fc770b1a727eaf55111c",
-      "url": "https://github.com/nix-community/home-manager/archive/b179bde238977f7d4454fc770b1a727eaf55111c.tar.gz",
-      "hash": "sha256-RUkMrREjKDQrA+dA9+xZviGAxM5W1aVdyOr/bSYpHrE="
+      "revision": "09ae1b85a6db412d841d60f924b23f881f0d0a38",
+      "url": "https://github.com/nix-community/home-manager/archive/09ae1b85a6db412d841d60f924b23f881f0d0a38.tar.gz",
+      "hash": "sha256-hftabkb+73OcGzvwFAjCiQorAhprs9TnU1+FkGO5CIw="
     },
     "nix-darwin": {
       "type": "Git",
@@ -74,46 +74,33 @@
       },
       "branch": "nix-darwin-26.05",
       "submodules": false,
-      "revision": "56c666e108467d87d13508936aade6d567f2a501",
-      "url": "https://github.com/nix-darwin/nix-darwin/archive/56c666e108467d87d13508936aade6d567f2a501.tar.gz",
-      "hash": "sha256-zXcwYQGCT6pzinK+1dBB2ekTVtfxGZAapb3Evdcu4fY="
+      "revision": "c3e90c89649b07d1a96e4b9dd6cd0d6e44b91a74",
+      "url": "https://github.com/nix-darwin/nix-darwin/archive/c3e90c89649b07d1a96e4b9dd6cd0d6e44b91a74.tar.gz",
+      "hash": "sha256-2cp6N3rrwnGYLTx9l6N+NI+kwrCWxvJUbj5WJhvB29A="
     },
     "nixos-26.05": {
       "type": "Channel",
       "name": "nixos-26.05",
-      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05beta1.705e9929918b/nixexprs.tar.xz",
-      "hash": "sha256-6lZN0CPBbeK9UVgFQ8EV4t2qSVQPhhlerFBGZRiz73Y="
+      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.7813.0dd31db7e6db/nixexprs.tar.xz",
+      "hash": "sha256-eVWN0FVPJSK7wgm9SxzFwd6FNRWoJN2oAe3M6MbpZ8U="
     },
     "nixos-26.05-small": {
       "type": "Channel",
       "name": "nixos-26.05-small",
-      "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05beta516.8d2b13b41ca2/nixexprs.tar.xz",
-      "hash": "sha256-Pc+RSm/REHCnr2XYXFxiUUSu9vUHnvWNMF8zQevsZbc="
+      "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.7984.c69ae8fb8fae/nixexprs.tar.xz",
+      "hash": "sha256-BtjA305+pzVvxvVqBwlmJlRt39BKlvK6vx3pOhZF2Jo="
     },
     "nixpkgs-26.05-darwin": {
       "type": "Channel",
       "name": "nixpkgs-26.05-darwin",
-      "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1004717.dad03392cd65/nixexprs.tar.xz",
-      "hash": "sha256-Xkl06RiR7GVS0LWGESGcrCUhXV+omh337pxTBcQyWos="
-    },
-    "pr-mactrix": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "deadbaed",
-        "repo": "nixpkgs"
-      },
-      "branch": "mactrix",
-      "submodules": false,
-      "revision": "2eab2ae02f322d863eff0895911b028602d3d6ea",
-      "url": "https://github.com/deadbaed/nixpkgs/archive/2eab2ae02f322d863eff0895911b028602d3d6ea.tar.gz",
-      "hash": "sha256-d7JGscqttSsjqjo90dYIhRSq9FYzrBB3VtV0YiB9cDc="
+      "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1012102.33da5f36e599/nixexprs.tar.xz",
+      "hash": "sha256-pZqBmBBjVeaxmFGe1bwfyaN9PyGg8KKEelN/UCw3gEg="
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1006043.4100e830e085/nixexprs.tar.xz",
-      "hash": "sha256-24YGUZ9p3uLeDBGS5Nc8V7Rt5PaRg1vZ+rnfSuBW7hM="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1056542.f4b6996c4e8b/nixexprs.tar.xz",
+      "hash": "sha256-tkD1h/1jLJ6qZHjG7/TOZT1qqI1ej3VPPCufHQyv1Uo="
     },
     "noctalia-shell": {
       "type": "GitRelease",
@@ -126,10 +113,23 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v4.7.6",
-      "revision": "2d8acc4aabf5003af1497323dc90d9cea636ed5b",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.6",
-      "hash": "sha256-oGMYWsP0qthxQisirZc/r/vpdGTZrInwkh75AC714AE="
+      "version": "v4.7.7",
+      "revision": "32259a8d9357b75c22cbb984e1224e2019830276",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.7",
+      "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0="
+    },
+    "pr-mactrix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "deadbaed",
+        "repo": "nixpkgs"
+      },
+      "branch": "mactrix",
+      "submodules": false,
+      "revision": "c49f2094d5bf475da024a0e132ab4e12790d61ff",
+      "url": "https://github.com/deadbaed/nixpkgs/archive/c49f2094d5bf475da024a0e132ab4e12790d61ff.tar.gz",
+      "hash": "sha256-5P+mX4iCLqc5YvYZIwVI5BdZ8xHEvzVAgvcojUIOU0M="
     }
   },
   "version": 7
