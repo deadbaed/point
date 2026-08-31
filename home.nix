@@ -223,6 +223,18 @@ in
         "--to"
         "@-"
       ];
+      # thank you https://ddbeck.com/notes/jj-git-push-bookmark-template/
+      template-aliases."slugify(str)" = ''
+        truncate_end(
+            65,
+            str.first_line()
+            .replace(regex:'[^[[:alnum:]].]', '_')
+            .replace(regex:'-{2,}', '_')
+            .replace(regex:'\.{2,}', '.')
+            .replace(regex:"(^-+|-+$)", "")
+            .lower()
+            )
+      '';
     };
   };
 
