@@ -1,10 +1,14 @@
 {
   pkgs ? import <nixpkgs> { },
+  sources ? import ./npins,
 }:
 
+let
+  unstable = import sources.nixpkgs-unstable { };
+in
 pkgs.mkShellNoCC {
   packages = with pkgs; [
-    npins
+    unstable.pkgs.npins
     nix-output-monitor
     git
     nixfmt
