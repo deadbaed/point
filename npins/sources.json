@@ -103,8 +103,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1059855.174eb786fb68/nixexprs.tar.xz",
-      "hash": "sha256-SpMiSe9OSfWseGAupsdcED3He9mTYTbGMtWb7EVt6pE="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1063758.e8be7818e19a/nixexprs.tar.xz",
+      "hash": "sha256-qeiZaY+0tpZXliRA9odCNx+sOfIOhnkcUq9t+ctPrRA="
     },
     "noctalia-shell": {
       "type": "GitRelease",
@@ -121,19 +121,6 @@
       "revision": "32259a8d9357b75c22cbb984e1224e2019830276",
       "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.7",
       "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0="
-    },
-    "pr-mactrix": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "deadbaed",
-        "repo": "nixpkgs"
-      },
-      "branch": "mactrix",
-      "submodules": false,
-      "revision": "f2fbaa1fd3412904838d13fe02b4a5f2392baad2",
-      "url": "https://github.com/deadbaed/nixpkgs/archive/f2fbaa1fd3412904838d13fe02b4a5f2392baad2.tar.gz",
-      "hash": "sha256-ZMl1GRzUFpp9fbP9e5ZYKxRLxyH3niBFURE9caD/A+s="
     }
   },
   "version": 8

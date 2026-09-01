@@ -23,7 +23,7 @@ in
   nixpkgs.overlays = [
     (final: prev: {
       mactrix =
-        final.callPackage (import "${sources.pr-mactrix}/pkgs/by-name/ma/mactrix/package.nix")
+        final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/ma/mactrix/package.nix")
           { };
     })
   ];
