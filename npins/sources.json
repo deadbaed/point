@@ -81,24 +81,28 @@
     "nixos-26.05": {
       "type": "Channel",
       "name": "nixos-26.05",
+      "artifact": "nixexprs.tar.xz",
       "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.8334.a3b98866eecd/nixexprs.tar.xz",
       "hash": "sha256-025An4mAUD6c++o1CFnUhajUJZQJSXRjIxhIGbsPOQ8="
     },
     "nixos-26.05-small": {
       "type": "Channel",
       "name": "nixos-26.05-small",
+      "artifact": "nixexprs.tar.xz",
       "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.8417.3d800596f301/nixexprs.tar.xz",
       "hash": "sha256-hA1lOGNENObbxoCywZjbh0gS/OLVnQUwqiVfszSEj58="
     },
     "nixpkgs-26.05-darwin": {
       "type": "Channel",
       "name": "nixpkgs-26.05-darwin",
+      "artifact": "nixexprs.tar.xz",
       "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1012692.3dff45fe84c7/nixexprs.tar.xz",
       "hash": "sha256-LsBBiUDwVRTxQIsdQtZhcukv4L5MgAx5utcwSYuQf3g="
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
+      "artifact": "nixexprs.tar.xz",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1059855.174eb786fb68/nixexprs.tar.xz",
       "hash": "sha256-SpMiSe9OSfWseGAupsdcED3He9mTYTbGMtWb7EVt6pE="
     },
@@ -132,5 +136,5 @@
       "hash": "sha256-ZMl1GRzUFpp9fbP9e5ZYKxRLxyH3niBFURE9caD/A+s="
     }
   },
-  "version": 7
+  "version": 8
 }
