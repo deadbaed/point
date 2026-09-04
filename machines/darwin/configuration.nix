@@ -110,7 +110,7 @@ in
       show-recents = false;
       persistent-apps = [
         {
-          app = "/Applications/Safari.app";
+          app = "/System/Cryptexes/App/System/Applications/Safari.app";
         }
         {
           app = "/Applications/Nix Apps/Ghostty.app";
@@ -122,10 +122,25 @@ in
           app = "/System/Applications/Messages.app";
         }
         {
+          app = "/Applications/Nix Apps/Mactrix.app";
+        }
+        {
           app = "/System/Applications/Mail.app";
         }
         {
           app = "/System/Applications/Calendar.app";
+        }
+        {
+          app = "/System/Applications/Notes.app";
+        }
+        {
+          app = "/Applications/Nix Apps/Neovide.app";
+        }
+        {
+          app = "/Applications/Nix Apps/NetNewsWire.app";
+        }
+        {
+          app = "/Applications/Home Assistant.app";
         }
         {
           app = "/System/Applications/System Settings.app";
