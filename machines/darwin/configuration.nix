@@ -25,6 +25,9 @@ in
       mactrix =
         final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/ma/mactrix/package.nix")
           { };
+      pi-coding-agent =
+        final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/pi/pi-coding-agent/package.nix")
+          { };
     })
   ];
 
