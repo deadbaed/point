@@ -857,7 +857,8 @@ for _, lspName in ipairs({
   "oxlint",
   "oxfmt",
   "basedpyright",
-  "ruff"
+  "ruff",
+  "sourcekit" -- swift
 }) do
   vim.lsp.enable(lspName)
 end
