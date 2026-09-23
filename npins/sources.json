@@ -120,7 +120,8 @@
       "version": "v4.7.7",
       "revision": "32259a8d9357b75c22cbb984e1224e2019830276",
       "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.7",
-      "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0="
+      "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0=",
+      "frozen": true
     }
   },
   "version": 8
