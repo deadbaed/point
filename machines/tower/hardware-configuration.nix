@@ -27,7 +27,10 @@
     "cryptd"
   ];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS_LUKS";
-  boot.kernelModules = [ ];
+  boot.kernelModules = [
+    "kvm"
+    "kvm-amd"
+  ];
   boot.extraModulePackages = [ ];
 
   ## wifi card

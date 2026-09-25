@@ -61,6 +61,9 @@
     lnav
     bottom
     nix-output-monitor
+    ghostty.terminfo
+    gh
+    nixpkgs-review
   ];
 
   programs.direnv.enable = true;
