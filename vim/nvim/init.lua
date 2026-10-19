@@ -786,7 +786,7 @@ local lsp_typescript = {
         functionLikeReturnTypes = {
           enabled = true,
         },
-        parameterNames = { enabled = "all" },
+        parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
         parameterTypes = {
           enabled = true,
           suppressWhenArgumentMatchesName = true,
@@ -796,6 +796,7 @@ local lsp_typescript = {
         },
         variableTypes = {
           enabled = true,
+          suppressWhenTypeMatchesName = true,
         },
       },
     },
@@ -832,6 +833,9 @@ if vim.uv.fs_stat(vue_lsp_path) then
     configNamespace = "typescript",
   }
   lsp_typescript.settings.vtsls = {
+    experimental = {
+      maxInlayHintLength = 50
+    },
     tsserver = {
       globalPlugins = {
         vue_plugin,
