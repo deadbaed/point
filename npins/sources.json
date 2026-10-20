@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "3daa710894355fa2fad8243380af373a2b4046ef",
-      "url": "https://github.com/ryantm/agenix/archive/3daa710894355fa2fad8243380af373a2b4046ef.tar.gz",
-      "hash": "sha256-n7wew722m1OTBT9DOIMxNX/NF4zfsSUABAO5eW3wikE="
+      "revision": "5e5b88a0c8e56f291a108c2fe9934054d9745b2e",
+      "url": "https://github.com/ryantm/agenix/archive/5e5b88a0c8e56f291a108c2fe9934054d9745b2e.tar.gz",
+      "hash": "sha256-8tKjSQajD3mUND1GaAuaWTcuyUpgcGsh5V+l4ibzC7U="
     },
     "catppuccin-bat": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "release-26.05",
       "submodules": false,
-      "revision": "db7d5e2332710f5abb088f6b5de927d7f9511b35",
-      "url": "https://github.com/nix-community/home-manager/archive/db7d5e2332710f5abb088f6b5de927d7f9511b35.tar.gz",
-      "hash": "sha256-f+kOxEmOUnQazVAmGg0i8hzwgd1kX/geY+k/Dpheye8="
+      "revision": "24f8f8e786f87d6a818e1746cb2389bf922afdab",
+      "url": "https://github.com/nix-community/home-manager/archive/24f8f8e786f87d6a818e1746cb2389bf922afdab.tar.gz",
+      "hash": "sha256-5mQQOcggBRBXB7NlzUxO0dbvQN4euJOISjNybrtfxPk="
     },
     "nix-darwin": {
       "type": "Git",
@@ -82,29 +82,29 @@
       "type": "Channel",
       "name": "nixos-26.05",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.11275.b25309931cfd/nixexprs.tar.xz",
-      "hash": "sha256-MtUTNbeLCAWGgY7Bt9adNUEkiY5Uv7POO1gP8ClVhQY="
+      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12250.f3a73bcf5d1c/nixexprs.tar.xz",
+      "hash": "sha256-9vaC514eu0ogJHxt6A0qQLtdfqHA15OnBVEstArd2NY="
     },
     "nixos-26.05-small": {
       "type": "Channel",
       "name": "nixos-26.05-small",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.11281.c71914ac4db6/nixexprs.tar.xz",
-      "hash": "sha256-0fq0AhuSosn39XZeQ/7wuUuVZTZpWX1TLRczO1z2LHM="
+      "url": "https://releases.nixos.org/nixos/26.05-small/nixos-26.05.12295.7816d39daadb/nixexprs.tar.xz",
+      "hash": "sha256-agtqHNlrh7z6iYuVoH+2ZUbRwJWV9T073iUKmAQOyLc="
     },
     "nixpkgs-26.05-darwin": {
       "type": "Channel",
       "name": "nixpkgs-26.05-darwin",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1015562.2bd3427b41d1/nixexprs.tar.xz",
-      "hash": "sha256-0LJ61OirLSJQvxTyd9uo7XbF6LiBDn0E6t/9ciUTeQ4="
+      "url": "https://releases.nixos.org/nixpkgs/26.05-darwin/nixpkgs-darwin-26.05pre1016556.c4e5bcc625bd/nixexprs.tar.xz",
+      "hash": "sha256-dGJyYwsSWU5uXHfNSJXBi5HU4l/86uT4oP9CwTTJqvU="
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1085827.aa48d3470809/nixexprs.tar.xz",
-      "hash": "sha256-R4B+RRYmze9htmPZ8xeF19mchTSH99GdaqanKCW8CF8="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1097569.e513db7b0a65/nixexprs.tar.xz",
+      "hash": "sha256-jWdazKTNUOJQ3KE+9BAvpBOo6THrD0Qyb3S8F2GduUI="
     },
     "noctalia-shell": {
       "type": "GitRelease",
