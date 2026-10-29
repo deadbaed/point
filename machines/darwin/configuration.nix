@@ -23,7 +23,7 @@ in
   nixpkgs.overlays = [
     (final: prev: {
       mactrix =
-        final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/ma/mactrix/package.nix")
+        final.callPackage (import "${sources.nixpkgs-mactrix-050}/pkgs/by-name/ma/mactrix/package.nix")
           { };
       pi-coding-agent =
         final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/pi/pi-coding-agent/package.nix")
