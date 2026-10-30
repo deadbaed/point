@@ -83,6 +83,10 @@ require("lazy").setup({
         vim.cmd.colorscheme(current_colorscheme)
       end
     },
+    { -- local project configuration
+      "klen/nvim-config-local",
+      opts = {},
+    },
     { -- lspconfig
       "neovim/nvim-lspconfig",
     },
