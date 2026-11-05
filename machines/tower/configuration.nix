@@ -39,9 +39,10 @@
   users.users.phil = {
     isNormalUser = true;
     extraGroups = [
-      "wheel"
+      "wheel" # Enable 'sudo' for the user.
       "networkmanager"
-    ]; # Enable ‘sudo’ for the user.
+      "libvirtd"
+    ];
     packages = with pkgs; [
       tree
     ];
@@ -98,6 +99,7 @@
 
   services.openssh.enable = true;
   programs.mosh.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   # Firewall
   networking.firewall.allowedTCPPorts = [
