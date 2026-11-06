@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    (import ./noctalia-shell.nix { inherit config pkgs; })
+    (import ./noctalia/noctalia.nix { inherit config pkgs; })
   ];
 
   home.packages = with pkgs; [
