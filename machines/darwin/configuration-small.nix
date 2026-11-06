@@ -19,7 +19,13 @@ in
   # Thank you to https://jade.fyi/blog/pinning-nixos-with-npins/
   nixpkgs.flake.source = sources."nixpkgs-26.05-darwin";
 
-  nixpkgs.overlays = [ ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      pi-coding-agent =
+        final.callPackage (import "${sources.nixpkgs-unstable}/pkgs/by-name/pi/pi-coding-agent/package.nix")
+          { };
+    })
+  ];
 
   nix = {
     channel.enable = false;
@@ -44,6 +50,10 @@ in
         ../../home-gui.nix
         ../../home-non-nixos.nix
         ../../personal-identities.nix
+      ];
+
+      home.packages = with pkgs; [
+        pi-coding-agent # ai agent harness
       ];
     };
 
