@@ -20,6 +20,15 @@
     ./luks_boot_options.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      riff-client =
+        prev.callPackage
+          (builtins.fetchurl "https://raw.githubusercontent.com/NixOS/nixpkgs/refs/pull/580358/head/pkgs/by-name/ri/riff-client/package.nix")
+          { };
+    })
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

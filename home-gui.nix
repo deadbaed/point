@@ -22,6 +22,7 @@ in
       if isLinux then
         [
           pkgs.bitwarden-desktop
+          pkgs.riff-client
         ]
       else
         [
