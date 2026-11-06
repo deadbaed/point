@@ -9,7 +9,10 @@ let
   sources = import ../../npins;
 in
 {
-  imports = [ (import "${sources.home-manager}/nixos") ];
+  imports = [
+    (import "${sources.home-manager}/nixos")
+    (import ../../niri/noctalia/noctalia-nixos.nix) # enable NixOS options useful for noctalia
+  ];
 
   # home-manager
   home-manager.useGlobalPkgs = true;
