@@ -247,7 +247,10 @@ in
 
   # wakatime: time tracker in projects
   age.secrets.wakapi-api.file = ./secrets/wakapi-api.age;
-  home.sessionVariables.WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
+  home.sessionVariables = {
+    WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
+    WAKATIME_API_KEY_FILE = "${config.age.secrets.wakapi-api.path}";
+  };
   xdg.configFile."wakatime/.wakatime.cfg".source = (pkgs.formats.ini { }).generate "wakatime-config" {
     settings = {
       api_url = "https://wakapi.philt3r.eu/api";

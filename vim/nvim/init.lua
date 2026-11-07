@@ -601,6 +601,12 @@ require("lazy").setup({
     { -- track time in projects
       "wakatime/vim-wakatime",
       lazy = false,
+      enabled = function()
+        local file = vim.env.WAKATIME_API_KEY_FILE
+        return file ~= nil and file ~= ""
+          and vim.fn.filereadable(file) == 1
+          and vim.fn.getfsize(file) > 0
+      end,
     },
     { -- JSON schema helper
       "b0o/schemastore.nvim"
