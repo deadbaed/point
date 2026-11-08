@@ -605,7 +605,7 @@ require("lazy").setup({
     },
     { -- track time in projects
       "wakatime/vim-wakatime",
-      lazy = false,
+      event = "VeryLazy",
       enabled = function()
         local file = vim.env.WAKATIME_API_KEY_FILE
         return file ~= nil and file ~= ""
