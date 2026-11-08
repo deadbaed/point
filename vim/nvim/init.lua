@@ -583,6 +583,11 @@ require("lazy").setup({
       lazy = false,
       dependencies = { "saghen/blink.cmp" },
     },
+    { -- csv viewer
+      "hat0uma/csvview.nvim",
+      ft = { "csv", "tsv" },
+      opts = {},
+    },
     { -- rust crates helper
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
@@ -877,6 +882,28 @@ for _, lspName in ipairs({
 }) do
   vim.lsp.enable(lspName)
 end
+
+-- csvview
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "csv", "tsv" },
+  callback = function(args)
+    -- Guard against duplicate FileType events racing to attach.
+    if vim.b[args.buf].csvview_auto_attached then
+      return
+    end
+    vim.b[args.buf].csvview_auto_attached = true
+    require("csvview").enable(args.buf)
+  end,
+})
+vim.api.nvim_create_autocmd("User", {
+  pattern = "CsvViewDetach",
+  callback = function(args)
+    local bufnr = args.data
+    if bufnr then
+      vim.b[bufnr].csvview_auto_attached = nil
+    end
+  end,
+})
 
 if vim.g.neovide then
   function GetOS()
