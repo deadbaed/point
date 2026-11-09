@@ -95,7 +95,6 @@ widget_order = [ "lockscreen-login-box", "lockscreen-widget-0000000000000001", "
     box_width = 810.0
     cx = 1280.0
     cy = 1138.0
-    # output = "DP-1"
     placement_height = 1440.0
     placement_width = 2560.0
     rotation = 0.0
@@ -123,7 +122,6 @@ widget_order = [ "lockscreen-login-box", "lockscreen-widget-0000000000000001", "
     box_width = 576.0
     cx = 1280.0
     cy = 720.0
-    # output = "DP-1"
     placement_height = 1440.0
     placement_width = 2560.0
     rotation = 0.0
@@ -138,7 +136,6 @@ widget_order = [ "lockscreen-login-box", "lockscreen-widget-0000000000000001", "
     box_width = 0.0
     cx = 1280.0
     cy = 464.0
-    # output = "DP-1"
     placement_height = 1440.0
     placement_width = 2560.0
     rotation = 0.0
@@ -235,15 +232,6 @@ transition_on_startup = true
 
     [wallpaper.automation]
     enabled = true
-
-    # [wallpaper.default]
-    # path = "/home/phil/Pictures/Wallpapers/IMG_2879.jpeg"
-    #
-    # [wallpaper.last]
-    # path = "/home/phil/Pictures/Wallpapers/IMG_2879.jpeg"
-    #
-    # [wallpaper.monitors.DP-1]
-    # path = "/home/phil/Pictures/Wallpapers/IMG_2879.jpeg"
 
 [weather]
 enabled = false
