@@ -20,7 +20,6 @@ order = [ "default", "additional-info" ]
         "notifications",
         "clipboard",
         "network",
-        "bar_2",
         "bluetooth",
         "volume",
         "brightness",
@@ -257,9 +256,6 @@ type = "harveywuk/airpods:airpods"
 
 [widget.bar]
 type = "raycursive/niri-displays:bar"
-
-[widget.bar_2]
-type = "andrewdems/vpn-manager:bar"
 
 [widget.clock]
 format = "{:%A %F %H:%M:%S}"
