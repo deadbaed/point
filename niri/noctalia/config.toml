@@ -159,7 +159,6 @@ enabled = [
     "raycursive/niri-displays",
     "yocraft/qrcode",
     "elijaharch/wl-screen-mirror",
-    "andrewdems/vpn-manager"
 ]
 
 [shell]
