@@ -290,7 +290,7 @@ hide_empty_workspaces = true
 show_window_title = true
 
 [widget.tray]
-drawer = true
+drawer = false
 match_adjacent_spacing = true
 
 [widget.vram]
