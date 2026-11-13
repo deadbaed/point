@@ -221,9 +221,8 @@ in
             65,
             str.first_line()
             .replace(regex:'[^[[:alnum:]].]', '_')
-            .replace(regex:'-{2,}', '_')
-            .replace(regex:'\.{2,}', '.')
-            .replace(regex:"(^-+|-+$)", "")
+            .replace(regex:'_{2,}', '_')
+            .replace(regex:"(^_+|_+$)", "")
             .lower()
             )
       '';
