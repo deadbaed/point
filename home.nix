@@ -215,14 +215,6 @@ in
         pager = "less";
         diff-editor = ":builtin";
       };
-      aliases.tug = [
-        "bookmark"
-        "move"
-        "--from"
-        "heads(::@- & bookmarks())"
-        "--to"
-        "@-"
-      ];
       # thank you https://ddbeck.com/notes/jj-git-push-bookmark-template/
       template-aliases."slugify(str)" = ''
         truncate_end(
