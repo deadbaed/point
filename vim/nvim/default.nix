@@ -7,6 +7,9 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    withPython3 = false;
+    withRuby = false;
+
     plugins = with pkgs; [ vimPlugins.lazy-nvim ];
 
     # Darwin: put the Nix compiler before /usr/bin so `cc` does not trigger Xcode.
