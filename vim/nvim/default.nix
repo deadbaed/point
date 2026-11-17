@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -9,8 +9,21 @@
 
     plugins = with pkgs; [ vimPlugins.lazy-nvim ];
 
+    # Darwin: put the Nix compiler before /usr/bin so `cc` does not trigger Xcode.
+    extraWrapperArgs = lib.optionals pkgs.stdenv.isDarwin [
+      "--prefix"
+      "PATH"
+      ":"
+      "${lib.makeBinPath [ pkgs.stdenv.cc ]}"
+    ];
+
     extraPackages = with pkgs; [
-      gcc # For https://github.com/romus204/tree-sitter-manager.nvim
+      # For https://github.com/romus204/tree-sitter-manager.nvim
+      stdenv.cc
+      tree-sitter
+
+      # For https://github.com/symphorien/vim-nixhash
+      coreutils
     ];
   };
 
@@ -25,9 +38,4 @@
   programs.ripgrep.enable = true;
   programs.fd.enable = true;
   programs.jq.enable = true;
-
-  home.packages = with pkgs; [
-    tree-sitter
-    coreutils
-  ];
 }
