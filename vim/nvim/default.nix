@@ -8,6 +8,10 @@
     vimdiffAlias = true;
 
     plugins = with pkgs; [ vimPlugins.lazy-nvim ];
+
+    extraPackages = with pkgs; [
+      gcc # For https://github.com/romus204/tree-sitter-manager.nvim
+    ];
   };
 
   # symlink to config
