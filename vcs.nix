@@ -1,8 +1,4 @@
 { ... }:
-let
-  sources = import ./npins;
-  catppuccin-delta = sources.catppuccin-delta;
-in
 {
   programs.git = {
     enable = true;
@@ -20,8 +16,6 @@ in
         branch = "auto";
       };
 
-      # better diff to go with delta
-      merge.conflictstyle = "diff3";
       diff.colorMoved = "dimmed-zebra"; # https://ruempler.eu/2023/12/31/code-reviews-with-git-color-diffs/
 
       pretty.custom = "%C(auto)%h %C(magenta)%ai %C(cyan)%aN %C(brightmagenta)(%ar) %C(auto)%D%n%s%n";
@@ -41,31 +35,11 @@ in
       };
     };
 
-    includes = [
-      {
-        # theme for delta
-        path = "${catppuccin-delta}/catppuccin.gitconfig";
-      }
-    ];
-
     # sign commits/tags
     signing.format = "ssh";
     settings.gpg.ssh.defaultKeyCommand = "ssh-add -L"; # use first key in agent
 
     lfs.enable = true;
-  };
-
-  # better pager
-  programs.delta = {
-    enable = true;
-    options = {
-      navigate = true; # use n and N to move between diff sections
-      light = false;
-      line-numbers = true;
-      side-by-side = true;
-      features = "catppuccin"; # theme
-      enableGitIntegration = true;
-    };
   };
 
   # git alternative
@@ -91,10 +65,20 @@ in
     };
   };
 
+  # smart merge conflict
   programs.mergiraf = {
     enable = true;
     enableGitIntegration = true;
     enableJujutsuIntegration = true;
   };
 
+  # better diffing
+  programs.difftastic = {
+    enable = true;
+    git = {
+      enable = true;
+      diffToolMode = true;
+    };
+    jujutsu.enable = true;
+  };
 }
