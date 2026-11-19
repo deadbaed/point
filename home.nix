@@ -22,7 +22,7 @@ in
 
   imports = [
     (import ./secrets { inherit sources pkgs config; })
-    ./git.nix
+    ./vcs.nix
     ./vim/nvim
     ./fonts.nix
     ./helix.nix
@@ -203,29 +203,6 @@ in
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
       window-decoration = (if isLinux then "none" else "auto");
       font-size = (if isLinux then 11 else "");
-    };
-  };
-
-  # git alternative
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      ui = {
-        default-command = "log";
-        pager = "less";
-        diff-editor = ":builtin";
-      };
-      # thank you https://ddbeck.com/notes/jj-git-push-bookmark-template/
-      template-aliases."slugify(str)" = ''
-        truncate_end(
-            65,
-            str.first_line()
-            .replace(regex:'[^[[:alnum:]].]', '_')
-            .replace(regex:'_{2,}', '_')
-            .replace(regex:"(^_+|_+$)", "")
-            .lower()
-            )
-      '';
     };
   };
 
