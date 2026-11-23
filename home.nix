@@ -285,6 +285,7 @@ in
     wakatime-cli # time tracker in projects
     jjui # jj user interface
     nix-output-monitor # pretty nix builds
+    jless # nice json viewer
 
     # rust utils
     cargo-audit
